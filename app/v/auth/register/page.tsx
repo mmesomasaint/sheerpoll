@@ -70,7 +70,7 @@ export default function Register() {
           >
             Register
           </button>
-          <p className='text-base font-semibold'>I have an account</p>
+          <p className='text-base font-semibold hover:underline hover:underline-offset-4 hover:text-primary'>I have an account?</p>
         </div>
       </div>
     </form>

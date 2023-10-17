@@ -42,8 +42,8 @@ export default function Login() {
           >
             Login
           </button>
-          <p className='text-base font-semibold'>
-            I don&apos;t have an account
+          <p className='text-base font-semibold hover:underline hover:underline-offset-4 hover:text-primary'>
+            I don&apos;t have an account?
           </p>
         </div>
       </div>
