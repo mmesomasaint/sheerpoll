@@ -1,5 +1,6 @@
 'use client'
 
+import register from '@/lib/auth/register'
 import { useState, FormEvent } from 'react'
 
 export default function Register() {
@@ -19,10 +20,16 @@ export default function Register() {
   const setVerifyPassword = (verifyPassword: string) =>
     setForm((prev) => ({ ...prev, verifyPassword }))
 
-  const submit = (e: FormEvent<HTMLFormElement>) => {
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     // Submit the form
+    const {voter, error} = await register(form.name, form.email, form.password)
+    if (!error) {
+    console.log(`Successfully registered:\n${voter}`)
+    return
+    }
+    console.log(error)
   }
 
   return (

@@ -10,7 +10,7 @@ const auth = getAuth(firebase_app)
 const db = getFirestore(firebase_app)
 const votersRef = collection(db, 'voters')
 
-export default async function register(email: string, password: string) {
+export default async function register(name: string, email: string, password: string) {
   let voter = null,
     error = null
 
@@ -19,7 +19,7 @@ export default async function register(email: string, password: string) {
     const data = {
       uid: result.user.uid,
       email: result.user.email,
-      displayName: result.user.displayName,
+      displayName: name.toString(), // Ensure it's string format.
       votes: [],
     }
 
