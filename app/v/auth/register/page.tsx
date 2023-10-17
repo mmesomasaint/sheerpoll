@@ -28,53 +28,53 @@ export default function Register() {
   return (
     <form onSubmit={submit}>
       <div className='flex flex-col justify-center items-center gap-5 min-h-screen'>
-        <div className='flex flex-col justify-start items-start gap-2'> 
-        <label htmlFor='name'>Full Name</label>
-        <input
-          type='text'
-          id='name'
-          name='name'
-          value={form.name}
-          placeholder='Full Name'
-          className='border border-gray-400 rounded-md px-3 py-2'
-          onChange={(e) => setName(e.target.value)}
-        />
+        <div className='flex flex-col justify-start items-start gap-2'>
+          <label htmlFor='name'>Full Name</label>
+          <input
+            type='text'
+            id='name'
+            name='name'
+            value={form.name}
+            placeholder='Full Name'
+            className='border border-gray-400 rounded-md px-3 py-2'
+            onChange={(e) => setName(e.target.value)}
+          />
         </div>
-        <div className='flex flex-col justify-start items-start gap-2'> 
-        <label htmlFor='email'>Email</label>
-        <input
-          type='email'
-          id='email'
-          name='email'
-          value={form.email}
-          placeholder='Email'
-          className='border border-gray-400 rounded-md px-3 py-2'
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <div className='flex flex-col justify-start items-start gap-2'>
+          <label htmlFor='email'>Email</label>
+          <input
+            type='email'
+            id='email'
+            name='email'
+            value={form.email}
+            placeholder='Email'
+            className='border border-gray-400 rounded-md px-3 py-2'
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
-        <div className='flex flex-col justify-start items-start gap-2'> 
-        <label htmlFor='password'>Password</label>
-        <input
-          type='password'
-          id='password'
-          name='password'
-          value={form.password}
-          placeholder='Password'
-          className='border border-gray-400 rounded-md px-3 py-2'
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className='flex flex-col justify-start items-start gap-2'>
+          <label htmlFor='password'>Password</label>
+          <input
+            type='password'
+            id='password'
+            name='password'
+            value={form.password}
+            placeholder='Password'
+            className='border border-gray-400 rounded-md px-3 py-2'
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
-        <div className='flex flex-col justify-start items-start gap-2'> 
-        <label htmlFor='v_password'>Verify Password</label>
-        <input
-          type='v_password'
-          id='v_password'
-          name='v_password'
-          value={form.verifyPassword}
-          placeholder='Verify Password'
-          className='border border-gray-400 rounded-md px-3 py-2'
-          onChange={(e) => setVerifyPassword(e.target.value)}
-        />
+        <div className='flex flex-col justify-start items-start gap-2'>
+          <label htmlFor='v_password'>Verify Password</label>
+          <input
+            type='v_password'
+            id='v_password'
+            name='v_password'
+            value={form.verifyPassword}
+            placeholder='Verify Password'
+            className='border border-gray-400 rounded-md px-3 py-2'
+            onChange={(e) => setVerifyPassword(e.target.value)}
+          />
         </div>
         <div className='flex flex-col justify-start items-center gap-5'>
           <button
@@ -83,7 +83,9 @@ export default function Register() {
           >
             Register
           </button>
-          <p className='text-base font-semibold hover:underline hover:underline-offset-4 hover:text-primary'>I have an account?</p>
+          <p className='text-base font-semibold hover:underline hover:underline-offset-4 hover:text-primary'>
+            I have an account?
+          </p>
         </div>
       </div>
     </form>
