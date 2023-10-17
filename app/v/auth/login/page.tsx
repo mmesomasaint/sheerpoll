@@ -16,7 +16,7 @@ export default function Login() {
     e.preventDefault()
 
     // Submit the form
-    const {voter, error} = await logIn(form.email, form.password)
+    const { voter, error } = await logIn(form.email, form.password)
     if (!error) {
       console.log(voter)
       return
@@ -27,10 +27,12 @@ export default function Login() {
 
   return (
     <form onSubmit={submit}>
-      <div className='flex flex-col justify-center items-center py-20 gap-5'>
+      <div className='flex flex-col justify-center items-center py-20 gap-5 min-h-screen'>
         <h1 className='text-4xl font-bold'>LogIn</h1>
-        <div className='flex flex-col justify-start items-start gap-2'> 
-          <label htmlFor='email'>Email</label>
+        <div className='flex flex-col justify-start items-start gap-2'>
+          <label htmlFor='email' className='text-base font-semibold'>
+            Email
+          </label>
           <input
             type='email'
             id='email'
@@ -41,8 +43,10 @@ export default function Login() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div className='flex flex-col justify-start items-start gap-2'> 
-          <label htmlFor='password'>Password</label>
+        <div className='flex flex-col justify-start items-start gap-2'>
+          <label htmlFor='password' className='text-base font-semibold'>
+            Password
+          </label>
           <input
             type='password'
             id='password'

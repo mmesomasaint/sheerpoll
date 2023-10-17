@@ -24,10 +24,14 @@ export default function Register() {
     e.preventDefault()
 
     // Submit the form
-    const {voter, error} = await register(form.name, form.email, form.password)
+    const { voter, error } = await register(
+      form.name,
+      form.email,
+      form.password
+    )
     if (!error) {
-    console.log(`Successfully registered:\n${voter}`)
-    return
+      console.log(`Successfully registered:\n${voter}`)
+      return
     }
     console.log(error)
   }
@@ -37,50 +41,58 @@ export default function Register() {
       <div className='flex flex-col justify-center items-center gap-5 min-h-screen'>
         <h1 className='text-4xl font-bold'>Register</h1>
         <div className='flex flex-col justify-start items-start gap-2'>
-          <label htmlFor='name'>Full Name</label>
+          <label htmlFor='name' className='text-base font-semibold'>
+            Full Name
+          </label>
           <input
             type='text'
             id='name'
             name='name'
             value={form.name}
             placeholder='Full Name'
-            className='border border-gray-400 rounded-md px-3 py-2'
+            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium'
             onChange={(e) => setName(e.target.value)}
           />
         </div>
         <div className='flex flex-col justify-start items-start gap-2'>
-          <label htmlFor='email'>Email</label>
+          <label htmlFor='email' className='text-base font-semibold'>
+            Email
+          </label>
           <input
             type='email'
             id='email'
             name='email'
             value={form.email}
             placeholder='Email'
-            className='border border-gray-400 rounded-md px-3 py-2'
+            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium'
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className='flex flex-col justify-start items-start gap-2'>
-          <label htmlFor='password'>Password</label>
+          <label htmlFor='password' className='text-base font-semibold'>
+            Password
+          </label>
           <input
             type='password'
             id='password'
             name='password'
             value={form.password}
             placeholder='Password'
-            className='border border-gray-400 rounded-md px-3 py-2'
+            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium'
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className='flex flex-col justify-start items-start gap-2'>
-          <label htmlFor='v_password'>Verify Password</label>
+          <label htmlFor='v_password' className='text-base font-semibold'>
+            Verify Password
+          </label>
           <input
             type='v_password'
             id='v_password'
             name='v_password'
             value={form.verifyPassword}
             placeholder='Verify Password'
-            className='border border-gray-400 rounded-md px-3 py-2'
+            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium'
             onChange={(e) => setVerifyPassword(e.target.value)}
           />
         </div>
