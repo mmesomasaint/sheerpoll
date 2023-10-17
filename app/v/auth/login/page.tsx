@@ -1,18 +1,27 @@
 'use client'
+import logIn from '@/lib/auth/login'
 import { useState, FormEvent } from 'react'
 
 export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' })
+  const [err, setErr] = useState<string>('')
 
   const setEmail = (email: string) => setForm((prev) => ({ ...prev, email }))
-  
+
   const setPassword = (password: string) =>
     setForm((prev) => ({ ...prev, password }))
 
-  const submit = (e: FormEvent<HTMLFormElement>) => {
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     // Submit the form
+    const {voter, error} = await logIn(form.email, form.password)
+    if (!error) {
+      console.log(voter)
+      return
+    }
+
+    setErr(error.message ?? 'An Error Occured while logging in')
   }
 
   return (
