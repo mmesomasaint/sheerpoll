@@ -4,9 +4,11 @@ import { useState, FormEvent } from 'react'
 export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' })
 
-  const setEmail = (email: string) => setForm((prev) => ({ ...form, email }))
+  const setEmail = (email: string) => setForm((prev) => ({ ...prev, email }))
+  
   const setPassword = (password: string) =>
-    setForm((prev) => ({ ...form, password }))
+    setForm((prev) => ({ ...prev, password }))
+
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 

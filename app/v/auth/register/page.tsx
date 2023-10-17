@@ -8,12 +8,15 @@ export default function Register() {
     verifyPassword: '',
   })
 
-  const setName = (name: string) => setForm((prev) => ({ ...form, name }))
-  const setEmail = (email: string) => setForm((prev) => ({ ...form, email }))
+  const setName = (name: string) => setForm((prev) => ({ ...prev, name }))
+  const setEmail = (email: string) => setForm((prev) => ({ ...prev, email }))
+  
   const setPassword = (password: string) =>
-    setForm((prev) => ({ ...form, password }))
+    setForm((prev) => ({ ...prev, password }))
+
   const setVerifyPassword = (verifyPassword: string) =>
-    setForm((prev) => ({ ...form, verifyPassword }))
+    setForm((prev) => ({ ...prev, verifyPassword }))
+
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
