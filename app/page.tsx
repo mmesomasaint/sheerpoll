@@ -8,10 +8,10 @@ export default function Home() {
           <h1 className='text-4xl font-bold'>Sheerpoll</h1>
         </div>
         <div className='flex justify-end items-center gap-10'>
-          <Link href='/login' className='text-lg font-bold'>
+          <Link href='/auth/login' className='text-lg font-bold'>
             Login
           </Link>
-          <Link href='/signup' className='text-lg font-bold'>
+          <Link href='/auth/signup' className='text-lg font-bold'>
             Signup
           </Link>
         </div>
@@ -22,10 +22,10 @@ export default function Home() {
           A pure and transparent election conducting platform
         </p>
         <div className='flex justify-center items-center gap-10'>
-          <Link href='/login' className='text-lg font-bold'>
+          <Link href='/auth/login' className='text-lg font-bold'>
             Login
           </Link>
-          <Link href='/signup' className='text-lg font-bold'>
+          <Link href='/auth/signup' className='text-lg font-bold'>
             Signup
           </Link>
         </div>
