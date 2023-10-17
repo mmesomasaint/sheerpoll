@@ -1,10 +1,6 @@
-import Link from "next/link"
+import Link from 'next/link'
 
-export default function Layout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className='flex flex-col min-h-screen gap-0'>
       <div className='py-16'>
