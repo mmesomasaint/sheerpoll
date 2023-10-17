@@ -26,27 +26,31 @@ export default function Login() {
 
   return (
     <form onSubmit={submit}>
-      <div className='flex flex-col gap-5'>
-        <label htmlFor='email'>Email</label>
-        <input
-          type='email'
-          id='email'
-          name='email'
-          value={form.email}
-          placeholder='Email'
-          className='border border-gray-400 rounded-md px-3 py-2'
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label htmlFor='password'>Password</label>
-        <input
-          type='password'
-          id='password'
-          name='password'
-          placeholder='Password'
-          className='border border-gray-400 rounded-md px-3 py-2'
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <div className='flex justify-start items-center gap-10'>
+      <div className='flex flex-col justify-center items-center py-20 gap-5'>
+        <div className='flex flex-col justify-start items-start gap-2'> 
+          <label htmlFor='email'>Email</label>
+          <input
+            type='email'
+            id='email'
+            name='email'
+            value={form.email}
+            placeholder='Email'
+            className='border border-gray-400 rounded-md px-3 py-2'
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className='flex flex-col justify-start items-start gap-2'> 
+          <label htmlFor='password'>Password</label>
+          <input
+            type='password'
+            id='password'
+            name='password'
+            placeholder='Password'
+            className='border border-gray-400 rounded-md px-3 py-2'
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div className='flex flex-col justify-start items-center gap-5'>
           <button
             type='submit'
             className='px-7 py-3 text-white bg-primary rounded-md shadow-sm'
