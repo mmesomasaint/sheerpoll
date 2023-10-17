@@ -28,6 +28,7 @@ export default function Login() {
   return (
     <form onSubmit={submit}>
       <div className='flex flex-col justify-center items-center py-20 gap-5'>
+        <h1 className='text-4xl font-bold'>LogIn</h1>
         <div className='flex flex-col justify-start items-start gap-2'> 
           <label htmlFor='email'>Email</label>
           <input
