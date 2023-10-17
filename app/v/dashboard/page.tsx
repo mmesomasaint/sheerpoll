@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 
-export default function Dashboard() {
+export default function Timeline() {
   return (
     <div className='flex flex-col gap-0'>
       <PositionAccordion />
