@@ -27,7 +27,8 @@ export default function Register() {
 
   return (
     <form onSubmit={submit}>
-      <div className='flex flex-col gap-5'>
+      <div className='flex flex-col justify-center items-center gap-5 min-h-screen'>
+        <div className='flex flex-col justify-start items-start gap-2'> 
         <label htmlFor='name'>Full Name</label>
         <input
           type='text'
@@ -38,6 +39,8 @@ export default function Register() {
           className='border border-gray-400 rounded-md px-3 py-2'
           onChange={(e) => setName(e.target.value)}
         />
+        </div>
+        <div className='flex flex-col justify-start items-start gap-2'> 
         <label htmlFor='email'>Email</label>
         <input
           type='email'
@@ -48,6 +51,8 @@ export default function Register() {
           className='border border-gray-400 rounded-md px-3 py-2'
           onChange={(e) => setEmail(e.target.value)}
         />
+        </div>
+        <div className='flex flex-col justify-start items-start gap-2'> 
         <label htmlFor='password'>Password</label>
         <input
           type='password'
@@ -58,6 +63,8 @@ export default function Register() {
           className='border border-gray-400 rounded-md px-3 py-2'
           onChange={(e) => setPassword(e.target.value)}
         />
+        </div>
+        <div className='flex flex-col justify-start items-start gap-2'> 
         <label htmlFor='v_password'>Verify Password</label>
         <input
           type='v_password'
@@ -68,7 +75,8 @@ export default function Register() {
           className='border border-gray-400 rounded-md px-3 py-2'
           onChange={(e) => setVerifyPassword(e.target.value)}
         />
-        <div className='flex justify-start items-center gap-10'>
+        </div>
+        <div className='flex flex-col justify-start items-center gap-5'>
           <button
             type='submit'
             className='px-7 py-3 text-white bg-primary rounded-md shadow-sm'
