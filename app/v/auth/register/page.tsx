@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, FormEvent } from 'react'
 
 export default function Register() {
@@ -10,7 +12,7 @@ export default function Register() {
 
   const setName = (name: string) => setForm((prev) => ({ ...prev, name }))
   const setEmail = (email: string) => setForm((prev) => ({ ...prev, email }))
-  
+
   const setPassword = (password: string) =>
     setForm((prev) => ({ ...prev, password }))
 
