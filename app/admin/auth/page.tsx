@@ -26,7 +26,7 @@ export default function Auth() {
       setAdmin?.(adminSession)
       return
     }
-    console.log('Error loging in')
+    console.log('Error loging in', adminSession)
   }
 
   return (
