@@ -3,9 +3,14 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
+type SessionType = {
+  auth: string | undefined
+  id: string | undefined
+}
+
 type AuthContextType = {
-  admin: string | null
-  setAdmin?: (admin: string) => void
+  admin: SessionType | null
+  setAdmin?: (admin: SessionType) => void
 }
 
 export const Auth = createContext<AuthContextType>({ admin: null })
@@ -13,7 +18,7 @@ export const Auth = createContext<AuthContextType>({ admin: null })
 export const useAuth = () => useContext(Auth)
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [admin, setAdmin] = useState<string | null>(null)
+  const [admin, setAdmin] = useState<SessionType | null>(null)
   const [loading, setLoading] = useState(true)
   const router = useRouter()
 

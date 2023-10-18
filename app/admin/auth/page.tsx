@@ -2,8 +2,11 @@
 
 import { useState, FormEvent } from 'react'
 import { IoIosArrowDown } from 'react-icons/io'
+import { useAuth } from './auth'
+import authAdmin from '@/lib/auth/authAdmin'
 
 export default function Auth() {
+  const { setAdmin } = useAuth()
   const [form, setForm] = useState<{ rank: null | string; passcode: string }>({
     rank: null,
     passcode: '',
@@ -17,6 +20,13 @@ export default function Auth() {
     e.preventDefault()
 
     // Submit the form
+    const adminSession = authAdmin(form.rank, form.passcode)
+    if (adminSession) {
+      console.log('Successfull login: ', adminSession)
+      setAdmin?.(adminSession)
+      return
+    }
+    console.log('Error loging in')
   }
 
   return (

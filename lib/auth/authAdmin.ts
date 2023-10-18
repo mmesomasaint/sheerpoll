@@ -1,6 +1,5 @@
-export default function authAdmin(rank: string, passcode: string) {
+export default function authAdmin(rank: string | null, passcode: string) {
   // Determine who the admin is by matching the rank with corresponding passcode
-
   const isPresident =
     rank === 'PRESIDENT' && passcode === process.env.ADMIN_PRESIDENT_CODE
   const isVice =
