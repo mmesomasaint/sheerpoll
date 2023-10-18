@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, FormEvent } from 'react'
+import { IoIosArrowDown } from 'react-icons/io'
 
 export default function Auth() {
   const [form, setForm] = useState<{ rank: null | string; passcode: string }>({
@@ -58,8 +59,6 @@ export default function Auth() {
     </form>
   )
 }
-
-import { IoIosArrowDown } from 'react-icons/io'
 
 function DropDown({
   selected,
