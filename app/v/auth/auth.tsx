@@ -43,7 +43,7 @@ export const AuthProvider = ({
     <Auth.Provider
       value={{ voter: useMemo(() => voter, [voter]) }}
     >
-      {loading ? <div className='flex justify-center items-center'>Loading...</div> : children}
+      {loading ? <div className='flex justify-center items-center min-h-screen bg-black/30'>Loading...</div> : children}
     </Auth.Provider>
   )
 }
