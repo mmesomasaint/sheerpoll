@@ -99,7 +99,7 @@ function DropDown({
       >
         <p className='text-sm semibold'>{selected}</p>
         <IoIosArrowDown
-          className={`shrink-0 text-base 
+          className={`shrink-0 text-base
           text-apple-store-pri ${open && 'rotate-180'}`}
         />
       </div>
@@ -115,7 +115,10 @@ function DropDown({
             <DropItem
               key={`${item}~${isSelected}`}
               isSelected={isSelected}
-              setValue={(value) => setSelected?.(value)}
+              setValue={(value) => {
+                setOpen(false)
+                setSelected?.(value)
+              }}
               full={full}
             >
               {item}
