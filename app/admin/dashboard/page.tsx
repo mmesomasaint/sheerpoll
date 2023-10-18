@@ -12,17 +12,17 @@ export default function Dashboard() {
   return (
     <div className='flex flex-col items-start min-h-screen px-20 w-full'>
       <div className='flex justify-between items-center gap-10 w-full'>
-      <div className='flex flex-col items-start gap-8 pt-5'>
-        <h6 className='text-sm font-medium'>Welcome, {admin?.auth}</h6>
-        <h2 className='text-6xl font-semibold'>Positions</h2>
-      </div>
-          <button
-            type='button'
-            className='px-8 py-4 text-white text-base font-medium bg-primary rounded-md shadow-sm'
-            onClick={() => router.push('/admin/dashboard/create')}
-          >
-            Create Position
-          </button>
+        <div className='flex flex-col items-start gap-8 pt-5'>
+          <h6 className='text-sm font-medium'>Welcome, {admin?.auth}</h6>
+          <h2 className='text-6xl font-semibold'>Positions</h2>
+        </div>
+        <button
+          type='button'
+          className='px-8 py-4 text-white text-base font-medium bg-primary rounded-md shadow-sm'
+          onClick={() => router.push('/admin/dashboard/create')}
+        >
+          Create Position
+        </button>
       </div>
       <div className='flex flex-col w-full'>
         <div className='flex justify-start items-center gap-10 pt-5 pb-2 border-b border-b-primary/60'>
@@ -73,7 +73,9 @@ function PositionCard() {
           </div>
           <div className='flex flex-col items-start gap-1'>
             <p className='text-sm font-semibold'>CANDIDATES</p>
-              <p className='text-xl font-semibold'>MARTINS IKE, DR. IDRIS ADAKA, EBENEZER ETEE</p>
+            <p className='text-xl font-semibold'>
+              MARTINS IKE, DR. IDRIS ADAKA, EBENEZER ETEE
+            </p>
           </div>
         </div>
       </div>
