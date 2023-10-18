@@ -4,6 +4,7 @@ import { createContext, useContext, useState, useEffect, useMemo } from 'react'
 import { onAuthStateChanged, getAuth, User as Voter } from 'firebase/auth'
 import firebase_app from '@/lib/firebase'
 import { useRouter } from 'next/navigation'
+import getVoter from '@/lib/auth/getVoter'
 
 const auth = getAuth(firebase_app)
 
@@ -27,7 +28,8 @@ export const AuthProvider = ({
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        setVoter(user)
+        const currentVoter = await getVoter(user.uid)
+        setVoter(currentVoter)
       } else {
         // If user is not a voter redirect to login pg.
         router.replace('/v/auth/login')
