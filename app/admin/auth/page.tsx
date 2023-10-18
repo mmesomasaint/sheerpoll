@@ -3,8 +3,8 @@
 import {useState, FormEvent} from 'react'
 
 export default function Auth() {
-  const [form ,setForm] = useState({
-    rank: '',
+  const [form ,setForm] = useState<{rank: null | string, passcode: string}>({
+    rank: null,
     passcode: '',
   })
 
@@ -21,7 +21,7 @@ export default function Auth() {
     <form onSubmit={submit}>
       <div className='flex flex-col justify-center items-center gap-5 min-h-screen'>
         <h1 className='text-4xl font-bold'>Admin</h1>
-        <DropDown selected='VICE PRESIDENT' items={['PRESIDENT', 'VICE PRESIDENT', 'DEPUTY VICE PRESIDENT', 'ELECTORIAL GOVERNOR']} />
+        <DropDown selected={form.rank ?? 'VICE PRESIDENT'} setSelected={setRank} items={['PRESIDENT', 'VICE PRESIDENT', 'DEPUTY VICE PRESIDENT', 'ELECTORIAL GOVERNOR']} />
         <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
           <label htmlFor='passcode' className='text-base font-semibold'>
             Passcode
