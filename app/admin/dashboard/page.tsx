@@ -22,7 +22,48 @@ export default function Dashboard() {
             <p className='text-base font-semibold'>Concluded</p>
           </Link>
         </div>
-        <div className='grow flex px-20 flex-col'>Nothing to show here...</div>
+        <div className='grow flex px-20 flex-col'>
+          <PositionCard />
+          <PositionCard />
+          <PositionCard />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function PositionCard() {
+  return (
+    <div className='first:border-t first:border-t-primary/60 bg-primary/30 p-20 rounded-md shadow-sm'>
+      <div className='flex flex-col items-stretch justify-between gap-6'>
+        <div className='flex justify-between items-center gap-10'>
+          <div className='flex flex-col items-start gap-1'>
+            <p className='text-sm font-semibold'>ID</p>
+            <p className='text-3xl font-semibold'>131FASDF4353DA</p>
+          </div>
+          <div className='flex flex-col items-start gap-1'>
+            <p className='text-sm font-semibold'>STATUS</p>
+            <p className='text-3xl font-semibold'>CONCLUDED</p>
+          </div>
+          <div className='flex flex-col items-start gap-1'>
+            <p className='text-sm font-semibold'>TOTAL VOTES</p>
+            <p className='text-3xl font-semibold'>833</p>
+          </div>
+        </div>
+        <div className='flex justify-between items-center gap-10'>
+          <div className='flex flex-col items-start gap-1'>
+            <p className='text-sm font-semibold'>NAME</p>
+            <p className='text-3xl font-semibold'>VICE PRESIDENT</p>
+          </div>
+          <div className='flex flex-col items-start gap-1'>
+            <p className='text-sm font-semibold'>CANDIDATES</p>
+            <div className='flex flex-wrap justify-start items-center gap-3'>
+            <p className='text-3xl font-semibold'>Samuel Muga</p>
+            <p className='text-3xl font-semibold'>Samuel Muga</p>
+            <p className='text-3xl font-semibold'>Samuel Muga</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
