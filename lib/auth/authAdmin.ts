@@ -1,7 +1,8 @@
 export default function authAdmin(rank: string | null, passcode: string) {
   // Determine who the admin is by matching the rank with corresponding passcode
   const isPresident =
-    rank === 'PRESIDENT' && passcode === process.env.NEXT_PUBLIC_ADMIN_PRESIDENT_CODE
+    rank === 'PRESIDENT' &&
+    passcode === process.env.NEXT_PUBLIC_ADMIN_PRESIDENT_CODE
   const isVice =
     rank === 'VICE PRESIDENT' &&
     passcode === process.env.NEXT_PUBLIC_ADMIN_VICE_PRESIDENT_CODE
@@ -11,7 +12,6 @@ export default function authAdmin(rank: string | null, passcode: string) {
   const isElect =
     rank === 'ELECTORIAL GOVERNOR' &&
     passcode === process.env.NEXT_PUBLIC_ADMIN_ELECTORIAL_GOVERNOR_CODE
-
 
   // Depending on who they are, return their information otherwise return null.
   if (isPresident) {
