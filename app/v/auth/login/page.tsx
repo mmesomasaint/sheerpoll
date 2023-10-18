@@ -2,10 +2,12 @@
 
 import logIn from '@/lib/auth/login'
 import { useState, FormEvent } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' })
   const [err, setErr] = useState<string>('')
+  const router = useRouter()
 
   const setEmail = (email: string) => setForm((prev) => ({ ...prev, email }))
 
@@ -19,6 +21,7 @@ export default function Login() {
     const { voter, error } = await logIn(form.email, form.password)
     if (!error) {
       console.log(voter)
+      router.push('/v/dashboard/')
       return
     }
 

@@ -2,8 +2,10 @@
 
 import register from '@/lib/auth/register'
 import { useState, FormEvent } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function Register() {
+  const router = useRouter()
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -30,7 +32,8 @@ export default function Register() {
       form.password
     )
     if (!error) {
-      console.log(`Successfully registered:\n${voter}`)
+      console.log(`Successfully registered:`, voter)
+      router.push('/v/dashboard/')
       return
     }
     console.log(error)
