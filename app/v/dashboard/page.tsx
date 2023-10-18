@@ -24,7 +24,9 @@ function PositionAccordion() {
           <h3 className='text-4xl font-semibold text-'>Vice President</h3>
           <button
             type='button'
-            onClick={() => router.push('/v/dashboard/vote?position=Vice President')}
+            onClick={() =>
+              router.push('/v/dashboard/vote?position=Vice President')
+            }
             className='px-7 py-3 text-white bg-primary rounded-md shadow-sm'
           >
             Vote
