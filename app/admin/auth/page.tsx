@@ -1,15 +1,16 @@
 'use client'
 
-import {useState, FormEvent} from 'react'
+import { useState, FormEvent } from 'react'
 
 export default function Auth() {
-  const [form ,setForm] = useState<{rank: null | string, passcode: string}>({
+  const [form, setForm] = useState<{ rank: null | string; passcode: string }>({
     rank: null,
     passcode: '',
   })
 
   const setRank = (rank: string) => setForm((prev) => ({ ...prev, rank }))
-  const setPasscode = (passcode: string) => setForm((prev) => ({ ...prev, passcode }))
+  const setPasscode = (passcode: string) =>
+    setForm((prev) => ({ ...prev, passcode }))
 
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -21,7 +22,16 @@ export default function Auth() {
     <form onSubmit={submit}>
       <div className='flex flex-col justify-center items-center gap-5 min-h-screen'>
         <h1 className='text-4xl font-bold'>Admin</h1>
-        <DropDown selected={form.rank ?? 'VICE PRESIDENT'} setSelected={setRank} items={['PRESIDENT', 'VICE PRESIDENT', 'DEPUTY VICE PRESIDENT', 'ELECTORIAL GOVERNOR']} />
+        <DropDown
+          selected={form.rank ?? 'VICE PRESIDENT'}
+          setSelected={setRank}
+          items={[
+            'PRESIDENT',
+            'VICE PRESIDENT',
+            'DEPUTY VICE PRESIDENT',
+            'ELECTORIAL GOVERNOR',
+          ]}
+        />
         <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
           <label htmlFor='passcode' className='text-base font-semibold'>
             Passcode
@@ -65,10 +75,16 @@ function DropDown({
   const [open, setOpen] = useState(false)
 
   return (
-    <div className={`cursor-pointer inline-block relative w-[25%] ${full && 'w-full'}`}>
+    <div
+      className={`cursor-pointer inline-block relative w-[25%] ${
+        full && 'w-full'
+      }`}
+    >
       <div
         className={`flex justify-between items-center gap-5 p-3 border ${
-          open ? 'border-apple-store-pri' : 'border-apple-store-outline-faded-max'
+          open
+            ? 'border-apple-store-pri'
+            : 'border-apple-store-outline-faded-max'
         } rounded-t-md ${open ? 'rounded-b-none' : 'rounded-md'}`}
         onClick={() => setOpen((prev) => !prev)}
       >
@@ -102,7 +118,6 @@ function DropDown({
   )
 }
 
-
 function DropItem({
   isSelected,
   setValue,
@@ -118,9 +133,7 @@ function DropItem({
     <div
       onClick={() => setValue(children)}
       className={`bg-white last:rounded-b-md p-3 border ${
-        isSelected
-          ? 'border-primary text-primary'
-          : 'text-black/60'
+        isSelected ? 'border-primary text-primary' : 'text-black/60'
       } ${full && 'w-full'} hover:border-y hover:border-apple-store-pri`}
     >
       {children}
