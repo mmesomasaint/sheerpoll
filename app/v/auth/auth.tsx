@@ -16,11 +16,7 @@ export const Auth = createContext<AuthContextType>({ voter: null })
 
 export const useAuth = () => useContext(Auth)
 
-export const AuthProvider = ({
-  children,
-}: {
-  children: React.ReactNode
-}) => {
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [voter, setVoter] = useState<Voter | null>(null)
   const [loading, setLoading] = useState(true)
   const router = useRouter()
@@ -42,10 +38,14 @@ export const AuthProvider = ({
   }, [])
 
   return (
-    <Auth.Provider
-      value={{ voter: useMemo(() => voter, [voter]) }}
-    >
-      {loading ? <div className='flex justify-center items-center min-h-screen bg-black/30'>Loading...</div> : children}
+    <Auth.Provider value={{ voter: useMemo(() => voter, [voter]) }}>
+      {loading ? (
+        <div className='flex justify-center items-center min-h-screen bg-black/30'>
+          Loading...
+        </div>
+      ) : (
+        children
+      )}
     </Auth.Provider>
   )
 }
