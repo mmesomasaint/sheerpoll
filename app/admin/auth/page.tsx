@@ -3,10 +3,12 @@
 import { useState, FormEvent } from 'react'
 import { IoIosArrowDown } from 'react-icons/io'
 import { useAuth } from './auth'
+import {useRouter} from 'next/navigation'
 import authAdmin from '@/lib/auth/authAdmin'
 
 export default function Auth() {
   const { setAdmin } = useAuth()
+  const router = useRouter()
   const [form, setForm] = useState<{ rank: null | string; passcode: string }>({
     rank: null,
     passcode: '',
@@ -24,6 +26,7 @@ export default function Auth() {
     if (adminSession) {
       console.log('Successfull login: ', adminSession)
       setAdmin?.(adminSession)
+      router.push('/admin/dashboard')
       return
     }
     console.log('Error loging in', adminSession)
