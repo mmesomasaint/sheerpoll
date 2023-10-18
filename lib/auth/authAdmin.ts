@@ -12,6 +12,8 @@ export default function authAdmin(rank: string | null, passcode: string) {
     rank === 'ELECTORIAL GOVERNOR' &&
     passcode === process.env.ADMIN_ELECTORIAL_GOVERNOR_CODE
 
+    console.log(process.env.NEXT_PUBLIC_ADMIN_PRESIDENT)
+
 
   // Depending on who they are, return their information otherwise return null.
   if (isPresident) {
