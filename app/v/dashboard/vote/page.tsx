@@ -1,3 +1,5 @@
+'use client'
+
 import { useRouter, useSearchParams } from 'next/navigation'
 import { BsCheckLg } from 'react-icons/bs'
 
@@ -64,12 +66,12 @@ function CheckBox({
     >
       <div
         className={`w-[1.18rem] h-[1.18rem] rounded-md flex justify-center items-center border ${
-          check ? 'border-apple-store-pri' : 'border-apple-store-faded'
+          check ? 'border-primary' : 'border-black'
         }`}
       >
         {check && <BsCheckLg className={`text-lg text-apple-store-pri`} />}
       </div>
-      <p className='text-base font-medium text-secondary-faded'>{children}</p>
+      <p className='text-base font-medium'>{children}</p>
     </div>
   )
 }
