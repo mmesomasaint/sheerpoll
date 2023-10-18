@@ -20,7 +20,9 @@ export default function Auth() {
   return (
     <form onSubmit={submit}>
       <div className='flex flex-col justify-center items-center gap-5 min-h-screen'>
-        <div className='flex flex-col justify-start items-start gap-2'>
+        <h1 className='text-4xl font-bold'>Admin</h1>
+        <DropDown selected='VICE PRESIDENT' items={['PRESIDENT', 'VICE PRESIDENT', 'DEPUTY VICE PRESIDENT', 'ELECTORIAL GOVERNOR']} />
+        <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
           <label htmlFor='passcode' className='text-base font-semibold'>
             Passcode
           </label>
@@ -30,7 +32,7 @@ export default function Auth() {
             name='passcode'
             value={form.passcode}
             placeholder='passcode'
-            className='border border-gray-400 rounded-md px-3 py-2'
+            className='border border-gray-400 rounded-md px-3 py-2 w-full'
             onChange={(e) => setPasscode(e.target.value)}
           />
         </div>
@@ -44,5 +46,84 @@ export default function Auth() {
         </div>
       </div>
     </form>
+  )
+}
+
+import { IoIosArrowDown } from 'react-icons/io'
+
+function DropDown({
+  selected,
+  setSelected,
+  items,
+  full,
+}: {
+  selected: string
+  setSelected?: (value: string) => void
+  items: string[]
+  full?: boolean
+}) {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <div className={`cursor-pointer inline-block relative w-[25%] ${full && 'w-full'}`}>
+      <div
+        className={`flex justify-between items-center gap-5 p-3 border ${
+          open ? 'border-apple-store-pri' : 'border-apple-store-outline-faded-max'
+        } rounded-t-md ${open ? 'rounded-b-none' : 'rounded-md'}`}
+        onClick={() => setOpen((prev) => !prev)}
+      >
+        <p className='text-sm semibold'>{selected}</p>
+        <IoIosArrowDown
+          className={`shrink-0 text-base 
+          text-apple-store-pri ${open && 'rotate-180'}`}
+        />
+      </div>
+      <div
+        className={`${
+          open ? 'block' : 'hidden'
+        } w-full absolute left-0 top-[100%] border-y border-apple-store-faded-max border-t-0 border-b-0 rounded-b-md flex flex-col`}
+      >
+        {items.map((item) => {
+          const isSelected = selected === item
+
+          return (
+            <DropItem
+              key={`${item}~${isSelected}`}
+              isSelected={isSelected}
+              setValue={(value) => setSelected?.(value)}
+              full={full}
+            >
+              {item}
+            </DropItem>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+
+function DropItem({
+  isSelected,
+  setValue,
+  full,
+  children,
+}: {
+  isSelected: boolean
+  setValue: (value: string) => void
+  children: string
+  full?: boolean
+}) {
+  return (
+    <div
+      onClick={() => setValue(children)}
+      className={`bg-white last:rounded-b-md p-3 border ${
+        isSelected
+          ? 'border-primary text-primary'
+          : 'text-black/60'
+      } ${full && 'w-full'} hover:border-y hover:border-apple-store-pri`}
+    >
+      {children}
+    </div>
   )
 }
