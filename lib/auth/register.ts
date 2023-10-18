@@ -28,6 +28,9 @@ export default async function register(name: string, email: string, password: st
     voter = data
   } catch (e) {
     error = e as AuthError
+
+    // If a user is already created, delete them.
+    if (auth.currentUser) await auth.currentUser.delete()
   }
 
   return { voter, error }
