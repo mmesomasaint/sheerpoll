@@ -57,14 +57,14 @@ function PositionCard() {
           </div>
           <div className='flex flex-col items-start gap-1'>
             <p className='text-sm font-semibold'>WINNER</p>
-            <p className='text-xl font-semibold'>DR. IDRIS ADAKA</p> 
+            <p className='text-xl font-semibold'>DR. IDRIS ADAKA</p>
           </div>
           <div className='flex flex-col items-start gap-1'>
             <p className='text-sm font-semibold'>CANDIDATES</p>
             <div className='flex flex-wrap justify-start items-center gap-3'>
-            <p className='text-xl font-semibold'>DR. IDRIS ADAKA</p>
-            <p className='text-xl font-semibold'>DR. IDRIS ADAKA</p>
-            <p className='text-xl font-semibold'>DR. IDRIS ADAKA</p>
+              <p className='text-xl font-semibold'>DR. IDRIS ADAKA</p>
+              <p className='text-xl font-semibold'>DR. IDRIS ADAKA</p>
+              <p className='text-xl font-semibold'>DR. IDRIS ADAKA</p>
             </div>
           </div>
         </div>
