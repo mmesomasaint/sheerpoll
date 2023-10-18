@@ -3,7 +3,7 @@
 import { useState, FormEvent } from 'react'
 import { IoIosArrowDown } from 'react-icons/io'
 import { useAuth } from './auth'
-import {useRouter} from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import authAdmin from '@/lib/auth/authAdmin'
 
 export default function Auth() {
@@ -40,17 +40,17 @@ export default function Auth() {
           <label htmlFor='dropdown' className='text-base font-semibold'>
             Authority
           </label>
-        <DropDown
-          selected={form.rank ?? 'VICE PRESIDENT'}
-          setSelected={setRank}
-          items={[
-            'PRESIDENT',
-            'VICE PRESIDENT',
-            'DEPUTY VICE PRESIDENT',
-            'ELECTORIAL GOVERNOR',
-          ]}
-          full
-        />
+          <DropDown
+            selected={form.rank ?? 'VICE PRESIDENT'}
+            setSelected={setRank}
+            items={[
+              'PRESIDENT',
+              'VICE PRESIDENT',
+              'DEPUTY VICE PRESIDENT',
+              'ELECTORIAL GOVERNOR',
+            ]}
+            full
+          />
         </div>
         <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
           <label htmlFor='passcode' className='text-base font-semibold'>
