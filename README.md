@@ -2,6 +2,8 @@
 
 This is a mimicry project by PANs [UNN]('https://www.unn.edu.ng').
 
+Sheerpoll is a polling platform where a selected admins have access to create polls(refered to as positions) for authenticated users(known as voters) to vote on. This ensures a safe, free and fair polling process overall. 
+
 ## Getting Started
 
 First, create positions as an admin using any of these credentials:
@@ -26,7 +28,7 @@ Authority: ELECTORAL GOVERNOR
 passcode: 372037
 ```
 
-The login which any email as voter and vote on any of those positions 
+Then login which any email as voter and vote on any of those positions 
 
 
 ## Tech Stack
