@@ -28,7 +28,7 @@ export default function CreatePosition() {
   const THIRDPAGE =
     ref === '3' && form.title.length > 0 && form.candidates.length > 0
 
-  const SECONDPAGEPRIMARY = (SECONDPAGE || THIRDPAGE)
+  const SECONDPAGEPRIMARY = SECONDPAGE || THIRDPAGE
 
   const setTitle = (title: string) => setForm((pre) => ({ ...pre, title }))
   const setCandidates = (candidate: CandidateType) =>
@@ -65,16 +65,30 @@ export default function CreatePosition() {
           <div className='w-8 h-8 rounded-full border border-primary bg-transparent flex justify-center items-center'>
             <BsStar className='text-xl text-primary' />
           </div>
-          <div className={`w-12 border-b bg-transparent ${SECONDPAGEPRIMARY && 'border-primary'} border-dashed`} />
-          <div className={`w-8 h-8 rounded-full border ${SECONDPAGEPRIMARY && 'border-primary'} bg-transparent flex justify-center items-center`}>
+          <div
+            className={`w-12 border-b bg-transparent ${
+              SECONDPAGEPRIMARY && 'border-primary'
+            } border-dashed`}
+          />
+          <div
+            className={`w-8 h-8 rounded-full border ${
+              SECONDPAGEPRIMARY && 'border-primary'
+            } bg-transparent flex justify-center items-center`}
+          >
             <BsStar
-              className={`text-xl ${
-                SECONDPAGEPRIMARY && 'text-primary'
-              }`}
+              className={`text-xl ${SECONDPAGEPRIMARY && 'text-primary'}`}
             />
           </div>
-          <div className={`w-12 border-b bg-transparent ${THIRDPAGE && 'border-primary'} border-dashed`} />
-          <div className={`w-8 h-8 rounded-full border ${THIRDPAGE && 'border-primary'} bg-transparent flex justify-center items-center`}>
+          <div
+            className={`w-12 border-b bg-transparent ${
+              THIRDPAGE && 'border-primary'
+            } border-dashed`}
+          />
+          <div
+            className={`w-8 h-8 rounded-full border ${
+              THIRDPAGE && 'border-primary'
+            } bg-transparent flex justify-center items-center`}
+          >
             <BsStar className={`text-xl ${THIRDPAGE && 'text-primary'}`} />
           </div>
         </div>
