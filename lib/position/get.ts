@@ -1,10 +1,14 @@
 import FirebaseApp from '@/lib/firebase'
-import { doc, getFirestore, getDoc, 
+import {
+  doc,
+  getFirestore,
+  getDoc,
   query,
   where,
   limit,
   collection,
-  getDocs, } from 'firebase/firestore'
+  getDocs,
+} from 'firebase/firestore'
 
 const db = getFirestore(FirebaseApp)
 const positionsRef = collection(db, 'positions')
@@ -19,28 +23,16 @@ export async function getById(uid: string) {
   return null
 }
 
-export async function getAllByCreator(
-  creator: string,
-  first: number
-) {
-  const q = query(
-    positionsRef,
-    where('creator', '==', creator),
-    limit(first)
-  )
+export async function getAllByCreator(creator: string, first: number) {
+  const q = query(positionsRef, where('creator', '==', creator), limit(first))
   const querySnap = await getDocs(q)
   const docs = querySnap.docs.map((doc) => doc.data())
 
   return docs
 }
 
-export async function getAll(
-  first: number
-) {
-  const q = query(
-    positionsRef,
-    limit(first)
-  )
+export async function getAll(first: number) {
+  const q = query(positionsRef, limit(first))
   const querySnap = await getDocs(q)
   const docs = querySnap.docs.map((doc) => doc.data())
 
