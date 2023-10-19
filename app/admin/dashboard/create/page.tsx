@@ -10,7 +10,7 @@ type CandidateType = {
   position_id: string
 }
 
-type FormType = {title: string, candidates: CandidateType[]}
+type FormType = { title: string; candidates: CandidateType[] }
 
 export default function CreatePosition() {
   // Creating position requires 3 steps.
@@ -27,10 +27,15 @@ export default function CreatePosition() {
 
   const FIRSTPAGE = ref === '1' || form.title.length === 0
   const SECONDPAGE = ref === '2' && form.title.length > 0
-  const THIRDPAGE = ref === '3' && form.title.length > 0 && form.candidates.length > 0
-  
+  const THIRDPAGE =
+    ref === '3' && form.title.length > 0 && form.candidates.length > 0
+
   const setTitle = (title: string) => setForm((pre) => ({ ...pre, title }))
-  const setCandidates = (candidate: CandidateType) => setForm((pre) => ({...pre, ['candidates']: [...pre.candidates, candidate]}))
+  const setCandidates = (candidate: CandidateType) =>
+    setForm((pre) => ({
+      ...pre,
+      ['candidates']: [...pre.candidates, candidate],
+    }))
 
   console.log(searchParams.get('ref'))
   const submit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -62,11 +67,20 @@ export default function CreatePosition() {
           </div>
         </div>
         {FIRSTPAGE && <Title title={form.title} setTitle={setTitle} />}
-        {SECONDPAGE && <Candidates candidates={form.candidates} setCandidates={setCandidates} />}
-        {THIRDPAGE && <DisplayPosition title={form.title} candidates={form.candidates} />}
+        {SECONDPAGE && (
+          <Candidates
+            candidates={form.candidates}
+            setCandidates={setCandidates}
+          />
+        )}
+        {THIRDPAGE && (
+          <DisplayPosition title={form.title} candidates={form.candidates} />
+        )}
         <button
           type='submit'
-          className={`${THIRDPAGE ? 'block' : 'hidden'} px-7 py-3 text-white bg-primary rounded-md shadow-sm`}
+          className={`${
+            THIRDPAGE ? 'block' : 'hidden'
+          } px-7 py-3 text-white bg-primary rounded-md shadow-sm`}
         >
           Create
         </button>
@@ -143,15 +157,23 @@ function Candidates({
           ))}
           <button
             type='button'
-            className={`${openPanel ? 'hidden' : 'block'} px-7 py-3 text-white bg-zinc-900 rounded-md shadow-sm`}
+            className={`${
+              openPanel ? 'hidden' : 'block'
+            } px-7 py-3 text-white bg-zinc-900 rounded-md shadow-sm`}
             onClick={() => setOpenPanel(true)}
           >
             Add
           </button>
         </div>
-          <div className={`${openPanel ? 'block' : 'hidden'} flex flex-col gap-5 py-5 w-full bg-zinc-900/30`}>
+        <div
+          className={`${
+            openPanel ? 'block' : 'hidden'
+          } flex flex-col gap-5 py-5 w-full bg-zinc-900/30`}
+        >
           <div className={`flex flex-col items-start px-10 w-full`}>
-            <h4 className='w-full text-center text-2xl font-semibold mb-3'>New Candidate</h4>
+            <h4 className='w-full text-center text-2xl font-semibold mb-3'>
+              New Candidate
+            </h4>
             <label htmlFor='name' className='text-base font-semibold'>
               Name
             </label>
@@ -169,16 +191,18 @@ function Candidates({
           </div>
           <button
             type='button'
-            className={`${openPanel ? 'block' : 'hidden'} px-7 py-3 text-white bg-zinc-900 rounded-md shadow-sm w-fit mx-auto`}
+            className={`${
+              openPanel ? 'block' : 'hidden'
+            } px-7 py-3 text-white bg-zinc-900 rounded-md shadow-sm w-fit mx-auto`}
             onClick={() => {
               setCandidates(candidate)
-              setCandidate(pre => ({...pre, ['name']: ''}))
+              setCandidate((pre) => ({ ...pre, ['name']: '' }))
               setOpenPanel(false)
             }}
           >
             Add Candidate
           </button>
-          </div>
+        </div>
       </div>
       <div className='flex flex-col justify-start items-center gap-5'>
         <button
@@ -194,17 +218,25 @@ function Candidates({
   )
 }
 
-function DisplayPosition({title, candidates}: {title: string, candidates: CandidateType[]}) {
+function DisplayPosition({
+  title,
+  candidates,
+}: {
+  title: string
+  candidates: CandidateType[]
+}) {
   return (
     <div className='flex flex-col gap-8 w-[25%]'>
-          <div className='flex flex-col items-start gap-1'>
-            <p className='text-sm font-semibold'>TITLE</p>
-            <p className='text-xl font-semibold'>{title}</p>
-          </div>
-          <div className='flex flex-col items-start gap-1'>
-            <p className='text-sm font-semibold'>CANDIDATES</p>
-            <p className='text-xl font-semibold'>{candidates.map(candidate => candidate.name).join(', ')}</p>
-          </div>
+      <div className='flex flex-col items-start gap-1'>
+        <p className='text-sm font-semibold'>TITLE</p>
+        <p className='text-xl font-semibold'>{title}</p>
+      </div>
+      <div className='flex flex-col items-start gap-1'>
+        <p className='text-sm font-semibold'>CANDIDATES</p>
+        <p className='text-xl font-semibold'>
+          {candidates.map((candidate) => candidate.name).join(', ')}
+        </p>
+      </div>
     </div>
   )
 }
