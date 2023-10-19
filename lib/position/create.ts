@@ -9,7 +9,7 @@ const positionsRef = collection(db, 'positions')
 export default async function createPosition(
   title: string,
   candidates: CandidateType[],
-  creator: string
+  creator: string | undefined
 ) {
   let position, error
   try {
@@ -18,13 +18,15 @@ export default async function createPosition(
       return candidateData?.id
     })
 
-    const data = {
-      title,
-      candidates: [...candidatesId],
-      creator,
-    }
+    if (creator) {
+      const data = {
+        title,
+        candidates: [...candidatesId],
+        creator,
+      }
 
-    position = await addDoc(positionsRef, data)
+      position = await addDoc(positionsRef, data)
+    } else throw new Error('No creator signature')
   } catch (e) {
     error = e
   }

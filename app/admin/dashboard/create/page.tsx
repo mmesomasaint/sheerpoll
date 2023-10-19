@@ -1,8 +1,10 @@
 'use client'
 
+import createPosition from '@/lib/position/create'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { BsStar } from 'react-icons/bs'
+import { useAuth } from '../../auth/auth'
 
 export type CandidateType = {
   name: string
@@ -13,11 +15,7 @@ export type CandidateType = {
 type FormType = { title: string; candidates: CandidateType[] }
 
 export default function CreatePosition() {
-  // Creating position requires 3 steps.
-  // First one happens with creating the title
-  // Second one happens when you create and add candidates
-  // Third one is where you see everything you've created. and then click create
-  // To create a fully fledged position.
+  const { admin } = useAuth()
   const searchParams = useSearchParams()
   const [ref, setRef] = useState(searchParams.get('ref') ?? '1')
   const [form, setForm] = useState<FormType>({
@@ -38,11 +36,14 @@ export default function CreatePosition() {
     }))
 
   console.log(searchParams.get('ref'))
-  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    // Change the ref to the next step
-    console.log('You created: ', form)
+    const { position, error } = await createPosition(
+      form.title,
+      form.candidates,
+      admin?.auth
+    )
   }
 
   useEffect(() => {
