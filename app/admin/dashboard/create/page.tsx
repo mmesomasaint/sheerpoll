@@ -35,7 +35,6 @@ export default function CreatePosition() {
       ['candidates']: [...pre.candidates, candidate],
     }))
 
-  console.log(searchParams.get('ref'))
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
@@ -44,6 +43,12 @@ export default function CreatePosition() {
       form.candidates,
       admin?.auth
     )
+
+    if (!error) {
+      console.log('You created position: ', position)
+      return
+    }
+    console.log('An error occured: ', error)
   }
 
   useEffect(() => {
@@ -60,11 +65,15 @@ export default function CreatePosition() {
           </div>
           <div className='w-12 border-b bg-transparent border-black/60 border-dashed' />
           <div className='w-8 h-8 rounded-full border border-black/60 bg-transparent flex justify-center items-center'>
-            <BsStar className='text-xl text-primary' />
+            <BsStar
+              className={`text-xl ${
+                (SECONDPAGE || THIRDPAGE) && 'text-primary'
+              }`}
+            />
           </div>
           <div className='w-12 border-b bg-transparent border-black/60 border-dashed' />
           <div className='w-8 h-8 rounded-full border border-black/60 bg-transparent flex justify-center items-center'>
-            <BsStar className='text-xl text-primary' />
+            <BsStar className={`text-xl ${THIRDPAGE && 'text-primary'}`} />
           </div>
         </div>
         {FIRSTPAGE && <Title title={form.title} setTitle={setTitle} />}
