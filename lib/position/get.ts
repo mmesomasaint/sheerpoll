@@ -7,7 +7,7 @@ import { doc, getFirestore, getDoc,
   getDocs, } from 'firebase/firestore'
 
 const db = getFirestore(FirebaseApp)
-const positionsRef = collection(db, 'positions',)
+const positionsRef = collection(db, 'positions')
 
 export async function getById(uid: string) {
   if (uid) {
