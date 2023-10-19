@@ -13,15 +13,18 @@ export default async function createPosition(
 ) {
   let position, error
   try {
-    const candidatesId = candidates.map(async (candidate) => {
-      const { candidateData } = await createCandidate(candidate)
-      return candidateData?.id
-    })
+    const candidateIDs = await Promise.all(
+      candidates.map(async (candidate: CandidateType) => {
+        const { candidateData, error } = await createCandidate(candidate)
+        if (error) throw error
+        else return candidateData?.id
+      })
+    )
 
     if (creator) {
       const data = {
         title,
-        candidates: [...candidatesId],
+        candidates: [...candidateIDs],
         creator,
       }
 
