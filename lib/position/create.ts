@@ -6,11 +6,15 @@ import createCandidate from '../candidate/create'
 const db = getFirestore(firebase_app)
 const positionsRef = collection(db, 'positions')
 
-export default async function createPosition(title: string, candidates: CandidateType[], creator: string) {
+export default async function createPosition(
+  title: string,
+  candidates: CandidateType[],
+  creator: string
+) {
   let position, error
   try {
     const candidatesId = candidates.map(async (candidate) => {
-      const {candidateData} = await createCandidate(candidate)
+      const { candidateData } = await createCandidate(candidate)
       return candidateData?.id
     })
 
