@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { BsStar } from 'react-icons/bs'
 
-type CandidateType = {
+export type CandidateType = {
   name: string
   votes: string[]
   position_id: string
