@@ -90,6 +90,7 @@ function Positions({ positionList }: { positionList: DocumentData[] }) {
     <div className='grow flex px-20 flex-col w-full'>
       {positionList.map((position) => (
         <PositionCard
+          key={position.id}
           id={position.id}
           name={position.title}
           status={position.status}

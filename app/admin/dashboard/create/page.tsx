@@ -177,7 +177,10 @@ function Candidates({
         </label>
         <div className='flex flex-wrap justify-start items-center gap-3 w-full bg-transparent'>
           {candidates.map((candidate) => (
-            <div className='shrink-0 rounded-md bg-primary/10 p-3 border shadow-sm'>
+            <div
+              key={candidate.name}
+              className='shrink-0 rounded-md bg-primary/10 p-3 border shadow-sm'
+            >
               {candidate.name}
             </div>
           ))}
