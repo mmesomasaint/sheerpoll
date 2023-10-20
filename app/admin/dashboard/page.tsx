@@ -1,13 +1,48 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '../auth/auth'
+import { DocumentData } from 'firebase/firestore'
+import { getStatus } from '@/lib/position/get'
 import Link from 'next/link'
 
 export default function Dashboard() {
   const { admin } = useAuth()
   const router = useRouter()
+  const [status, setStatus] = useState<"ongoing"|'concluded'>('ongoing')
+  const [positions, setPositions] = useState<DocumentData[]>([])
+  const [loading, setLoading] = useState(true)
+
+  const Positions = ({positionList}: {positionList: DocumentData[]}) => {
+    if (positionList.length === 0) return (
+      <div className='flex flex-col justify-center items-center w-full'>
+        <p className='text-base font-semibold'>No positions found...</p>
+        <p className='text-base font-semibold'>Click <Link href='/admin/dashboard/create' className='text-primary hover:underline hover:underline-offset-4'>here</Link> to create a new position.</p>
+      </div>
+    )
+
+    return (
+      <>
+        {positionList.map(position => (
+          <PositionCard />
+        ))}
+      </>
+    )
+  }
+
+  useEffect(() => {
+    setLoading(true)
+
+    const getStatusPositions = async () => {
+      const positionDocs = await getStatus(status, 20)
+      setPositions(positionDocs)
+
+      setLoading(false)
+    }
+
+    getStatusPositions()
+  }, [status])
 
   return (
     <div className='flex flex-col items-start min-h-screen px-20 w-full'>
@@ -24,18 +59,19 @@ export default function Dashboard() {
       </div>
       <div className='flex flex-col w-full'>
         <div className='flex justify-start items-center gap-10 pb-1 border-b border-b-primary/60'>
-          <Link href='/admin/dashboard/'>
+          <div onClick={() => setStatus('ongoing')}>
             <p className='text-base font-semibold'>Ongoing</p>
-          </Link>
-          <Link href='/admin/dashboard/'>
+          </div>
+          <div onClick={() => setStatus('concluded')}>
             <p className='text-base font-semibold'>Concluded</p>
-          </Link>
+          </div>
         </div>
         <div className='grow flex px-20 flex-col w-full'>
-          <PositionCard />
-          <PositionCard />
-          <PositionCard />
-          <PositionCard />
+          {loading ? (
+            <div className='flex justify-center items-center'>Loading...</div>
+          ) : (
+            <Positions positionList={positions} />
+          )}
         </div>
       </div>
     </div>
