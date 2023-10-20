@@ -39,8 +39,8 @@ export async function getAll(first: number) {
   return docs
 }
 
-export async function getOngoing(first: number) {
-  const q = query(positionsRef, where('status', '==', 'ongoing'), limit(first))
+export async function getStatus(status: 'ongoing' | 'concluded', first: number) {
+  const q = query(positionsRef, where('status', '==', status), limit(first))
   const querySnap = await getDocs(q)
   const docs = querySnap.docs.map((doc) => doc.data())
 
