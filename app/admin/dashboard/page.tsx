@@ -15,38 +15,6 @@ export default function Dashboard() {
   const [positions, setPositions] = useState<DocumentData[]>([])
   const [loading, setLoading] = useState(true)
 
-  const Positions = ({ positionList }: { positionList: DocumentData[] }) => {
-    if (positionList.length === 0)
-      return (
-        <div className='flex flex-col justify-center items-center w-full'>
-          <p className='text-base font-semibold'>No positions found...</p>
-          <p className='text-base font-semibold'>
-            Click&nsbp;
-            <Link
-              href='/admin/dashboard/create'
-              className='text-primary hover:underline hover:underline-offset-4'
-            >
-              here
-            </Link>
-            &nsbp; to create a new position.
-          </p>
-        </div>
-      )
-
-    return (
-      <>
-        {positionList.map((position) => (
-          <PositionCard
-            id={position.id}
-            name={position.name}
-            status={position.status}
-            candidates={position.candidates}
-          />
-        ))}
-      </>
-    )
-  }
-
   useEffect(() => {
     setLoading(true)
 
@@ -91,6 +59,39 @@ export default function Dashboard() {
         </div>
       </div>
     </div>
+  )
+}
+
+
+function Positions({ positionList }: { positionList: DocumentData[] }) {
+  if (positionList.length === 0)
+    return (
+      <div className='flex flex-col justify-center items-center w-full'>
+        <p className='text-base font-semibold'>No positions found...</p>
+        <p className='text-base font-semibold'>
+          Click&nsbp;
+          <Link
+            href='/admin/dashboard/create'
+            className='text-primary hover:underline hover:underline-offset-4'
+          >
+            here
+          </Link>
+          &nsbp; to create a new position.
+        </p>
+      </div>
+    )
+
+  return (
+    <>
+      {positionList.map((position) => (
+        <PositionCard
+          id={position.id}
+          name={position.name}
+          status={position.status}
+          candidates={position.candidates}
+        />
+      ))}
+    </>
   )
 }
 
