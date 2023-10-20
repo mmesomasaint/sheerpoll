@@ -9,6 +9,7 @@ import {
   collection,
   getDocs,
 } from 'firebase/firestore'
+import { getByPosition } from '../candidate/get'
 
 const db = getFirestore(FirebaseApp)
 const positionsRef = collection(db, 'positions')
@@ -50,5 +51,11 @@ export async function getByStatus(
   // Test
   console.log(docs)
 
-  return docs
+  // For all the positions returned, get the candidates
+  const docsWithFullCandidates = await Promise.all(docs.map(async (doc) => {
+    const candidates = await getByPosition(doc.id)
+    return {...doc, candidates}
+  }))
+
+  return docsWithFullCandidates
 }

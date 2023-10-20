@@ -46,7 +46,7 @@ export default async function createPosition(
 
         await setDoc(
           newPositionRef,
-          { ...positionDoc, candidates: [...candidateIDs] },
+          { candidates: [...candidateIDs] },
           { merge: true }
         )
       } else throw new Error('No position document')
