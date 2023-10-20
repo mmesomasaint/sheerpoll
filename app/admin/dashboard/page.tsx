@@ -91,7 +91,7 @@ function Positions({ positionList }: { positionList: DocumentData[] }) {
       {positionList.map((position) => (
         <PositionCard
           id={position.id}
-          name={position.name}
+          name={position.title}
           status={position.status}
           candidates={position.candidates}
         />

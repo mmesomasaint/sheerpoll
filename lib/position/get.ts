@@ -51,7 +51,7 @@ export async function getByStatus(
   const docs = await Promise.all(
     querySnap.docs.map(async (doc) => {
       const candidates = await getByPosition(doc.id)
-      return { ...doc, candidates }
+      return { id: doc.id, ...doc.data(), candidates }
     })
   )
 
