@@ -46,16 +46,14 @@ export async function getByStatus(
 ) {
   const q = query(positionsRef, where('status', '==', status), limit(first))
   const querySnap = await getDocs(q)
-  const docs = querySnap.docs.map((doc) => doc.data())
-
-  // Test
-  console.log(docs)
 
   // For all the positions returned, get the candidates
-  const docsWithFullCandidates = await Promise.all(docs.map(async (doc) => {
-    const candidates = await getByPosition(doc.id)
-    return {...doc, candidates}
-  }))
+  const docs = await Promise.all(
+    querySnap.docs.map(async (doc) => {
+      const candidates = await getByPosition(doc.id)
+      return { ...doc, candidates }
+    })
+  )
 
-  return docsWithFullCandidates
+  return docs
 }
