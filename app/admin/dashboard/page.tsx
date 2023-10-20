@@ -66,12 +66,12 @@ function Positions({ positionList }: { positionList: DocumentData[] }) {
   if (positionList.length === 0)
     return (
       <div className='grow flex flex-col justify-center items-center w-full'>
-        <p className='text-base font-semibold'>No ongoing positions</p>
+        <p className='text-base font-semibold'>No positions found.</p>
         <Link
           href='/admin/dashboard/create'
           className='text-primary text-base font-semibold hover:underline hover:underline-offset-4'
         >
-          Create new position
+          Create new position?
         </Link>
       </div>
     )
