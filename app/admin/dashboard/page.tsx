@@ -147,7 +147,7 @@ function PositionCard({
           <div className='flex flex-col items-start gap-1'>
             <p className='text-sm font-semibold'>WINNER</p>
             <p className='text-xl font-semibold uppercase'>
-              {candidatesNames[winnerId]}
+              {status === 'ongoing' ? 'pending' : candidatesNames[winnerId]}
             </p>
           </div>
           <div className='flex flex-col items-start gap-1'>
