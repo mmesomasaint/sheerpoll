@@ -20,13 +20,13 @@ export default function Dashboard() {
         <div className='flex flex-col justify-center items-center w-full'>
           <p className='text-base font-semibold'>No positions found...</p>
           <p className='text-base font-semibold'>
-            Click{' '}
+            Click&nsbp;
             <Link
               href='/admin/dashboard/create'
               className='text-primary hover:underline hover:underline-offset-4'
             >
               here
-            </Link>{' '}
+            </Link>&nsbp;
             to create a new position.
           </p>
         </div>
