@@ -8,7 +8,11 @@ export default async function endPosition(id: string) {
   try {
     if (id) {
       const positionRef = doc(db, 'positions', id)
-      position = await setDoc(positionRef, {status: 'concluded'}, {merge: true})
+      position = await setDoc(
+        positionRef,
+        { status: 'concluded' },
+        { merge: true }
+      )
     }
   } catch (e) {
     error = e
