@@ -35,7 +35,7 @@ export default function Dashboard() {
         <h1 className='text-4xl font-bold'>Positions</h1>
         <button
           type='button'
-          className='px-7 py-3 text-white bg-primary rounded-md shadow-sm'
+          className='px-7 py-3 text-white font-semibold bg-primary rounded-md shadow-sm'
           onClick={() => router.push('/admin/dashboard/create')}
         >
           Create Position
@@ -43,11 +43,13 @@ export default function Dashboard() {
       </div>
       <div className='grow flex flex-col w-full'>
         <div className='flex justify-start items-center gap-10 pb-1 border-b border-b-primary/60'>
-          <div onClick={() => setStatus('ongoing')}>
-            <p className='text-base font-semibold'>Ongoing</p>
+          <div className='relative' onClick={() => setStatus('ongoing')}>
+            <p className='px-7 text-base font-semibold'>Ongoing</p>
+            <div className={`${status === 'ongoing' ? 'block' : 'hidden'} absolute -bottom-[0.415rem] w-full border-2 border-primary`} />
           </div>
-          <div onClick={() => setStatus('concluded')}>
-            <p className='text-base font-semibold'>Concluded</p>
+          <div className='relative' onClick={() => setStatus('concluded')}>
+            <p className='px-7 text-base font-semibold'>Concluded</p>
+            <div className={`${status === 'concluded' ? 'block' : 'hidden'} absolute -bottom-[0.415rem] w-full border-2 border-primary`} />
           </div>
         </div>
         {loading ? (
