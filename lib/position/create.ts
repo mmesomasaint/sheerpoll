@@ -1,5 +1,11 @@
 import firebase_app from '../firebase'
-import { getFirestore, doc, addDoc, setDoc, collection } from 'firebase/firestore'
+import {
+  getFirestore,
+  doc,
+  addDoc,
+  setDoc,
+  collection,
+} from 'firebase/firestore'
 import type { CandidateType } from '@/app/admin/dashboard/create/page'
 import createCandidate from '../candidate/create'
 
@@ -28,13 +34,21 @@ export default async function createPosition(
         const newPositionRef = doc(positionsRef, positionDoc.id)
 
         const candidateIDs = await Promise.all(
-        candidates.map(async (candidate: CandidateType) => {
-          const { candidateData, error } = await createCandidate({...candidate, position_id: positionDoc.id})
-          if (error) throw error
-          else return candidateData?.id
-        }))
-        
-        await setDoc(newPositionRef, {...positionDoc, candidates: [...candidateIDs]}, {merge: true})
+          candidates.map(async (candidate: CandidateType) => {
+            const { candidateData, error } = await createCandidate({
+              ...candidate,
+              position_id: positionDoc.id,
+            })
+            if (error) throw error
+            else return candidateData?.id
+          })
+        )
+
+        await setDoc(
+          newPositionRef,
+          { ...positionDoc, candidates: [...candidateIDs] },
+          { merge: true }
+        )
       } else throw new Error('No position document')
     } else throw new Error('No creator signature')
   } catch (e) {
