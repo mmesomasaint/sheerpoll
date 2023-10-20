@@ -61,8 +61,8 @@ export default function Dashboard() {
           </div>
         </div>
         {loading ? (
-          <div className='flex justify-center items-center h-full'>
-            Loading...
+          <div className='grow flex justify-center items-center h-full'>
+            <p className='text-base font-semibold'>Loading...</p>
           </div>
         ) : (
           <Positions positionList={positions} />
