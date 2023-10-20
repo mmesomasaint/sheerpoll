@@ -29,7 +29,7 @@ export default function Dashboard() {
   }, [status])
 
   return (
-    <div className='flex flex-col items-start min-h-screen px-20 w-full'>
+    <div className='flex flex-col items-start min-h-screen px-24 w-full'>
       <h6 className='text-sm font-medium pt-5'>Welcome, {admin?.auth}</h6>
       <div className='flex justify-between items-center gap-10 py-5 w-full'>
         <h1 className='text-4xl font-bold'>Positions</h1>
@@ -41,7 +41,7 @@ export default function Dashboard() {
           Create Position
         </button>
       </div>
-      <div className='flex flex-col w-full'>
+      <div className='grow flex flex-col w-full'>
         <div className='flex justify-start items-center gap-10 pb-1 border-b border-b-primary/60'>
           <div onClick={() => setStatus('ongoing')}>
             <p className='text-base font-semibold'>Ongoing</p>
@@ -50,39 +50,36 @@ export default function Dashboard() {
             <p className='text-base font-semibold'>Concluded</p>
           </div>
         </div>
-        <div className='grow flex px-20 flex-col w-full'>
-          {loading ? (
-            <div className='flex justify-center items-center'>Loading...</div>
-          ) : (
-            <Positions positionList={positions} />
-          )}
-        </div>
+        {loading ? (
+          <div className='flex justify-center items-center h-full'>
+            Loading...
+          </div>
+        ) : (
+          <Positions positionList={positions} />
+        )}
       </div>
     </div>
   )
 }
 
-
 function Positions({ positionList }: { positionList: DocumentData[] }) {
   if (positionList.length === 0)
     return (
-      <div className='flex flex-col justify-center items-center w-full'>
-        <p className='text-base font-semibold'>No positions found...</p>
+      <div className='grow flex flex-col justify-center items-center w-full'>
+        <p className='text-base font-semibold'>No ongoing positions</p>
         <p className='text-base font-semibold'>
-          Click&nsbp;
           <Link
             href='/admin/dashboard/create'
             className='text-primary hover:underline hover:underline-offset-4'
           >
-            here
+            Create new position
           </Link>
-          &nsbp; to create a new position.
         </p>
       </div>
     )
 
   return (
-    <>
+    <div className='grow flex px-20 flex-col w-full'>
       {positionList.map((position) => (
         <PositionCard
           id={position.id}
@@ -91,7 +88,7 @@ function Positions({ positionList }: { positionList: DocumentData[] }) {
           candidates={position.candidates}
         />
       ))}
-    </>
+    </div>
   )
 }
 
