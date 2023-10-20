@@ -6,6 +6,7 @@ import { useAuth } from '../auth/auth'
 import { DocumentData } from 'firebase/firestore'
 import { getStatus } from '@/lib/position/get'
 import Link from 'next/link'
+import { CandidateType } from './create/page'
 
 export default function Dashboard() {
   const { admin } = useAuth()
@@ -35,7 +36,7 @@ export default function Dashboard() {
     return (
       <>
         {positionList.map((position) => (
-          <PositionCard />
+          <PositionCard id={position.id} name={position.name} status={position.status} candidates={position.candidates} />
         ))}
       </>
     )
@@ -88,37 +89,47 @@ export default function Dashboard() {
   )
 }
 
-function PositionCard() {
+function PositionCard({id, status, name, candidates}: {id: string, status: 'ongoing' | 'concluded', name: string, candidates: CandidateType[]}) {
+  const candidatesNames = candidates.map(candidate => candidate.name)
+
+  let winnerId = 0, totalVotes = 0
+
+  candidates.forEach((candidate, curId) => {
+    const curVotes = candidate.votes.length
+    if (curVotes > candidates[winnerId].votes.length) winnerId = curId
+    totalVotes += curVotes
+  })
+
   return (
     <div className='border-b border-b-primary/60 px-20 py-10 shadow-sm w-full'>
       <div className='flex flex-col items-stretch justify-between gap-6'>
         <div className='grid grid-cols-3 gap-10'>
           <div className='flex flex-col items-start gap-1'>
             <p className='text-sm font-semibold'>ID</p>
-            <p className='text-xl font-semibold'>131FASDF4353DA</p>
+            <p className='text-xl font-semibold uppercase'>{id}</p>
           </div>
           <div className='flex flex-col items-start gap-1'>
             <p className='text-sm font-semibold'>STATUS</p>
-            <p className='text-xl font-semibold'>CONCLUDED</p>
+            <p className='text-xl font-semibold uppercase'>{status}</p>
           </div>
           <div className='flex flex-col items-start gap-1'>
             <p className='text-sm font-semibold'>TOTAL VOTES</p>
-            <p className='text-xl font-semibold'>833</p>
+            <p className='text-xl font-semibold'>{totalVotes}</p>
           </div>
         </div>
         <div className='grid grid-cols-3 gap-10'>
           <div className='flex flex-col items-start gap-1'>
             <p className='text-sm font-semibold'>NAME</p>
-            <p className='text-xl font-semibold'>VICE PRESIDENT</p>
+            <p className='text-xl font-semibold uppercase'>{name}</p>
           </div>
           <div className='flex flex-col items-start gap-1'>
             <p className='text-sm font-semibold'>WINNER</p>
-            <p className='text-xl font-semibold'>DR. IDRIS ADAKA</p>
+            <p className='text-xl font-semibold uppercase'>{candidatesNames[winnerId]}</p>
           </div>
           <div className='flex flex-col items-start gap-1'>
             <p className='text-sm font-semibold'>CANDIDATES</p>
-            <p className='text-xl font-semibold'>
-              MARTINS IKE, DR. IDRIS ADAKA, EBENEZER ETEE
+            <p className='text-xl font-semibold uppercase'>
+              {candidatesNames.join(', ')}
             </p>
           </div>
         </div>
