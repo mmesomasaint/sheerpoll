@@ -1,8 +1,8 @@
-import firebase_app from '../firebase'
+import FirebaseApp from '../firebase'
 import { getFirestore, addDoc, collection } from 'firebase/firestore'
 import type { CandidateType } from '@/app/admin/dashboard/create/page'
 
-const db = getFirestore(firebase_app)
+const db = getFirestore(FirebaseApp)
 const positionsRef = collection(db, 'candidates')
 
 export default async function createCandidate(candidate: CandidateType) {

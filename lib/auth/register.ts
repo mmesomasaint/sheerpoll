@@ -1,4 +1,4 @@
-import firebase_app from '@/lib/firebase'
+import FirebaseApp from '@/lib/firebase'
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -6,8 +6,8 @@ import {
 } from 'firebase/auth'
 import { collection, doc, getFirestore, setDoc } from 'firebase/firestore'
 
-const auth = getAuth(firebase_app)
-const db = getFirestore(firebase_app)
+const auth = getAuth(FirebaseApp)
+const db = getFirestore(FirebaseApp)
 const votersRef = collection(db, 'voters')
 
 export default async function register(name: string, email: string, password: string) {

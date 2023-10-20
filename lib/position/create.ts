@@ -1,4 +1,4 @@
-import firebase_app from '../firebase'
+import FirebaseApp from '../firebase'
 import {
   getFirestore,
   doc,
@@ -9,7 +9,7 @@ import {
 import type { CandidateType } from '@/app/admin/dashboard/create/page'
 import createCandidate from '../candidate/create'
 
-const db = getFirestore(firebase_app)
+const db = getFirestore(FirebaseApp)
 const positionsRef = collection(db, 'positions')
 
 export default async function createPosition(

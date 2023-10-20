@@ -1,9 +1,9 @@
-import firebase_app from '@/lib/firebase'
+import FirebaseApp from '@/lib/firebase'
 import { signInWithEmailAndPassword, getAuth, AuthError } from 'firebase/auth'
 import { doc, getFirestore, getDoc } from 'firebase/firestore'
 
-const auth = getAuth(firebase_app)
-const db = getFirestore(firebase_app)
+const auth = getAuth(FirebaseApp)
+const db = getFirestore(FirebaseApp)
 
 export default async function logIn(email: string, password: string) {
   let voter = null,
