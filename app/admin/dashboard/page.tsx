@@ -45,11 +45,19 @@ export default function Dashboard() {
         <div className='flex justify-start items-center gap-10 pb-1 border-b border-b-primary/60'>
           <div className='relative' onClick={() => setStatus('ongoing')}>
             <p className='px-7 text-base font-semibold'>Ongoing</p>
-            <div className={`${status === 'ongoing' ? 'block' : 'hidden'} absolute -bottom-[0.415rem] w-full border-2 border-primary`} />
+            <div
+              className={`${
+                status === 'ongoing' ? 'block' : 'hidden'
+              } absolute -bottom-[0.415rem] w-full border-2 border-primary`}
+            />
           </div>
           <div className='relative' onClick={() => setStatus('concluded')}>
             <p className='px-7 text-base font-semibold'>Concluded</p>
-            <div className={`${status === 'concluded' ? 'block' : 'hidden'} absolute -bottom-[0.415rem] w-full border-2 border-primary`} />
+            <div
+              className={`${
+                status === 'concluded' ? 'block' : 'hidden'
+              } absolute -bottom-[0.415rem] w-full border-2 border-primary`}
+            />
           </div>
         </div>
         {loading ? (
