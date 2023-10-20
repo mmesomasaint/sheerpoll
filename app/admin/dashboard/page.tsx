@@ -11,21 +11,19 @@ export default function Dashboard() {
 
   return (
     <div className='flex flex-col items-start min-h-screen px-20 w-full'>
-      <div className='flex justify-between items-center gap-10 w-full'>
-        <div className='flex flex-col items-start gap-8 pt-5'>
-          <h6 className='text-sm font-medium'>Welcome, {admin?.auth}</h6>
-          <h2 className='text-6xl font-semibold'>Positions</h2>
-        </div>
+    <h6 className='text-sm font-medium pt-5'>Welcome, {admin?.auth}</h6>
+      <div className='flex justify-between items-center gap-10 py-5 w-full'>
+        <h1 className='text-4xl font-bold'>Positions</h1>
         <button
           type='button'
-          className='px-8 py-4 text-white text-base font-medium bg-primary rounded-md shadow-sm'
+          className='px-7 py-3 text-white bg-primary rounded-md shadow-sm'
           onClick={() => router.push('/admin/dashboard/create')}
         >
           Create Position
         </button>
       </div>
       <div className='flex flex-col w-full'>
-        <div className='flex justify-start items-center gap-10 pt-5 pb-2 border-b border-b-primary/60'>
+        <div className='flex justify-start items-center gap-10 pb-1 border-b border-b-primary/60'>
           <Link href='/admin/dashboard/'>
             <p className='text-base font-semibold'>Ongoing</p>
           </Link>

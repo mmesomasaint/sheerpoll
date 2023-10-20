@@ -6,7 +6,7 @@ import createCandidate from '../candidate/create'
 const db = getFirestore(firebase_app)
 const positionsRef = collection(db, 'positions')
 
-export default async function createPosition(
+export default async function endPosition(
   title: string,
   candidates: CandidateType[],
   creator: string | undefined
@@ -25,7 +25,7 @@ export default async function createPosition(
       const data = {
         title,
         candidates: [...candidateIDs],
-        status: 'ongoing', // 'ongoing' | 'concluded'
+        status: 'ongoing', // 'ongoing' | 'concluded
         creator,
       }
 
