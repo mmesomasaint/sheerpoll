@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '../auth/auth'
 import { DocumentData } from 'firebase/firestore'
-import { getStatus } from '@/lib/position/get'
+import { getByStatus } from '@/lib/position/get'
 import Link from 'next/link'
 import { CandidateType } from './create/page'
 
@@ -19,7 +19,7 @@ export default function Dashboard() {
     setLoading(true)
 
     const getStatusPositions = async () => {
-      const positionDocs = await getStatus(status, 20)
+      const positionDocs = await getByStatus(status, 20)
       setPositions(positionDocs)
 
       setLoading(false)
@@ -67,14 +67,12 @@ function Positions({ positionList }: { positionList: DocumentData[] }) {
     return (
       <div className='grow flex flex-col justify-center items-center w-full'>
         <p className='text-base font-semibold'>No ongoing positions</p>
-        <p className='text-base font-semibold'>
-          <Link
-            href='/admin/dashboard/create'
-            className='text-primary hover:underline hover:underline-offset-4'
-          >
-            Create new position
-          </Link>
-        </p>
+        <Link
+          href='/admin/dashboard/create'
+          className='text-primary text-base font-semibold hover:underline hover:underline-offset-4'
+        >
+          Create new position
+        </Link>
       </div>
     )
 
