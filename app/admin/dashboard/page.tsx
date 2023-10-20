@@ -27,8 +27,8 @@ export default function Dashboard() {
               className='text-primary hover:underline hover:underline-offset-4'
             >
               here
-            </Link>&nsbp;
-            to create a new position.
+            </Link>
+            &nsbp; to create a new position.
           </p>
         </div>
       )
@@ -36,7 +36,12 @@ export default function Dashboard() {
     return (
       <>
         {positionList.map((position) => (
-          <PositionCard id={position.id} name={position.name} status={position.status} candidates={position.candidates} />
+          <PositionCard
+            id={position.id}
+            name={position.name}
+            status={position.status}
+            candidates={position.candidates}
+          />
         ))}
       </>
     )
@@ -89,10 +94,21 @@ export default function Dashboard() {
   )
 }
 
-function PositionCard({id, status, name, candidates}: {id: string, status: 'ongoing' | 'concluded', name: string, candidates: CandidateType[]}) {
-  const candidatesNames = candidates.map(candidate => candidate.name)
+function PositionCard({
+  id,
+  status,
+  name,
+  candidates,
+}: {
+  id: string
+  status: 'ongoing' | 'concluded'
+  name: string
+  candidates: CandidateType[]
+}) {
+  const candidatesNames = candidates.map((candidate) => candidate.name)
 
-  let winnerId = 0, totalVotes = 0
+  let winnerId = 0,
+    totalVotes = 0
 
   candidates.forEach((candidate, curId) => {
     const curVotes = candidate.votes.length
@@ -124,7 +140,9 @@ function PositionCard({id, status, name, candidates}: {id: string, status: 'ongo
           </div>
           <div className='flex flex-col items-start gap-1'>
             <p className='text-sm font-semibold'>WINNER</p>
-            <p className='text-xl font-semibold uppercase'>{candidatesNames[winnerId]}</p>
+            <p className='text-xl font-semibold uppercase'>
+              {candidatesNames[winnerId]}
+            </p>
           </div>
           <div className='flex flex-col items-start gap-1'>
             <p className='text-sm font-semibold'>CANDIDATES</p>
