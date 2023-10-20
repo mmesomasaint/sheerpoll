@@ -1,36 +1,15 @@
-import firebase_app from '../firebase'
-import { getFirestore, addDoc, collection } from 'firebase/firestore'
-import type { CandidateType } from '@/app/admin/dashboard/create/page'
-import createCandidate from '../candidate/create'
+import FirebaseApp from '../firebase'
+import { getFirestore, setDoc, doc } from 'firebase/firestore'
 
-const db = getFirestore(firebase_app)
-const positionsRef = collection(db, 'positions')
+const db = getFirestore(FirebaseApp)
 
-export default async function endPosition(
-  title: string,
-  candidates: CandidateType[],
-  creator: string | undefined
-) {
+export default async function endPosition(id: string) {
   let position, error
   try {
-    const candidateIDs = await Promise.all(
-      candidates.map(async (candidate: CandidateType) => {
-        const { candidateData, error } = await createCandidate(candidate)
-        if (error) throw error
-        else return candidateData?.id
-      })
-    )
-
-    if (creator) {
-      const data = {
-        title,
-        candidates: [...candidateIDs],
-        status: 'ongoing', // 'ongoing' | 'concluded
-        creator,
-      }
-
-      position = await addDoc(positionsRef, data)
-    } else throw new Error('No creator signature')
+    if (id) {
+      const positionRef = doc(db, 'positions', id)
+      position = await setDoc(positionRef, {status: 'concluded'}, {merge: true})
+    }
   } catch (e) {
     error = e
   }
