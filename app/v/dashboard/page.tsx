@@ -109,8 +109,10 @@ function Positions({
   return (
     <div className='grow flex px-20 flex-col w-full'>
       {positionList.map((position) => {
-
-const totalVotes = position.candidates.reduce((acc: number, cur: DocumentData) => acc + cur.votes.length, 0)
+        const totalVotes = position.candidates.reduce(
+          (acc: number, cur: DocumentData) => acc + cur.votes.length,
+          0
+        )
         return (
           <>
             {tab === 'hot' ? (
@@ -120,7 +122,12 @@ const totalVotes = position.candidates.reduce((acc: number, cur: DocumentData) =
                 candidates={position.candidates}
               />
             ) : (
-              <TimelinePositionCard name={position.title} totalVotes={totalVotes} status={position.status} candidates={position.candidates} />
+              <TimelinePositionCard
+                name={position.title}
+                totalVotes={totalVotes}
+                status={position.status}
+                candidates={position.candidates}
+              />
             )}
           </>
         )
@@ -198,7 +205,17 @@ function HotPositionCard({
   )
 }
 
-function TimelinePositionCard({name, totalVotes, status, candidates}: {name: string, totalVotes: number, status: string, candidates: DocumentData[]}) {
+function TimelinePositionCard({
+  name,
+  totalVotes,
+  status,
+  candidates,
+}: {
+  name: string
+  totalVotes: number
+  status: string
+  candidates: DocumentData[]
+}) {
   const winner = candidates.reduce((acc, cur) => {
     if (acc.votes.length > cur.votes.length) return acc
     return cur
@@ -229,12 +246,18 @@ function TimelinePositionCard({name, totalVotes, status, candidates}: {name: str
           <div className='flex flex-col items-start gap-0 w-full'>
             <p className='text-sm font-semibold text-black/60'>CANDIDATES</p>
             <div className='flex flex-col items-stretch justify-start gap-1 w-full'>
-              {candidates.map(candidate => (
-                
-              <div key={candidate.id} className='flex justify-between gap-10 items-start'>
-              <p className='text-xl font-semibold uppercase'>{candidate.name}</p>
-              <p className='text-xl font-semibold uppercase'>{candidate.votes.length}</p>
-            </div>
+              {candidates.map((candidate) => (
+                <div
+                  key={candidate.id}
+                  className='flex justify-between gap-10 items-start'
+                >
+                  <p className='text-xl font-semibold uppercase'>
+                    {candidate.name}
+                  </p>
+                  <p className='text-xl font-semibold uppercase'>
+                    {candidate.votes.length}
+                  </p>
+                </div>
               ))}
             </div>
           </div>
