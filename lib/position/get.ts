@@ -72,12 +72,16 @@ export async function getByVoter(voterId: string, first: number) {
     if (voterDoc.exists()) {
       const votes: string[] = voterDoc.data().votes
 
-      const q = query(positionsRef, where('votes', 'array-contains-any', votes), limit(first))
+      const q = query(
+        positionsRef,
+        where('votes', 'array-contains-any', votes),
+        limit(first)
+      )
       const querySnap = await getDocs(q)
-      
+
       // For all the positions returned, get the candidates
       const docs = await extractCandidatesInfo(querySnap)
-    
+
       return docs
     } else throw new Error(`Voter with id: ${voterId}, not found`)
   } catch (e) {
