@@ -1,16 +1,36 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '../auth/auth'
 import { BsStar } from 'react-icons/bs'
 import { DocumentData } from 'firebase/firestore'
+import { getByStatus, getByVoter } from '@/lib/position/get'
 
 export default function Timeline() {
   const { voter } = useAuth()
   const [tab, setTab] = useState('hot')
   const [loading, setLoading] = useState(false)
+  const [ positionList, setpositionList] = useState<DocumentData[]>([])
+
+  useEffect(() => {
+    const fetchPositions = async () => {
+      if (tab === 'timeline' && voter) {
+        // Fetch timeline positions -- the voter already voted for
+        const {positions, error} = await getByVoter(voter?.uid, 20)
+        if (!error && positions) {
+          setpositionList(positions)
+        }
+      } else if (tab === 'hot' && voter) {
+        // Fetch hot positions -- (ongoing positions)
+        const positions = await getByStatus('ongoing', 20)
+        setpositionList(positions)
+      }
+    }
+
+    fetchPositions()
+  }, [tab])
 
   return (
     <div className='flex flex-col min-h-screen gap-0 px-24'>

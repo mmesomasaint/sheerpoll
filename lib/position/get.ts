@@ -75,6 +75,8 @@ export async function getByVoter(voterId: string, first: number) {
               return { id: positionDoc.id, ...positionDoc.data() }
             }
           } else throw new Error(`Vote with id: ${vote}, not found.`)
+          
+          return {}
         })
       )
     } else throw new Error(`Voter with id: ${voterId}, not found`)
