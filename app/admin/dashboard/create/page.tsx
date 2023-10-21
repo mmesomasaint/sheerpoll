@@ -17,6 +17,7 @@ type FormType = { title: string; candidates: CandidateType[] }
 export default function CreatePosition() {
   const { admin } = useAuth()
   const searchParams = useSearchParams()
+  const router = useRouter()
   const [ref, setRef] = useState(searchParams.get('ref') ?? '1')
   const [form, setForm] = useState<FormType>({
     title: '',
@@ -47,7 +48,7 @@ export default function CreatePosition() {
     )
 
     if (!error) {
-      console.log('You created position: ', position)
+      router.push('/admin/dashboard/')
       return
     }
     console.log('An error occured: ', error)
