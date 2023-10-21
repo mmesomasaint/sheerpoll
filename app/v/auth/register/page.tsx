@@ -91,7 +91,7 @@ export default function Register() {
             Verify Password
           </label>
           <input
-            type='v_password'
+            type='password'
             id='v_password'
             name='v_password'
             value={form.verifyPassword}
