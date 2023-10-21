@@ -3,6 +3,7 @@
 import logIn from '@/lib/auth/login'
 import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' })
@@ -67,9 +68,12 @@ export default function Login() {
           >
             Login
           </button>
-          <p className='text-base font-semibold hover:underline hover:underline-offset-4 hover:text-primary'>
+          <Link
+            href='/v/auth/register/'
+            className='text-base font-semibold hover:underline hover:underline-offset-4 hover:text-primary'
+          >
             I don&apos;t have an account?
-          </p>
+          </Link>
         </div>
       </div>
     </form>

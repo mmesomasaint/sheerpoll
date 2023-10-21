@@ -3,6 +3,7 @@
 import register from '@/lib/auth/register'
 import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export default function Register() {
   const router = useRouter()
@@ -106,9 +107,12 @@ export default function Register() {
           >
             Register
           </button>
-          <p className='text-base font-semibold hover:underline hover:underline-offset-4 hover:text-primary'>
+          <Link
+            href='/v/auth/login/'
+            className='text-base font-semibold hover:underline hover:underline-offset-4 hover:text-primary'
+          >
             I have an account?
-          </p>
+          </Link>
         </div>
       </div>
     </form>
