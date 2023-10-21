@@ -30,7 +30,7 @@ export default function Timeline() {
     setLoading(true)
 
     if (voter && choice && position) {
-      const { vote, error } = await createVote(position.id, choice, voter.uid)
+      const { error } = await createVote(position.id, choice, voter.uid)
 
       if (!error) {
         router.push('/v/dashboard/')
