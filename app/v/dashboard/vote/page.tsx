@@ -28,10 +28,11 @@ export default function Timeline() {
     setLoading(true)
 
     const fetchPosition = async () => {
-      const position_id = searchParams.get('id')
+      const position_id = searchParams.get('position_id')
 
       if (position_id) {
         const data = await getById(position_id)
+        console.log(data)
         setPosition(data)
       }
 
@@ -47,7 +48,7 @@ export default function Timeline() {
       <div className='flex justify-between items-center py-5 gap-5'>
         <div className='flex flex-col items-start gap-0'>
           <p className='text-sm font-semibold text-black/60'>TITLE</p>
-          <p className='text-4xl font-bold uppercase'>Vice President</p>
+          <p className='text-4xl font-bold uppercase'>{position?.title}</p>
         </div>
         <div className='flex flex-col items-end gap-0'>
           <p className='text-sm font-semibold text-black/60'>TOTAL VOTES</p>
