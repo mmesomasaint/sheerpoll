@@ -117,6 +117,7 @@ function Positions({
           <div key={position.title + position.candidates.length}>
             {tab === 'hot' ? (
               <HotPositionCard
+                id={position.id}
                 name={position.title}
                 totalVotes={totalVotes}
                 candidates={position.candidates}
@@ -137,10 +138,12 @@ function Positions({
 }
 
 function HotPositionCard({
+  id,
   name,
   totalVotes,
   candidates,
 }: {
+  id: string
   name: string
   totalVotes: number
   candidates: DocumentData[]
@@ -184,7 +187,10 @@ function HotPositionCard({
             <p className='text-sm font-semibold text-black/60'>CANDIDATES</p>
             <div className='flex flex-col items-stretch justify-start gap-1 w-full'>
               {candidates.map((candidate) => (
-                <div key={candidate.id} className='flex justify-between gap-10 items-start'>
+                <div
+                  key={candidate.id}
+                  className='flex justify-between gap-10 items-start'
+                >
                   <p className='text-xl font-semibold uppercase'>
                     {candidate.name}
                   </p>
@@ -198,7 +204,7 @@ function HotPositionCard({
           <button
             type='button'
             className='px-7 py-3 text-white bg-primary rounded-md shadow-sm'
-            onClick={() => router.push('/v/dashboard/vote')}
+            onClick={() => router.push(`/v/dashboard/vote?position_id=${id}`)}
           >
             Vote
           </button>
