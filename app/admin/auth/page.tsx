@@ -24,12 +24,12 @@ export default function Auth() {
     // Submit the form
     const adminSession = authAdmin(form.rank, form.passcode)
     if (adminSession) {
-      console.log('Successfull login: ', adminSession)
       setAdmin?.(adminSession)
       router.push('/admin/dashboard')
+
       return
     }
-    console.log('Error loging in', adminSession)
+    console.log('Error loging in admin: ', adminSession)
   }
 
   return (
