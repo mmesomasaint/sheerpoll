@@ -49,7 +49,6 @@ export default function Timeline() {
 
       if (position_id) {
         const data = await getById(position_id)
-        console.log(data)
         setPosition(data)
       }
 
