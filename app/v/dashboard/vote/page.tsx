@@ -68,15 +68,15 @@ export default function Timeline() {
           </div>
         </div>
         <div className='grow flex px-20 flex-col justify-start w-full'>
-          {
-            position?.candidates.map((candidate: DocumentData) => (<CandidateCard
+          {position?.candidates.map((candidate: DocumentData) => (
+            <CandidateCard
               key={candidate.id}
               name={candidate.name}
               votes={candidate.votes.length}
               active={choice === candidate.id}
               onVoteClick={() => setChoice(candidate.id)}
-            />))
-          }
+            />
+          ))}
           <button
             type='submit'
             disabled={!choice}
