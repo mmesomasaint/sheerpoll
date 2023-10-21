@@ -105,34 +105,46 @@ function Positions({
 
   return (
     <div className='grow flex px-20 flex-col w-full'>
-      <HotPositionCard />
-      <TimelinePositionCard />
-      <HotPositionCard />
-      <HotPositionCard />
-      <HotPositionCard />
+      {positionList.map(position => {
+        return (
+          <>
+            {tab === 'hot' ? <HotPositionCard name={position.title} candidates={position.candidates} /> : 
+      <TimelinePositionCard />}
+          </>
+        )
+      })}
     </div>
   )
 }
 
-function HotPositionCard() {
+function HotPositionCard({name, candidates}: {name: string, candidates: DocumentData[]}) {
+  // The topCandidateNames list was gotten by:
+  // 1. candiates.slice() => Creates a copy of candidates array.
+  // 2. .sort(a,b) => b.votes.length - a.votes.length => sorts the array copy in descending order.
+  // 3. .map(candidate => candidate.name) => Creates a copy of the sorted array and returns only the name prop.
+  // 4. .slice(0, 2) => Creates a copy of the array names to contain only the first two names in the list.
+  const topCandidateNames = candidates.slice().sort((a,b) => b.votes.length - a.votes.length).map(candidate => candidate.name).slice(0, 2)
+
+  const totalVotes = candidates.reduce((acc, cur) => acc + cur.votes.length, 0)
+
   return (
     <div className='relative border-b border-b-primary/60 px-20 py-10 shadow-sm w-full'>
       <div className='grid grid-cols-2 gap-20'>
         <div className='flex flex-col items-stretch justify-between gap-6'>
           <div className='flex flex-col items-start gap-0'>
             <p className='text-sm font-semibold text-black/60'>NAME</p>
-            <p className='text-xl font-semibold uppercase'>Vice President</p>
+            <p className='text-xl font-semibold uppercase'>{name}</p>
           </div>
           <div className='flex flex-col items-start gap-0'>
             <p className='text-sm font-semibold text-black/60'>TOTAL VOTES</p>
-            <p className='text-xl font-semibold uppercase'>566</p>
+            <p className='text-xl font-semibold uppercase'>{totalVotes}</p>
           </div>
           <div className='flex flex-col items-start gap-0'>
             <p className='text-sm font-semibold text-black/60'>
               TOP CANDIDATES
             </p>
             <p className='text-xl font-semibold uppercase'>
-              Sydney Klems, Anthony Smith
+              {topCandidateNames.join(', ')}
             </p>
           </div>
         </div>
@@ -140,22 +152,12 @@ function HotPositionCard() {
           <div className='flex flex-col items-start gap-0 w-full'>
             <p className='text-sm font-semibold text-black/60'>CANDIDATES</p>
             <div className='flex flex-col items-stretch justify-start gap-1 w-full'>
-              <div className='flex justify-between gap-10 items-start'>
-                <p className='text-xl font-semibold uppercase'>Denise Watson</p>
-                <p className='text-xl font-semibold uppercase'>70</p>
+              {candidates.map(candidate => (
+                <div className='flex justify-between gap-10 items-start'>
+                <p className='text-xl font-semibold uppercase'>{candidate.name}</p>
+                <p className='text-xl font-semibold uppercase'>{candidate.votes.length}</p>
               </div>
-              <div className='flex justify-between gap-10 items-start'>
-                <p className='text-xl font-semibold uppercase'>Miram Ekoh</p>
-                <p className='text-xl font-semibold uppercase'>69</p>
-              </div>
-              <div className='flex justify-between gap-10 items-start'>
-                <p className='text-xl font-semibold uppercase'>Sydney Klems</p>
-                <p className='text-xl font-semibold uppercase'>88</p>
-              </div>
-              <div className='flex justify-between gap-10 items-start'>
-                <p className='text-xl font-semibold uppercase'>Anthony Smith</p>
-                <p className='text-xl font-semibold uppercase'>77</p>
-              </div>
+              ))}
             </div>
           </div>
           <button
