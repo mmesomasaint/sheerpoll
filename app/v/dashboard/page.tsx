@@ -109,15 +109,18 @@ function Positions({
   return (
     <div className='grow flex px-20 flex-col w-full'>
       {positionList.map((position) => {
+
+const totalVotes = position.candidates.reduce((acc: number, cur: DocumentData) => acc + cur.votes.length, 0)
         return (
           <>
             {tab === 'hot' ? (
               <HotPositionCard
                 name={position.title}
+                totalVotes={totalVotes}
                 candidates={position.candidates}
               />
             ) : (
-              <TimelinePositionCard />
+              <TimelinePositionCard name={position.title} totalVotes={totalVotes} status={position.status} candidates={position.candidates} />
             )}
           </>
         )
@@ -128,9 +131,11 @@ function Positions({
 
 function HotPositionCard({
   name,
+  totalVotes,
   candidates,
 }: {
   name: string
+  totalVotes: number
   candidates: DocumentData[]
 }) {
   // The topCandidateNames list was gotten by:
@@ -143,8 +148,6 @@ function HotPositionCard({
     .sort((a, b) => b.votes.length - a.votes.length)
     .map((candidate) => candidate.name)
     .slice(0, 2)
-
-  const totalVotes = candidates.reduce((acc, cur) => acc + cur.votes.length, 0)
 
   return (
     <div className='relative border-b border-b-primary/60 px-20 py-10 shadow-sm w-full'>
@@ -195,48 +198,44 @@ function HotPositionCard({
   )
 }
 
-function TimelinePositionCard() {
+function TimelinePositionCard({name, totalVotes, status, candidates}: {name: string, totalVotes: number, status: string, candidates: DocumentData[]}) {
+  const winner = candidates.reduce((acc, cur) => {
+    if (acc.votes.length > cur.votes.length) return acc
+    return cur
+  })
+
   return (
     <div className='relative border-b border-b-primary/60 px-20 py-10 shadow-sm w-full'>
       <div className='grid grid-cols-2 gap-20'>
         <div className='flex flex-col items-stretch justify-between gap-6'>
           <div className='flex flex-col items-start gap-0'>
             <p className='text-sm font-semibold text-black/60'>NAME</p>
-            <p className='text-xl font-semibold uppercase'>Vice President</p>
+            <p className='text-xl font-semibold uppercase'>{name}</p>
           </div>
           <div className='flex flex-col items-start gap-0'>
             <p className='text-sm font-semibold text-black/60'>TOTAL VOTES</p>
-            <p className='text-xl font-semibold uppercase'>566</p>
+            <p className='text-xl font-semibold uppercase'>{totalVotes}</p>
           </div>
           <div className='flex flex-col items-start gap-0'>
             <p className='text-sm font-semibold text-black/60'>WINNER</p>
-            <p className='text-xl font-semibold uppercase'>Sydney Klems</p>
+            <p className='text-xl font-semibold uppercase'>{winner.name}</p>
           </div>
           <div className='flex flex-col items-start gap-0'>
             <p className='text-sm font-semibold text-black/60'>STATUS</p>
-            <p className='text-xl font-semibold uppercase'>CONCLUDED</p>
+            <p className='text-xl font-semibold uppercase'>{status}</p>
           </div>
         </div>
         <div className='flex flex-col items-stretch justify-between gap-6 w-full'>
           <div className='flex flex-col items-start gap-0 w-full'>
             <p className='text-sm font-semibold text-black/60'>CANDIDATES</p>
             <div className='flex flex-col items-stretch justify-start gap-1 w-full'>
-              <div className='flex justify-between gap-10 items-start'>
-                <p className='text-xl font-semibold uppercase'>Denise Watson</p>
-                <p className='text-xl font-semibold uppercase'>70</p>
-              </div>
-              <div className='flex justify-between gap-10 items-start'>
-                <p className='text-xl font-semibold uppercase'>Miram Ekoh</p>
-                <p className='text-xl font-semibold uppercase'>69</p>
-              </div>
-              <div className='flex justify-between gap-10 items-start'>
-                <p className='text-xl font-semibold uppercase'>Sydney Klems</p>
-                <p className='text-xl font-semibold uppercase'>88</p>
-              </div>
-              <div className='flex justify-between gap-10 items-start'>
-                <p className='text-xl font-semibold uppercase'>Anthony Smith</p>
-                <p className='text-xl font-semibold uppercase'>77</p>
-              </div>
+              {candidates.map(candidate => (
+                
+              <div key={candidate.id} className='flex justify-between gap-10 items-start'>
+              <p className='text-xl font-semibold uppercase'>{candidate.name}</p>
+              <p className='text-xl font-semibold uppercase'>{candidate.votes.length}</p>
+            </div>
+              ))}
             </div>
           </div>
           <button
