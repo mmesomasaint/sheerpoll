@@ -25,7 +25,7 @@ export async function getById(uid: string) {
 export async function getByPosition(positionId: string) {
   const q = query(candidatesRef, where('position_id', '==', positionId))
   const querySnap = await getDocs(q)
-  const docs = querySnap.docs.map((doc) => doc.data())
+  const docs = querySnap.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
 
   return docs
 }
