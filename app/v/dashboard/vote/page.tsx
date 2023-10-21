@@ -28,16 +28,16 @@ export default function Timeline() {
 
   const vote = async () => {
     setLoading(true)
-    
+
     if (voter && choice && position) {
-      const {vote, error} = await createVote(position.id, choice, voter.uid)
-      
+      const { vote, error } = await createVote(position.id, choice, voter.uid)
+
       if (!error) {
         router.push('/v/dashboard/')
         return
       }
-      
-      console.log("Error submitting vote.\n", error)
+
+      console.log('Error submitting vote.\n', error)
     }
   }
 
