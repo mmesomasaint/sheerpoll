@@ -43,7 +43,7 @@ export default function Register() {
     <form onSubmit={submit}>
       <div className='flex flex-col justify-center items-center gap-5 min-h-screen'>
         <h1 className='text-4xl font-bold'>Register</h1>
-        <div className='flex flex-col justify-start items-start gap-2'>
+        <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
           <label htmlFor='name' className='text-base font-semibold'>
             Full Name
           </label>
@@ -53,11 +53,11 @@ export default function Register() {
             name='name'
             value={form.name}
             placeholder='Full Name'
-            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium'
+            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium w-full'
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div className='flex flex-col justify-start items-start gap-2'>
+        <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
           <label htmlFor='email' className='text-base font-semibold'>
             Email
           </label>
@@ -67,11 +67,11 @@ export default function Register() {
             name='email'
             value={form.email}
             placeholder='Email'
-            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium'
+            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium w-full'
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div className='flex flex-col justify-start items-start gap-2'>
+        <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
           <label htmlFor='password' className='text-base font-semibold'>
             Password
           </label>
@@ -81,11 +81,11 @@ export default function Register() {
             name='password'
             value={form.password}
             placeholder='Password'
-            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium'
+            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium w-full'
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <div className='flex flex-col justify-start items-start gap-2'>
+        <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
           <label htmlFor='v_password' className='text-base font-semibold'>
             Verify Password
           </label>
@@ -95,7 +95,7 @@ export default function Register() {
             name='v_password'
             value={form.verifyPassword}
             placeholder='Verify Password'
-            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium'
+            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium w-full'
             onChange={(e) => setVerifyPassword(e.target.value)}
           />
         </div>

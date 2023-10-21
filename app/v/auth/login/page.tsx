@@ -32,7 +32,7 @@ export default function Login() {
     <form onSubmit={submit}>
       <div className='flex flex-col justify-center items-center py-20 gap-5 min-h-screen'>
         <h1 className='text-4xl font-bold'>LogIn</h1>
-        <div className='flex flex-col justify-start items-start gap-2'>
+        <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
           <label htmlFor='email' className='text-base font-semibold'>
             Email
           </label>
@@ -42,11 +42,11 @@ export default function Login() {
             name='email'
             value={form.email}
             placeholder='Email'
-            className='border border-gray-400 rounded-md px-3 py-2'
+            className='border border-gray-400 rounded-md px-3 py-2 w-full'
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div className='flex flex-col justify-start items-start gap-2'>
+        <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
           <label htmlFor='password' className='text-base font-semibold'>
             Password
           </label>
@@ -55,7 +55,7 @@ export default function Login() {
             id='password'
             name='password'
             placeholder='Password'
-            className='border border-gray-400 rounded-md px-3 py-2'
+            className='border border-gray-400 rounded-md px-3 py-2 w-full'
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
