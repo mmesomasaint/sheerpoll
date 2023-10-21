@@ -176,30 +176,30 @@ function PositionCard({
           </div>
         </div>
         <div className='grid grid-cols-3 gap-10'>
-          <div className='flex flex-col items-start gap-1'>
-            <p className='text-sm font-semibold'>ID</p>
+          <div className='flex flex-col items-start gap-0'>
+            <p className='text-sm font-semibold text-black/60'>ID</p>
             <p className='text-xl font-semibold uppercase'>{id}</p>
           </div>
-          <div className='flex flex-col items-start gap-1'>
-            <p className='text-sm font-semibold'>STATUS</p>
+          <div className='flex flex-col items-start gap-0'>
+            <p className='text-sm font-semibold text-black/60'>STATUS</p>
             <p className='text-xl font-semibold uppercase'>{status}</p>
           </div>
-          <div className='flex flex-col items-start gap-1'>
-            <p className='text-sm font-semibold'>TOTAL VOTES</p>
+          <div className='flex flex-col items-start gap-0'>
+            <p className='text-sm font-semibold text-black/60'>TOTAL VOTES</p>
             <p className='text-xl font-semibold'>{totalVotes}</p>
           </div>
         </div>
         <div className='grid grid-cols-3 gap-10'>
-          <div className='flex flex-col items-start gap-1'>
-            <p className='text-sm font-semibold'>NAME</p>
+          <div className='flex flex-col items-start gap-0'>
+            <p className='text-sm font-semibold text-black/60'>NAME</p>
             <p className='text-xl font-semibold uppercase'>{name}</p>
           </div>
-          <div className='flex flex-col items-start gap-1'>
-            <p className='text-sm font-semibold'>WINNER</p>
+          <div className='flex flex-col items-start gap-0'>
+            <p className='text-sm font-semibold text-black/60'>WINNER</p>
             <p className='text-xl font-semibold uppercase'>{ONGOING}</p>
           </div>
-          <div className='flex flex-col items-start gap-1'>
-            <p className='text-sm font-semibold'>CANDIDATES</p>
+          <div className='flex flex-col items-start gap-0'>
+            <p className='text-sm font-semibold text-black/60'>CANDIDATES</p>
             <p className='text-xl font-semibold uppercase'>
               {candidatesNames.join(', ')}
             </p>
