@@ -142,7 +142,11 @@ function PositionCard({
   return (
     <div className='relative border-b border-b-primary/60 px-20 py-10 shadow-sm w-full'>
       <div className='flex flex-col items-stretch justify-between gap-6'>
-        <div className={`${status === 'ongoing' ? 'block' : 'hidden'} absolute top-5 right-5 `}>
+        <div
+          className={`${
+            status === 'ongoing' ? 'block' : 'hidden'
+          } absolute top-5 right-5 `}
+        >
           <div className='w-10 h-10 rounded-full border border-gray-900/60 flex justify-center items-center'>
             <BsStar
               className='text-lg text-gray-900/60'
@@ -192,9 +196,7 @@ function PositionCard({
           </div>
           <div className='flex flex-col items-start gap-1'>
             <p className='text-sm font-semibold'>WINNER</p>
-            <p className='text-xl font-semibold uppercase'>
-              {ONGOING}
-            </p>
+            <p className='text-xl font-semibold uppercase'>{ONGOING}</p>
           </div>
           <div className='flex flex-col items-start gap-1'>
             <p className='text-sm font-semibold'>CANDIDATES</p>
