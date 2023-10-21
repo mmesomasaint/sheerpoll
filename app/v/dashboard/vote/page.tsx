@@ -53,7 +53,7 @@ export default function Timeline() {
         <div className='flex flex-col items-end gap-0'>
           <p className='text-sm font-semibold text-black/60'>TOTAL VOTES</p>
           <p className='text-xl text-center font-semibold uppercase w-full py-1 border border-primary text-primary rounded-md'>
-            534
+            {totalVotes}
           </p>
         </div>
       </div>
@@ -68,12 +68,15 @@ export default function Timeline() {
           </div>
         </div>
         <div className='grow flex px-20 flex-col justify-start w-full'>
-          <CandidateCard
-            name={'Obi'}
-            votes={45}
-            active={false}
-            onVoteClick={() => setChoice('abc')}
-          />
+          {
+            position?.candidates.map((candidate: DocumentData) => (<CandidateCard
+              key={candidate.id}
+              name={candidate.name}
+              votes={candidate.votes.length}
+              active={choice === candidate.id}
+              onVoteClick={() => setChoice(candidate.id)}
+            />))
+          }
           <button
             type='submit'
             disabled={!choice}
@@ -103,11 +106,11 @@ function CandidateCard({
       <div className='grid grid-cols-3 gap-10 place-items-center'>
         <div className='flex flex-col items-center gap-0'>
           <p className='text-sm font-semibold text-black/60'>NAME</p>
-          <p className='text-xl font-semibold uppercase'>NNAMDI KANU</p>
+          <p className='text-xl font-semibold uppercase'>{name} </p>
         </div>
         <div className='flex flex-col items-center gap-0'>
           <p className='text-sm font-semibold text-black/60'>VOTES</p>
-          <p className='text-xl font-semibold uppercase'>343</p>
+          <p className='text-xl font-semibold uppercase'>{votes}</p>
         </div>
         <div className='flex flex-col items-center gap-0'>
           <p className='text-sm font-semibold text-black/60'>VOTE</p>
