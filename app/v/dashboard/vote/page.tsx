@@ -29,10 +29,10 @@ export default function Timeline() {
 
     const fetchPosition = async () => {
       const position_id = searchParams.get('id')
-      
+
       if (position_id) {
-      const data = await getById(position_id)
-      setPosition(data)
+        const data = await getById(position_id)
+        setPosition(data)
       }
 
       setLoading(false)
