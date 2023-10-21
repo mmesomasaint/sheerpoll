@@ -72,25 +72,13 @@ export async function getByVoter(voterId: string, first: number) {
     if (voterDoc.exists()) {
       const votes: string[] = voterDoc.data().votes
 
-      positions = await Promise.all(
-        votes.map(async (vote) => {
-          const votesRef = doc(db, 'votes', vote)
-          const voteDoc = await getDoc(votesRef)
-
-          if (voteDoc.exists()) {
-            const positionId: string = voteDoc.data().position_id
-            const positionRef = doc(positionsRef, positionId)
-            const positionDoc = await getDoc(positionRef)
-
-            if (positionDoc) {
-              const candidates = await getByPosition(positionDoc.id)
-              return { id: positionDoc.id, ...positionDoc.data(), candidates }
-            }
-          } else throw new Error(`Vote with id: ${vote}, not found.`)
-
-          return {}
-        })
-      )
+      const q = query(positionsRef, where('votes', 'array-contains-any', votes), limit(first))
+      const querySnap = await getDocs(q)
+      
+      // For all the positions returned, get the candidates
+      const docs = await extractCandidatesInfo(querySnap)
+    
+      return docs
     } else throw new Error(`Voter with id: ${voterId}, not found`)
   } catch (e) {
     error = e
