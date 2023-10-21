@@ -7,9 +7,11 @@ import { useAuth } from '../../auth/auth'
 import { BsStar } from 'react-icons/bs'
 import { DocumentData } from 'firebase/firestore'
 import { getById } from '@/lib/position/get'
+import createVote from '@/lib/vote/create'
 
 export default function Timeline() {
   const { voter } = useAuth()
+  const router = useRouter()
   const searchParams = useSearchParams()
   const [choice, setChoice] = useState<string | null>()
   const [loading, setLoading] = useState(true)
@@ -23,6 +25,21 @@ export default function Timeline() {
       ),
     [position]
   )
+
+  const vote = async () => {
+    setLoading(true)
+    
+    if (voter && choice && position) {
+      const {vote, error} = await createVote(position.id, choice, voter.uid)
+      
+      if (!error) {
+        router.push('/v/dashboard/')
+        return
+      }
+      
+      console.log("Error submitting vote.\n", error)
+    }
+  }
 
   useEffect(() => {
     setLoading(true)
@@ -81,6 +98,7 @@ export default function Timeline() {
             type='submit'
             disabled={!choice}
             className='px-7 py-3 my-5 text-white bg-primary disabled:bg-black/60 rounded-md shadow-sm'
+            onClick={vote}
           >
             Submit
           </button>
