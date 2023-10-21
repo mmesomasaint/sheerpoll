@@ -76,23 +76,23 @@ export default function Timeline() {
             <p className='text-base font-semibold'>Loading...</p>
           </div>
         ) : (
-          <Positions positionList={[{ value: 'Test Value' }]} />
+          <Positions positionList={positionList} tab={tab} />
         )}
       </div>
     </div>
   )
 }
 
-function Positions({ positionList }: { positionList: DocumentData[] }) {
+function Positions({ positionList, tab }: { positionList: DocumentData[], tab: string }) {
   if (positionList.length === 0)
     return (
       <div className='grow flex flex-col justify-center items-center w-full'>
         <p className='text-base font-semibold'>No positions found.</p>
         <Link
-          href='/admin/dashboard/create'
+          href='/v/dashboard/'
           className='text-primary text-base font-semibold hover:underline hover:underline-offset-4'
         >
-          Create new position?
+          {tab === 'hot' ? 'Reload the page' : 'Vote now'}
         </Link>
       </div>
     )
