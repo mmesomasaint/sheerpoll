@@ -80,7 +80,7 @@ function Positions({ positionList }: { positionList: DocumentData[] }) {
   return (
     <div className='grow flex px-20 flex-col w-full'>
       <HotPositionCard />
-      <HotPositionCard />
+      <TimelinePositionCard />
       <HotPositionCard />
       <HotPositionCard />
       <HotPositionCard />
@@ -137,6 +137,62 @@ function HotPositionCard() {
             className='px-7 py-3 text-white bg-primary rounded-md shadow-sm'
           >
             Vote
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function TimelinePositionCard() {
+  return (
+    <div className='relative border-b border-b-primary/60 px-20 py-10 shadow-sm w-full'>
+      <div className='grid grid-cols-2 gap-20'>
+        <div className='flex flex-col items-stretch justify-between gap-6'>
+          <div className='flex flex-col items-start gap-0'>
+            <p className='text-sm font-semibold text-black/60'>NAME</p>
+            <p className='text-xl font-semibold uppercase'>Vice President</p>
+          </div>
+          <div className='flex flex-col items-start gap-0'>
+            <p className='text-sm font-semibold text-black/60'>TOTAL VOTES</p>
+            <p className='text-xl font-semibold uppercase'>566</p>
+          </div>
+          <div className='flex flex-col items-start gap-0'>
+            <p className='text-sm font-semibold text-black/60'>WINNER</p>
+            <p className='text-xl font-semibold uppercase'>Sydney Klems</p>
+          </div>
+          <div className='flex flex-col items-start gap-0'>
+            <p className='text-sm font-semibold text-black/60'>STATUS</p>
+            <p className='text-xl font-semibold uppercase'>CONCLUDED</p>
+          </div>
+        </div>
+        <div className='flex flex-col items-stretch justify-between gap-6 w-full'>
+          <div className='flex flex-col items-start gap-0 w-full'>
+            <p className='text-sm font-semibold text-black/60'>CANDIDATES</p>
+            <div className='flex flex-col items-stretch justify-start gap-1 w-full'>
+              <div className='flex justify-between gap-10 items-start'>
+                <p className='text-xl font-semibold uppercase'>Denise Watson</p>
+                <p className='text-xl font-semibold uppercase'>70</p>
+              </div>
+              <div className='flex justify-between gap-10 items-start'>
+                <p className='text-xl font-semibold uppercase'>Miram Ekoh</p>
+                <p className='text-xl font-semibold uppercase'>69</p>
+              </div>
+              <div className='flex justify-between gap-10 items-start'>
+                <p className='text-xl font-semibold uppercase'>Sydney Klems</p>
+                <p className='text-xl font-semibold uppercase'>88</p>
+              </div>
+              <div className='flex justify-between gap-10 items-start'>
+                <p className='text-xl font-semibold uppercase'>Anthony Smith</p>
+                <p className='text-xl font-semibold uppercase'>77</p>
+              </div>
+            </div>
+          </div>
+          <button
+            type='submit'
+            className='px-7 py-3 text-black/60 bg-white border border-black/60 rounded-md shadow-sm'
+          >
+            Voted
           </button>
         </div>
       </div>
