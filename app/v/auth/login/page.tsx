@@ -20,7 +20,7 @@ export default function Login() {
     // Submit the form
     const { voter, error } = await logIn(form.email, form.password)
     if (!error) {
-      console.log(voter)
+      console.log('Successfully logged in: ', voter)
       router.push('/v/dashboard/')
       return
     }
