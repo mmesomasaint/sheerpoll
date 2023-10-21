@@ -8,17 +8,33 @@ import {
   limit,
   collection,
   getDocs,
+  QuerySnapshot,
+  DocumentData,
 } from 'firebase/firestore'
 import { getByPosition } from '../candidate/get'
 
 const db = getFirestore(FirebaseApp)
 const positionsRef = collection(db, 'positions')
 
+const extractCandidatesInfo = async (
+  querySnap: QuerySnapshot<DocumentData, DocumentData>
+) => {
+  return Promise.all(
+    querySnap.docs.map(async (doc) => {
+      const candidates = await getByPosition(doc.id)
+      return { id: doc.id, ...doc.data(), candidates }
+    })
+  )
+}
+
 export async function getById(uid: string) {
   if (uid) {
     const docSnap = await getDoc(doc(positionsRef, uid))
 
-    if (docSnap.exists()) return docSnap.data()
+    if (docSnap.exists()) {
+      const candidates = await getByPosition(docSnap.id)
+      return { id: docSnap.id, ...docSnap.data(), candidates }
+    }
   }
 
   return null
@@ -27,7 +43,7 @@ export async function getById(uid: string) {
 export async function getAllByCreator(creator: string, first: number) {
   const q = query(positionsRef, where('creator', '==', creator), limit(first))
   const querySnap = await getDocs(q)
-  const docs = querySnap.docs.map((doc) => doc.data())
+  const docs = await extractCandidatesInfo(querySnap)
 
   return docs
 }
@@ -40,12 +56,7 @@ export async function getByStatus(
   const querySnap = await getDocs(q)
 
   // For all the positions returned, get the candidates
-  const docs = await Promise.all(
-    querySnap.docs.map(async (doc) => {
-      const candidates = await getByPosition(doc.id)
-      return { id: doc.id, ...doc.data(), candidates }
-    })
-  )
+  const docs = await extractCandidatesInfo(querySnap)
 
   return docs
 }
@@ -72,10 +83,11 @@ export async function getByVoter(voterId: string, first: number) {
             const positionDoc = await getDoc(positionRef)
 
             if (positionDoc) {
-              return { id: positionDoc.id, ...positionDoc.data() }
+              const candidates = await getByPosition(positionDoc.id)
+              return { id: positionDoc.id, ...positionDoc.data(), candidates }
             }
           } else throw new Error(`Vote with id: ${vote}, not found.`)
-          
+
           return {}
         })
       )
@@ -90,7 +102,7 @@ export async function getByVoter(voterId: string, first: number) {
 export async function getAll(first: number) {
   const q = query(positionsRef, limit(first))
   const querySnap = await getDocs(q)
-  const docs = querySnap.docs.map((doc) => doc.data())
+  const docs = await extractCandidatesInfo(querySnap)
 
   return docs
 }
