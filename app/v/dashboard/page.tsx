@@ -114,7 +114,7 @@ function Positions({
           0
         )
         return (
-          <>
+          <div key={position.title + position.candidates.length}>
             {tab === 'hot' ? (
               <HotPositionCard
                 name={position.title}
@@ -129,7 +129,7 @@ function Positions({
                 candidates={position.candidates}
               />
             )}
-          </>
+          </div>
         )
       })}
     </div>
@@ -182,7 +182,7 @@ function HotPositionCard({
             <p className='text-sm font-semibold text-black/60'>CANDIDATES</p>
             <div className='flex flex-col items-stretch justify-start gap-1 w-full'>
               {candidates.map((candidate) => (
-                <div className='flex justify-between gap-10 items-start'>
+                <div key={candidate.id} className='flex justify-between gap-10 items-start'>
                   <p className='text-xl font-semibold uppercase'>
                     {candidate.name}
                   </p>
