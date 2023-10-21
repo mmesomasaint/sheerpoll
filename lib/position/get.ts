@@ -51,8 +51,7 @@ export async function getByStatus(
 }
 
 export async function getByVoter(voterId: string, first: number) {
-  let positions = [],
-    error
+  let positions, error
 
   try {
     // Find the voter and extract their vote id's.
@@ -82,6 +81,8 @@ export async function getByVoter(voterId: string, first: number) {
   } catch (e) {
     error = e
   }
+
+  return { positions, error }
 }
 
 export async function getAll(first: number) {
