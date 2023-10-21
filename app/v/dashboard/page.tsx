@@ -83,7 +83,13 @@ export default function Timeline() {
   )
 }
 
-function Positions({ positionList, tab }: { positionList: DocumentData[], tab: string }) {
+function Positions({
+  positionList,
+  tab,
+}: {
+  positionList: DocumentData[]
+  tab: string
+}) {
   if (positionList.length === 0)
     return (
       <div className='grow flex flex-col justify-center items-center w-full'>
