@@ -80,9 +80,7 @@ export async function getByVoter(voterId: string, first: number) {
       const querySnap = await getDocs(q)
 
       // For all the positions returned, get the candidates
-      const docs = await extractCandidatesInfo(querySnap)
-
-      return docs
+      positions = await extractCandidatesInfo(querySnap)
     } else throw new Error(`Voter with id: ${voterId}, not found`)
   } catch (e) {
     error = e
