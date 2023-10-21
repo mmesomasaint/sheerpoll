@@ -22,8 +22,12 @@ export default function Timeline() {
         <div className='flex justify-start items-center gap-10 pb-1 border-b border-b-primary/60'>
           <div className='relative' onClick={() => setTab('hot')}>
             <div className='px-7 flex justify-center items-center gap-3 w-fit'>
-              <BsStar className={`${tab === 'hot' ? 'text-primary' : 'text-black/60'} text-base`} />
-            <p className='text-base font-semibold'>Hot</p>
+              <BsStar
+                className={`${
+                  tab === 'hot' ? 'text-primary' : 'text-black/60'
+                } text-base`}
+              />
+              <p className='text-base font-semibold'>Hot</p>
             </div>
             <div
               className={`${
@@ -33,8 +37,12 @@ export default function Timeline() {
           </div>
           <div className='relative' onClick={() => setTab('timeline')}>
             <div className='px-7 flex justify-center items-center gap-3 w-fit'>
-              <BsStar className={`${tab === 'timeline' ? 'text-primary' : 'text-black/60'} text-base`} />
-            <p className='text-base font-semibold'>Timeline</p>
+              <BsStar
+                className={`${
+                  tab === 'timeline' ? 'text-primary' : 'text-black/60'
+                } text-base`}
+              />
+              <p className='text-base font-semibold'>Timeline</p>
             </div>
             <div
               className={`${
@@ -48,7 +56,7 @@ export default function Timeline() {
             <p className='text-base font-semibold'>Loading...</p>
           </div>
         ) : (
-          <Positions positionList={[{value: 'Test Value'}]} />
+          <Positions positionList={[{ value: 'Test Value' }]} />
         )}
       </div>
     </div>
@@ -71,17 +79,16 @@ function Positions({ positionList }: { positionList: DocumentData[] }) {
 
   return (
     <div className='grow flex px-20 flex-col w-full'>
-    <HotPositionCard/>
-        <HotPositionCard/>
-        <HotPositionCard/>
-        <HotPositionCard/>
-        <HotPositionCard/>
+      <HotPositionCard />
+      <HotPositionCard />
+      <HotPositionCard />
+      <HotPositionCard />
+      <HotPositionCard />
     </div>
   )
 }
 
 function HotPositionCard() {
-  
   return (
     <div className='relative border-b border-b-primary/60 px-20 py-10 shadow-sm w-full'>
       <div className='grid grid-cols-2 gap-20'>
@@ -95,9 +102,12 @@ function HotPositionCard() {
             <p className='text-xl font-semibold uppercase'>566</p>
           </div>
           <div className='flex flex-col items-start gap-0'>
-            <p className='text-sm font-semibold text-black/60'>TOP CANDIDATES</p>
+            <p className='text-sm font-semibold text-black/60'>
+              TOP CANDIDATES
+            </p>
             <p className='text-xl font-semibold uppercase'>
-              Sydney Klems, Anthony Smith</p>
+              Sydney Klems, Anthony Smith
+            </p>
           </div>
         </div>
         <div className='flex flex-col items-stretch justify-between gap-6 w-full'>
@@ -105,40 +115,20 @@ function HotPositionCard() {
             <p className='text-sm font-semibold text-black/60'>CANDIDATES</p>
             <div className='flex flex-col items-stretch justify-start gap-1 w-full'>
               <div className='flex justify-between gap-10 items-start'>
-                
-            <p className='text-xl font-semibold uppercase'>
-              Denise Watson
-            </p>
-            <p className='text-xl font-semibold uppercase'>
-              70
-            </p>
+                <p className='text-xl font-semibold uppercase'>Denise Watson</p>
+                <p className='text-xl font-semibold uppercase'>70</p>
               </div>
               <div className='flex justify-between gap-10 items-start'>
-                
-            <p className='text-xl font-semibold uppercase'>
-              Miram Ekoh
-            </p>
-            <p className='text-xl font-semibold uppercase'>
-              69
-            </p>
+                <p className='text-xl font-semibold uppercase'>Miram Ekoh</p>
+                <p className='text-xl font-semibold uppercase'>69</p>
               </div>
               <div className='flex justify-between gap-10 items-start'>
-                
-            <p className='text-xl font-semibold uppercase'>
-              Sydney Klems
-            </p>
-            <p className='text-xl font-semibold uppercase'>
-              88
-            </p>
+                <p className='text-xl font-semibold uppercase'>Sydney Klems</p>
+                <p className='text-xl font-semibold uppercase'>88</p>
               </div>
               <div className='flex justify-between gap-10 items-start'>
-                
-            <p className='text-xl font-semibold uppercase'>
-              Anthony Smith
-            </p>
-            <p className='text-xl font-semibold uppercase'>
-              77
-            </p>
+                <p className='text-xl font-semibold uppercase'>Anthony Smith</p>
+                <p className='text-xl font-semibold uppercase'>77</p>
               </div>
             </div>
           </div>
