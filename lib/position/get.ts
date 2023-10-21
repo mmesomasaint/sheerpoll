@@ -50,6 +50,39 @@ export async function getByStatus(
   return docs
 }
 
+export async function getByVoter(voterId: string, first: number) {
+  let positions = [], error
+
+  try {
+    // Find the voter and extract their vote id's.
+  const votersRef = doc(db, 'voters', voterId)
+  const voterDoc = await getDoc(votersRef)
+
+  if (voterDoc.exists()) {
+    const votes: string[] = voterDoc.data().votes
+    
+    positions = await Promise.all(votes.map(async (vote) => {
+      const votesRef = doc(db, 'votes', vote)
+      const voteDoc = await getDoc(votesRef)
+
+      if (voteDoc.exists()) {
+        const positionId: string = voteDoc.data().position_id
+        const positionRef = doc(positionsRef, positionId)
+        const positionDoc = await getDoc(positionRef)
+
+        if (positionDoc) {
+          return {id: positionDoc.id, ...positionDoc.data()}
+        }
+      } else throw new Error(`Vote with id: ${vote}, not found.`)
+    }))
+
+    
+  } else throw new Error(`Voter with id: ${voterId}, not found`)
+  } catch(e) {
+    error = e
+  }
+}
+
 export async function getAll(first: number) {
   const q = query(positionsRef, limit(first))
   const querySnap = await getDocs(q)
