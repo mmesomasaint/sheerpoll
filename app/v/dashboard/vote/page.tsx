@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useMemo } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useAuth } from '../../auth/auth'
 import { BsStar } from 'react-icons/bs'
 import { DocumentData } from 'firebase/firestore'
@@ -10,6 +10,7 @@ import { getById } from '@/lib/position/get'
 
 export default function Timeline() {
   const { voter } = useAuth()
+  const searchParams = useSearchParams()
   const [choice, setChoice] = useState<string | null>()
   const [loading, setLoading] = useState(true)
   const [position, setPosition] = useState<DocumentData | null>()
@@ -25,9 +26,15 @@ export default function Timeline() {
 
   useEffect(() => {
     setLoading(true)
+
     const fetchPosition = async () => {
-      const data = await getById(position?.id)
+      const position_id = searchParams.get('id')
+      
+      if (position_id) {
+      const data = await getById(position_id)
       setPosition(data)
+      }
+
       setLoading(false)
     }
 
