@@ -32,14 +32,6 @@ export async function getAllByCreator(creator: string, first: number) {
   return docs
 }
 
-export async function getAll(first: number) {
-  const q = query(positionsRef, limit(first))
-  const querySnap = await getDocs(q)
-  const docs = querySnap.docs.map((doc) => doc.data())
-
-  return docs
-}
-
 export async function getByStatus(
   status: 'ongoing' | 'concluded',
   first: number
@@ -54,6 +46,14 @@ export async function getByStatus(
       return { id: doc.id, ...doc.data(), candidates }
     })
   )
+
+  return docs
+}
+
+export async function getAll(first: number) {
+  const q = query(positionsRef, limit(first))
+  const querySnap = await getDocs(q)
+  const docs = querySnap.docs.map((doc) => doc.data())
 
   return docs
 }
