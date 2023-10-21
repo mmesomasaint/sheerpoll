@@ -127,9 +127,9 @@ function PositionCard({
   })
 
   const endPos = async () => {
-    const {position, error} = await endPosition(id)
+    const { position, error } = await endPosition(id)
     if (!error) {
-      console.log("Position ended successfully: \n", position)
+      console.log('Position ended successfully: \n', position)
       return
     }
     console.log("Error: Position couldn't be ended\n", error)
@@ -140,21 +140,33 @@ function PositionCard({
     <div className='relative border-b border-b-primary/60 px-20 py-10 shadow-sm w-full'>
       <div className='flex flex-col items-stretch justify-between gap-6'>
         <div className='absolute top-5 right-5'>
-        <div className='w-10 h-10 rounded-full border border-gray-900/60 flex justify-center items-center'>
-          <BsStar className='text-lg text-gray-900/60' onClick={() => setDisplayOptions(true)} />
-        </div>
-        <div className='relative'>
-          <div className={`${displayOptions ? 'block' : 'hidden'} fixed inset-0 bg-transparent`} onClick={() => setDisplayOptions(false)} />
-          <div className={`${displayOptions ? 'block' : 'hidden'} absolute z-20 w-fit rounded-md border border-gray-900/60 shadow-sm`}>
-          <button
-            type='button'
-            className='px-7 py-3 text-primary text-base font-semibold border border-primary rounded-md shadow-sm'
-            onClick={endPos}
-          >
-            Conclude
-          </button>
+          <div className='w-10 h-10 rounded-full border border-gray-900/60 flex justify-center items-center'>
+            <BsStar
+              className='text-lg text-gray-900/60'
+              onClick={() => setDisplayOptions(true)}
+            />
           </div>
-        </div>
+          <div className='relative'>
+            <div
+              className={`${
+                displayOptions ? 'block' : 'hidden'
+              } fixed inset-0 bg-transparent`}
+              onClick={() => setDisplayOptions(false)}
+            />
+            <div
+              className={`${
+                displayOptions ? 'block' : 'hidden'
+              } absolute z-20 w-fit rounded-md border border-gray-900/60 shadow-sm`}
+            >
+              <button
+                type='button'
+                className='px-7 py-3 text-primary text-base font-semibold border border-primary rounded-md shadow-sm'
+                onClick={endPos}
+              >
+                Conclude
+              </button>
+            </div>
+          </div>
         </div>
         <div className='grid grid-cols-3 gap-10'>
           <div className='flex flex-col items-start gap-1'>
