@@ -156,6 +156,8 @@ function HotPositionCard({
     .map((candidate) => candidate.name)
     .slice(0, 2)
 
+  const router = useRouter()
+
   return (
     <div className='relative border-b border-b-primary/60 px-20 py-10 shadow-sm w-full'>
       <div className='grid grid-cols-2 gap-20'>
@@ -194,8 +196,9 @@ function HotPositionCard({
             </div>
           </div>
           <button
-            type='submit'
+            type='button'
             className='px-7 py-3 text-white bg-primary rounded-md shadow-sm'
+            onClick={() => router.push('/v/dashboard/vote')}
           >
             Vote
           </button>
@@ -262,7 +265,8 @@ function TimelinePositionCard({
             </div>
           </div>
           <button
-            type='submit'
+            type='button'
+            disabled
             className='px-7 py-3 text-black/60 bg-white border border-black/60 rounded-md shadow-sm'
           >
             Voted
