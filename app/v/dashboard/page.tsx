@@ -105,11 +105,17 @@ function Positions({
 
   return (
     <div className='grow flex px-20 flex-col w-full'>
-      {positionList.map(position => {
+      {positionList.map((position) => {
         return (
           <>
-            {tab === 'hot' ? <HotPositionCard name={position.title} candidates={position.candidates} /> : 
-      <TimelinePositionCard />}
+            {tab === 'hot' ? (
+              <HotPositionCard
+                name={position.title}
+                candidates={position.candidates}
+              />
+            ) : (
+              <TimelinePositionCard />
+            )}
           </>
         )
       })}
@@ -117,13 +123,23 @@ function Positions({
   )
 }
 
-function HotPositionCard({name, candidates}: {name: string, candidates: DocumentData[]}) {
+function HotPositionCard({
+  name,
+  candidates,
+}: {
+  name: string
+  candidates: DocumentData[]
+}) {
   // The topCandidateNames list was gotten by:
   // 1. candiates.slice() => Creates a copy of candidates array.
   // 2. .sort(a,b) => b.votes.length - a.votes.length => sorts the array copy in descending order.
   // 3. .map(candidate => candidate.name) => Creates a copy of the sorted array and returns only the name prop.
   // 4. .slice(0, 2) => Creates a copy of the array names to contain only the first two names in the list.
-  const topCandidateNames = candidates.slice().sort((a,b) => b.votes.length - a.votes.length).map(candidate => candidate.name).slice(0, 2)
+  const topCandidateNames = candidates
+    .slice()
+    .sort((a, b) => b.votes.length - a.votes.length)
+    .map((candidate) => candidate.name)
+    .slice(0, 2)
 
   const totalVotes = candidates.reduce((acc, cur) => acc + cur.votes.length, 0)
 
@@ -152,11 +168,15 @@ function HotPositionCard({name, candidates}: {name: string, candidates: Document
           <div className='flex flex-col items-start gap-0 w-full'>
             <p className='text-sm font-semibold text-black/60'>CANDIDATES</p>
             <div className='flex flex-col items-stretch justify-start gap-1 w-full'>
-              {candidates.map(candidate => (
+              {candidates.map((candidate) => (
                 <div className='flex justify-between gap-10 items-start'>
-                <p className='text-xl font-semibold uppercase'>{candidate.name}</p>
-                <p className='text-xl font-semibold uppercase'>{candidate.votes.length}</p>
-              </div>
+                  <p className='text-xl font-semibold uppercase'>
+                    {candidate.name}
+                  </p>
+                  <p className='text-xl font-semibold uppercase'>
+                    {candidate.votes.length}
+                  </p>
+                </div>
               ))}
             </div>
           </div>
