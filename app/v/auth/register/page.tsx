@@ -82,7 +82,7 @@ export default function Register() {
             name='password'
             value={form.password}
             placeholder='Password'
-            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium w-full'
+            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium w-full focus:outline-primary'
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
@@ -96,7 +96,7 @@ export default function Register() {
             name='v_password'
             value={form.verifyPassword}
             placeholder='Verify Password'
-            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium w-full'
+            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium w-full focus:outline-primary'
             onChange={(e) => setVerifyPassword(e.target.value)}
           />
         </div>
