@@ -12,13 +12,13 @@ export default function Timeline() {
   const { voter } = useAuth()
   const [tab, setTab] = useState('hot')
   const [loading, setLoading] = useState(false)
-  const [ positionList, setpositionList] = useState<DocumentData[]>([])
+  const [positionList, setpositionList] = useState<DocumentData[]>([])
 
   useEffect(() => {
     const fetchPositions = async () => {
       if (tab === 'timeline' && voter) {
         // Fetch timeline positions -- the voter already voted for
-        const {positions, error} = await getByVoter(voter?.uid, 20)
+        const { positions, error } = await getByVoter(voter?.uid, 20)
         if (!error && positions) {
           setpositionList(positions)
         }
