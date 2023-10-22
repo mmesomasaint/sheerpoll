@@ -217,7 +217,8 @@ function HotPositionCard({
           </div>
           <button
             type='button'
-            className='px-7 py-3 text-white bg-primary rounded-md shadow-sm'
+            disabled={loading}
+            className='px-7 py-3 text-white bg-primary rounded-md shadow-sm disabled:bg-black/60'
             onClick={() => {
               setLoading(true)
               router.push(`/v/dashboard/vote?position_id=${id}`)
