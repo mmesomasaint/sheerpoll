@@ -42,7 +42,12 @@ export async function getById(uid: string) {
 }
 
 export async function getAllByCreator(creator: string, first: number) {
-  const q = query(positionsRef, where('creator', '==', creator), limit(first), orderBy("createdAt", "desc"))
+  const q = query(
+    positionsRef,
+    where('creator', '==', creator),
+    limit(first),
+    orderBy('createdAt', 'desc')
+  )
   const querySnap = await getDocs(q)
   const docs = await extractCandidatesInfo(querySnap)
 
@@ -53,7 +58,12 @@ export async function getByStatus(
   status: 'ongoing' | 'concluded',
   first: number
 ) {
-  const q = query(positionsRef, where('status', '==', status), limit(first), orderBy("createdAt", "desc"))
+  const q = query(
+    positionsRef,
+    where('status', '==', status),
+    limit(first),
+    orderBy('createdAt', 'desc')
+  )
   const querySnap = await getDocs(q)
 
   // For all the positions returned, get the candidates
@@ -71,13 +81,13 @@ export async function getByVoter(voterId: string, first: number) {
     const voterDoc = await getDoc(votersRef)
 
     if (voterDoc.exists()) {
-      const votes: string[] = voterDoc.data().votes
+      const votes: string[] = [...voterDoc.data().votes, 'NON_EMPTY_SLOT']
 
       const q = query(
         positionsRef,
         where('votes', 'array-contains-any', votes),
         limit(first),
-        orderBy("createdAt", "desc")
+        orderBy('createdAt', 'desc')
       )
       const querySnap = await getDocs(q)
 
@@ -86,13 +96,14 @@ export async function getByVoter(voterId: string, first: number) {
     } else throw new Error(`Voter with id: ${voterId}, not found`)
   } catch (e) {
     error = e
+    console.log(error)
   }
 
   return { positions, error }
 }
 
 export async function getAll(first: number) {
-  const q = query(positionsRef, limit(first), orderBy("createdAt", "desc"))
+  const q = query(positionsRef, limit(first), orderBy('createdAt', 'desc'))
   const querySnap = await getDocs(q)
   const docs = await extractCandidatesInfo(querySnap)
 

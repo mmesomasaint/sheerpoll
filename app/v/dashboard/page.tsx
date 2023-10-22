@@ -17,11 +17,13 @@ export default function Timeline() {
 
   useEffect(() => {
     setLoading(true)
+    setpositionList([])
+
     const fetchPositions = async () => {
       if (tab === 'timeline' && voter) {
         // Fetch timeline positions -- the voter already voted for
         const { positions, error } = await getByVoter(voter?.uid, 20)
-        if (!error && positions) {
+        if (positions && !error) {
           setpositionList(positions)
         }
         setLoading(false)
