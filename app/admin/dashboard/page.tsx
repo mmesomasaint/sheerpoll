@@ -120,14 +120,14 @@ function PositionCard({
   let winnerId = 0,
     totalVotes = 0
 
-  const NO_WINNER = totalVotes === 0 ? 'none' : candidatesNames[winnerId]
-  const ONGOING = status === 'ongoing' ? 'pending' : NO_WINNER
-
   candidates.forEach((candidate, curId) => {
     const curVotes = candidate.votes.length
     if (curVotes > candidates[winnerId].votes.length) winnerId = curId
     totalVotes += curVotes
   })
+
+  const NO_WINNER = totalVotes === 0 ? 'none' : candidatesNames[winnerId]
+  const ONGOING = status === 'ongoing' ? 'pending' : NO_WINNER
 
   const endPos = async () => {
     const { position, error } = await endPosition(id)
