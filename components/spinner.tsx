@@ -10,7 +10,7 @@ export function WithSpinner({ children }: { children: string }) {
   return (
     <div className='flex justify-center gap-2 items-center'>
       <Spinner />
-      <p className='text-base font-semibold'>{children}</p>
+      <p className='text-base font-semibold tracking-wider'>{children}</p>
     </div>
   )
 }
