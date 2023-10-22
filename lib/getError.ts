@@ -21,6 +21,16 @@ export default function getError(error: AuthError) {
       from: ['email', 'password'],
       message: "Voter is not registered",
     }
+  } else if (error.code === 'auth/missing-password') {
+    return {
+      from: ['password'],
+      message: "Password missing"
+    }
+  } else if(error.code === 'auth/invalid-login-credentials') {
+    return {
+      from: ['email', 'password'],
+      message: "Voter is not registered"
+    }
   }
 
   return {
