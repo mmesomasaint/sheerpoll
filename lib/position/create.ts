@@ -27,7 +27,7 @@ export default async function createPosition(
         candidates: [],
         status: 'ongoing', // 'ongoing' | 'concluded'
         creator,
-        createdAt: serverTimestamp()
+        createdAt: serverTimestamp(),
       }
 
       const positionDoc = await addDoc(positionsRef, data)
