@@ -5,7 +5,7 @@ import { IoIosArrowDown } from 'react-icons/io'
 import { useAuth } from './auth'
 import { useRouter } from 'next/navigation'
 import authAdmin from '@/lib/auth/authAdmin'
-import Spinner from '@/components/spinner'
+import Spinner, { WithSpinner } from '@/components/spinner'
 
 export default function Auth() {
   const { setAdmin } = useAuth()
@@ -77,12 +77,9 @@ export default function Auth() {
             className='px-7 py-3 text-white bg-primary rounded-md shadow-sm disabled:bg-black/60'
           >
             {loading ? (
-              <div className='flex justify-center gap-2 items-center'>
-                <Spinner />
-                <p className='text-base font-semibold'>Loading...</p>
-              </div>
+              <WithSpinner>Loading...</WithSpinner>
             ) : (
-              <p className='text-base font-semibold'>Sign In</p>
+              <p className='text-base font-semibold tracking-wider'>Sign In</p>
             )}
           </button>
         </div>

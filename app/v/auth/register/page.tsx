@@ -4,6 +4,7 @@ import register from '@/lib/auth/register'
 import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { WithSpinner } from '@/components/spinner'
 
 export default function Register() {
   const router = useRouter()
@@ -109,7 +110,7 @@ export default function Register() {
             disabled={loading}
             className='px-7 py-3 text-white bg-primary rounded-md shadow-sm disabled:bg-black/60'
           >
-            Register
+            {loading ? <WithSpinner>Loading...</WithSpinner> : (<p className='text-base font-semibold tracking-wider'>Register</p>)}
           </button>
           <Link
             href='/v/auth/login/'

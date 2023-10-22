@@ -4,7 +4,7 @@ import logIn from '@/lib/auth/login'
 import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import Spinner from '@/components/spinner'
+import Spinner, { WithSpinner } from '@/components/spinner'
 
 export default function Login() {
   const [loading, setLoading] = useState(false)
@@ -72,12 +72,9 @@ export default function Login() {
             className='px-7 py-3 text-white bg-primary rounded-md shadow-sm disabled:bg-black/60'
           >
           {loading ? (
-            <div className='flex justify-center gap-2 items-center'>
-              <Spinner />
-              <p className='text-base font-semibold'>Loading...</p>
-            </div>
+            <WithSpinner>Loading...</WithSpinner>
           ) : (
-            <p className='text-base font-semibold'>Sign In</p>
+            <p className='text-base font-semibold tracking-wider'>Sign In</p>
           )}
           </button>
           <Link
