@@ -7,6 +7,7 @@ import { useAuth } from '../auth/auth'
 import { BsStar } from 'react-icons/bs'
 import { DocumentData } from 'firebase/firestore'
 import { getByStatus, getByVoter } from '@/lib/position/get'
+import { WithSpinner } from '@/components/spinner'
 
 export default function Timeline() {
   const { voter } = useAuth()
@@ -159,6 +160,8 @@ function HotPositionCard({
   totalVotes: number
   candidates: DocumentData[]
 }) {
+  const [loading, setLoading] = useState(false)
+
   // The topCandidateNames list was gotten by:
   // 1. candiates.slice() => Creates a copy of candidates array.
   // 2. .sort(a,b) => b.votes.length - a.votes.length => sorts the array copy in descending order.
@@ -215,9 +218,13 @@ function HotPositionCard({
           <button
             type='button'
             className='px-7 py-3 text-white bg-primary rounded-md shadow-sm'
-            onClick={() => router.push(`/v/dashboard/vote?position_id=${id}`)}
+            onClick={() => {
+              setLoading(true)
+              router.push(`/v/dashboard/vote?position_id=${id}`)
+              setLoading(false)
+            }}
           >
-            Vote
+            {loading ? <WithSpinner>Loading...</WithSpinner> : (<p className='text-base font-semibold tracking-wider'>Vote</p>)}
           </button>
         </div>
       </div>
