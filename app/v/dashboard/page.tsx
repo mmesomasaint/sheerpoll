@@ -289,7 +289,7 @@ function TimelinePositionCard({
                 return (
                   <div
                     key={candidate.id}
-                    className={`border ${
+                    className={`border-2 ${
                       isVotersCandidate
                         ? 'border-primary'
                         : 'border-transparent'
