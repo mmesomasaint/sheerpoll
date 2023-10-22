@@ -11,7 +11,11 @@ const auth = getAuth(FirebaseApp)
 const db = getFirestore(FirebaseApp)
 const votersRef = collection(db, 'voters')
 
-export default async function register(name: string, email: string, password: string) {
+export default async function register(
+  name: string,
+  email: string,
+  password: string
+) {
   let voter = null,
     error = null
 
