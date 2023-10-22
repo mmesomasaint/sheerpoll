@@ -140,6 +140,7 @@ function Positions({
                 totalVotes={totalVotes}
                 status={position.status}
                 candidates={position.candidates}
+                votes={votes}
               />
             )}
           </div>
@@ -242,11 +243,13 @@ function TimelinePositionCard({
   totalVotes,
   status,
   candidates,
+  votes
 }: {
   name: string
   totalVotes: number
   status: string
   candidates: DocumentData[]
+  votes: string[]
 }) {
   const winner = candidates.reduce((acc, cur) => {
     if (acc.votes.length > cur.votes.length) return acc
@@ -277,20 +280,23 @@ function TimelinePositionCard({
         <div className='flex flex-col items-stretch justify-between gap-6 w-full'>
           <div className='flex flex-col items-start gap-0 w-full'>
             <p className='text-sm font-semibold text-black/60'>CANDIDATES</p>
-            <div className='flex flex-col items-stretch justify-start gap-1 w-full'>
-              {candidates.map((candidate) => (
-                <div
-                  key={candidate.id}
-                  className='flex justify-between gap-10 items-start'
-                >
-                  <p className='text-xl font-semibold uppercase'>
-                    {candidate.name}
-                  </p>
-                  <p className='text-xl font-semibold uppercase'>
-                    {candidate.votes.length}
-                  </p>
-                </div>
-              ))}
+            <div className='flex flex-col items-stretch justify-start gap-0 w-full'>
+              {candidates.map((candidate) => {
+                const isVotersCandidate = candidate.votes.filter((candidateVote: string) => votes.includes(candidateVote)).length > 0
+                return (
+                  <div
+                    key={candidate.id}
+                    className={`border ${isVotersCandidate ? 'border-primary' : 'border-transparent'} flex justify-between gap-10 items-start p-1 rounded-md`}
+                  >
+                    <p className='text-xl font-semibold uppercase'>
+                      {candidate.name}
+                    </p>
+                    <p className='text-xl font-semibold uppercase'>
+                      {candidate.votes.length}
+                    </p>
+                  </div>
+                )
+              })}
             </div>
           </div>
           <button
