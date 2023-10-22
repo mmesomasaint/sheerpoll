@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { BsStar } from 'react-icons/bs'
 import { useAuth } from '../../auth/auth'
+import { WithSpinner } from '@/components/spinner'
 
 export type CandidateType = {
   name: string
@@ -18,6 +19,7 @@ export default function CreatePosition() {
   const { admin } = useAuth()
   const searchParams = useSearchParams()
   const router = useRouter()
+  const [loading, setLoading] = useState(false)
   const [ref, setRef] = useState(searchParams.get('ref') ?? '1')
   const [form, setForm] = useState<FormType>({
     title: '',
@@ -40,6 +42,7 @@ export default function CreatePosition() {
 
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setLoading(true)
 
     const { error } = await createPosition(
       form.title,
@@ -52,6 +55,7 @@ export default function CreatePosition() {
       return
     }
     console.log('An error occured: ', error)
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -105,11 +109,12 @@ export default function CreatePosition() {
         )}
         <button
           type='submit'
+          disabled={loading}
           className={`${
             THIRDPAGE ? 'block' : 'hidden'
-          } px-7 py-3 text-white bg-primary rounded-md shadow-sm`}
+          } px-7 py-3 text-white bg-primary disabled:bg-black/60 rounded-md shadow-sm`}
         >
-          Create
+          {loading ? <WithSpinner>Creating...</WithSpinner> : (<p className='text-base font-semibold tracking-wider'>Create</p>)}
         </button>
       </div>
     </form>
