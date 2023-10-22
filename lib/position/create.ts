@@ -5,6 +5,7 @@ import {
   addDoc,
   setDoc,
   collection,
+  serverTimestamp,
 } from 'firebase/firestore'
 import type { CandidateType } from '@/app/admin/dashboard/create/page'
 import createCandidate from '../candidate/create'
@@ -26,6 +27,7 @@ export default async function createPosition(
         candidates: [],
         status: 'ongoing', // 'ongoing' | 'concluded'
         creator,
+        createdAt: serverTimestamp()
       }
 
       const positionDoc = await addDoc(positionsRef, data)
