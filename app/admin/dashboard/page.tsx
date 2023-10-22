@@ -147,10 +147,10 @@ function PositionCard({
             status === 'ongoing' ? 'block' : 'hidden'
           } absolute top-5 right-5 `}
         >
-          <div className='w-10 h-10 rounded-full border border-gray-900/60 flex justify-center items-center'>
+          <div className='w-10 h-10 rounded-full border border-gray-900/60 flex justify-center items-center' 
+              onClick={() => setDisplayOptions(true)}>
             <BsStar
               className='text-lg text-gray-900/60'
-              onClick={() => setDisplayOptions(true)}
             />
           </div>
           <div className='relative'>
