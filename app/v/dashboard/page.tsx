@@ -243,7 +243,7 @@ function TimelinePositionCard({
   totalVotes,
   status,
   candidates,
-  votes
+  votes,
 }: {
   name: string
   totalVotes: number
@@ -282,11 +282,18 @@ function TimelinePositionCard({
             <p className='text-sm font-semibold text-black/60'>CANDIDATES</p>
             <div className='flex flex-col items-stretch justify-start gap-0 w-full'>
               {candidates.map((candidate) => {
-                const isVotersCandidate = candidate.votes.filter((candidateVote: string) => votes.includes(candidateVote)).length > 0
+                const isVotersCandidate =
+                  candidate.votes.filter((candidateVote: string) =>
+                    votes.includes(candidateVote)
+                  ).length > 0
                 return (
                   <div
                     key={candidate.id}
-                    className={`border ${isVotersCandidate ? 'border-primary' : 'border-transparent'} flex justify-between gap-10 items-start p-1 rounded-md`}
+                    className={`border ${
+                      isVotersCandidate
+                        ? 'border-primary'
+                        : 'border-transparent'
+                    } flex justify-between gap-10 items-start p-1 rounded-md`}
                   >
                     <p className='text-xl font-semibold uppercase'>
                       {candidate.name}
