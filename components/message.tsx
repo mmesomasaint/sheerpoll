@@ -20,7 +20,7 @@ export default function Message({
     <div className='flxed inset-0 bg-transparent'>
       <div className='relative w-full h-full'>
         <div
-          className={`rounded-md shadow-sm flex justify-between items-start gap-10 p-3 my-5 ${
+          className={`rounded-md shadow-sm flex justify-between items-center gap-10 p-3 my-5 ${
             error ? 'bg-red-500/20' : 'bg-primary/20'
           } duration-700 absolute left-[50%] -translate-x-[50%] top-0 ${
             !text && '-translate-y-24'
