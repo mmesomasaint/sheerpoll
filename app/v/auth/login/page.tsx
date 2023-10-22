@@ -10,7 +10,9 @@ import Message from '@/components/message'
 export default function Login() {
   const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({ email: '', password: '' })
-  const [err, setErr] = useState<{from: string[], message: string} | undefined>()
+  const [err, setErr] = useState<
+    { from: string[]; message: string } | undefined
+  >()
   const [errMsg, setErrMsg] = useState<string | undefined>('')
   const router = useRouter()
 
@@ -52,7 +54,11 @@ export default function Login() {
             value={form.email}
             placeholder='Email'
             autoFocus={err?.from.includes('email')}
-            className={`border ${err?.from.includes('email') ? 'border-red-400 focus:outline-red-400' : 'border-gray-400 focus:outline-primary'} rounded-md px-3 py-2 w-full`}
+            className={`border ${
+              err?.from.includes('email')
+                ? 'border-red-400 focus:outline-red-400'
+                : 'border-gray-400 focus:outline-primary'
+            } rounded-md px-3 py-2 w-full`}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
@@ -67,7 +73,11 @@ export default function Login() {
             value={form.password}
             placeholder='Password'
             autoFocus={err?.from.includes('password')}
-            className={`border ${err?.from.includes('password') ? 'border-red-400 focus:outline-red-400' : 'border-gray-400 focus:outline-primary'} rounded-md px-3 py-2 w-full`}
+            className={`border ${
+              err?.from.includes('password')
+                ? 'border-red-400 focus:outline-red-400'
+                : 'border-gray-400 focus:outline-primary'
+            } rounded-md px-3 py-2 w-full`}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>

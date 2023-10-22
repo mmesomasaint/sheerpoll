@@ -9,27 +9,27 @@ export default function getError(error: AuthError) {
   } else if (error.code === 'auth/invalid-email') {
     return {
       from: ['email'],
-      message: "Email is not registered",
+      message: 'Email is not registered',
     }
   } else if (error.code === 'auth/invalid-password') {
     return {
       from: ['password'],
-      message: "Password is not registered",
+      message: 'Password is not registered',
     }
   } else if (error.code === 'auth/user-not-found') {
     return {
       from: ['email', 'password'],
-      message: "Voter is not registered",
+      message: 'Voter is not registered',
     }
   } else if (error.code === 'auth/missing-password') {
     return {
       from: ['password'],
-      message: "Password missing"
+      message: 'Password missing',
     }
-  } else if(error.code === 'auth/invalid-login-credentials') {
+  } else if (error.code === 'auth/invalid-login-credentials') {
     return {
       from: ['email', 'password'],
-      message: "Voter is not registered"
+      message: 'Voter is not registered',
     }
   }
 
