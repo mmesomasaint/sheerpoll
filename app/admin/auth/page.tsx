@@ -30,10 +30,10 @@ export default function Auth() {
       setAdmin?.(adminSession)
       router.push('/admin/dashboard')
 
-      setLoading(false)
       return
     }
     console.log('Error loging in admin: ', adminSession)
+    setLoading(false)
   }
 
   return (
@@ -73,12 +73,13 @@ export default function Auth() {
         <div className='flex flex-col justify-start items-center gap-5'>
           <button
             type='submit'
-            className='px-7 py-3 text-white bg-primary rounded-md shadow-sm'
+            disabled={loading}
+            className='px-7 py-3 text-white bg-primary rounded-md shadow-sm disabled:bg-black/60'
           >
             {loading ? (
-              <div className='flex justify-center gap-3 items-center'>
+              <div className='flex justify-center gap-2 items-center'>
                 <Spinner />
-                <p className='text-base font-semibold'>Loading..</p>
+                <p className='text-base font-semibold'>Loading...</p>
               </div>
             ) : (
               <p className='text-base font-semibold'>Sign In</p>
