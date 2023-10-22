@@ -110,7 +110,11 @@ export default function Register() {
             disabled={loading}
             className='px-7 py-3 text-white bg-primary rounded-md shadow-sm disabled:bg-black/60'
           >
-            {loading ? <WithSpinner>Loading...</WithSpinner> : (<p className='text-base font-semibold tracking-wider'>Register</p>)}
+            {loading ? (
+              <WithSpinner>Loading...</WithSpinner>
+            ) : (
+              <p className='text-base font-semibold tracking-wider'>Register</p>
+            )}
           </button>
           <Link
             href='/v/auth/login/'

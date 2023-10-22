@@ -71,11 +71,11 @@ export default function Login() {
             disabled={loading}
             className='px-7 py-3 text-white bg-primary rounded-md shadow-sm disabled:bg-black/60'
           >
-          {loading ? (
-            <WithSpinner>Loading...</WithSpinner>
-          ) : (
-            <p className='text-base font-semibold tracking-wider'>Sign In</p>
-          )}
+            {loading ? (
+              <WithSpinner>Loading...</WithSpinner>
+            ) : (
+              <p className='text-base font-semibold tracking-wider'>Sign In</p>
+            )}
           </button>
           <Link
             href='/v/auth/register/'
