@@ -5,6 +5,7 @@ import {
   AuthError,
 } from 'firebase/auth'
 import { collection, doc, getFirestore, setDoc } from 'firebase/firestore'
+import getError from '../getError'
 
 const auth = getAuth(FirebaseApp)
 const db = getFirestore(FirebaseApp)
@@ -27,7 +28,7 @@ export default async function register(name: string, email: string, password: st
     await setDoc(doc(votersRef, result.user.uid), data)
     voter = data
   } catch (e) {
-    error = e as AuthError
+    error = getError(e as AuthError)
 
     // If a user is already created, delete them.
     if (auth.currentUser) await auth.currentUser.delete()
