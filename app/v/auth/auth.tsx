@@ -1,8 +1,9 @@
 'use client'
 
 import { createContext, useContext, useState, useEffect, useMemo } from 'react'
-import { onAuthStateChanged, getAuth, User as Voter } from 'firebase/auth'
+import { onAuthStateChanged, getAuth } from 'firebase/auth'
 import firebase_app from '@/lib/firebase'
+import type { Voter } from '@/lib/auth/types'
 import { useRouter } from 'next/navigation'
 import getVoter from '@/lib/auth/getVoter'
 

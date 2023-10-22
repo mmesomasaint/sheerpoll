@@ -1,5 +1,6 @@
 import FirebaseApp from '@/lib/firebase'
-import { getAuth, User } from 'firebase/auth'
+import { getAuth } from 'firebase/auth'
+import type { Voter } from './types'
 import { doc, getFirestore, getDoc } from 'firebase/firestore'
 
 const auth = getAuth(FirebaseApp)
@@ -10,7 +11,7 @@ export default async function getVoter(uid = auth.currentUser?.uid) {
     const votersRef = doc(db, 'voters', uid)
     const docSnap = await getDoc(votersRef)
 
-    if (docSnap.exists()) return docSnap.data() as User
+    if (docSnap.exists()) return docSnap.data() as Voter
   }
 
   return null

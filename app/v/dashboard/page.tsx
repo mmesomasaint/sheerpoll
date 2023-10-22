@@ -79,7 +79,7 @@ export default function Timeline() {
             <p className='text-base font-semibold'>Loading...</p>
           </div>
         ) : (
-          <Positions positionList={positionList} tab={tab} />
+          <Positions positionList={positionList} tab={tab} votes={voter?.votes ?? []} />
         )}
       </div>
     </div>
@@ -89,9 +89,11 @@ export default function Timeline() {
 function Positions({
   positionList,
   tab,
+  votes,
 }: {
   positionList: DocumentData[]
   tab: string
+  votes: string[]
 }) {
   if (positionList.length === 0)
     return (
@@ -113,9 +115,12 @@ function Positions({
           (acc: number, cur: DocumentData) => acc + cur.votes.length,
           0
         )
+        
+        const hasNotVoted = votes?.every(vote => !position.votes?.includes(vote))
+
         return (
           <div key={position.title + position.candidates.length}>
-            {tab === 'hot' ? (
+            {tab === 'hot' && hasNotVoted ? (
               <HotPositionCard
                 id={position.id}
                 name={position.title}
