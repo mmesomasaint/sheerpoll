@@ -288,6 +288,7 @@ function TimelinePositionCard({
                   candidate.votes.filter((candidateVote: string) =>
                     votes.includes(candidateVote)
                   ).length > 0
+
                 return (
                   <div
                     key={candidate.id}
