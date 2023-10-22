@@ -90,7 +90,7 @@ export default function Login() {
             {loading ? (
               <WithSpinner>Loading...</WithSpinner>
             ) : (
-              <p className='text-base font-semibold tracking-wider'>Sign In</p>
+              <p className='text-base font-semibold tracking-wider'>Sign in</p>
             )}
           </button>
           <Link

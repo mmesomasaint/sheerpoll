@@ -5,7 +5,7 @@ import { IoIosArrowDown } from 'react-icons/io'
 import { useAuth } from './auth'
 import { useRouter } from 'next/navigation'
 import authAdmin from '@/lib/auth/authAdmin'
-import { WithSpinner } from '@/components/spinner'
+import Spinner, { WithSpinner } from '@/components/spinner'
 
 export default function Auth() {
   const { setAdmin } = useAuth()
@@ -79,7 +79,7 @@ export default function Auth() {
             {loading ? (
               <WithSpinner>Loading...</WithSpinner>
             ) : (
-              <p className='text-base font-semibold tracking-wider'>Sign In</p>
+              <p className='text-base font-semibold tracking-wider'>Sign in</p>
             )}
           </button>
         </div>
