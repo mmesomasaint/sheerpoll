@@ -114,7 +114,11 @@ export default function CreatePosition() {
             THIRDPAGE ? 'block' : 'hidden'
           } px-7 py-3 text-white bg-primary disabled:bg-black/60 rounded-md shadow-sm`}
         >
-          {loading ? <WithSpinner>Creating...</WithSpinner> : (<p className='text-base font-semibold tracking-wider'>Create</p>)}
+          {loading ? (
+            <WithSpinner>Creating...</WithSpinner>
+          ) : (
+            <p className='text-base font-semibold tracking-wider'>Create</p>
+          )}
         </button>
       </div>
     </form>
