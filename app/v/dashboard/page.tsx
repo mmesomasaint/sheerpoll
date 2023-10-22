@@ -129,7 +129,7 @@ function Positions({
 
         return (
           <div key={position.title + position.candidates.length}>
-            {tab === 'hot' && hasNotVoted ? (
+            {hasNotVoted ? (
               <HotPositionCard
                 id={position.id}
                 name={position.title}
