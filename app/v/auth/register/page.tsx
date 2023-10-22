@@ -5,10 +5,15 @@ import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { WithSpinner } from '@/components/spinner'
+import Message from '@/components/message'
 
 export default function Register() {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
+  const [err, setErr] = useState<
+    { from: string[]; message: string } | undefined
+  >()
+  const [errMsg, setErrMsg] = useState<string | undefined>('')
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -40,12 +45,14 @@ export default function Register() {
       router.push('/v/dashboard/')
       return
     }
-    console.log(error)
+    setErr(error)
+    setErrMsg(error.message)
     setLoading(false)
   }
 
   return (
     <form onSubmit={submit}>
+    <Message text={errMsg} setText={setErrMsg} error />
       <div className='flex flex-col justify-center items-center gap-5 min-h-screen'>
         <h1 className='text-4xl font-bold'>Register</h1>
         <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
@@ -72,7 +79,12 @@ export default function Register() {
             name='email'
             value={form.email}
             placeholder='Email'
-            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium w-full focus:outline-primary'
+            autoFocus={err?.from.includes('email')}
+            className={`border ${
+              err?.from.includes('email')
+                ? 'border-red-400 focus:outline-red-400'
+                : 'border-gray-400 focus:outline-primary'
+            } rounded-md px-3 py-2 w-full`}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
@@ -86,7 +98,12 @@ export default function Register() {
             name='password'
             value={form.password}
             placeholder='Password'
-            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium w-full focus:outline-primary'
+            autoFocus={err?.from.includes('password')}
+            className={`border ${
+              err?.from.includes('password')
+                ? 'border-red-400 focus:outline-red-400'
+                : 'border-gray-400 focus:outline-primary'
+            } rounded-md px-3 py-2 w-full`}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
@@ -100,7 +117,12 @@ export default function Register() {
             name='v_password'
             value={form.verifyPassword}
             placeholder='Verify Password'
-            className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium w-full focus:outline-primary'
+            autoFocus={err?.from.includes('password')}
+            className={`border ${
+              err?.from.includes('password')
+                ? 'border-red-400 focus:outline-red-400'
+                : 'border-gray-400 focus:outline-primary'
+            } rounded-md px-3 py-2 w-full`}
             onChange={(e) => setVerifyPassword(e.target.value)}
           />
         </div>
