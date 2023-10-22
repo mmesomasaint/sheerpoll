@@ -52,7 +52,7 @@ export default function Register() {
 
   return (
     <form onSubmit={submit}>
-    <Message text={errMsg} setText={setErrMsg} error />
+      <Message text={errMsg} setText={setErrMsg} error />
       <div className='flex flex-col justify-center items-center gap-5 min-h-screen'>
         <h1 className='text-4xl font-bold'>Register</h1>
         <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
