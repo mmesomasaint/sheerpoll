@@ -24,6 +24,8 @@ export default function Login() {
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
+    setErr(undefined)
+    setErrMsg(undefined)
 
     // Submit the form
     const { voter, error } = await logIn(form.email, form.password)
