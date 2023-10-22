@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState, useMemo } from 'react'
-import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useAuth } from '../../auth/auth'
 import { BsStar } from 'react-icons/bs'

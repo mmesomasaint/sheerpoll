@@ -4,7 +4,7 @@ import logIn from '@/lib/auth/login'
 import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import Spinner, { WithSpinner } from '@/components/spinner'
+import { WithSpinner } from '@/components/spinner'
 import Message from '@/components/message'
 
 export default function Login() {
