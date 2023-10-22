@@ -24,6 +24,7 @@ export default async function createPosition(
     if (creator) {
       const data = {
         title,
+        votes: [],
         candidates: [],
         status: 'ongoing', // 'ongoing' | 'concluded'
         creator,
