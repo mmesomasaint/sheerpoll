@@ -224,7 +224,11 @@ function HotPositionCard({
               setLoading(false)
             }}
           >
-            {loading ? <WithSpinner>Loading...</WithSpinner> : (<p className='text-base font-semibold tracking-wider'>Vote</p>)}
+            {loading ? (
+              <WithSpinner>Loading...</WithSpinner>
+            ) : (
+              <p className='text-base font-semibold tracking-wider'>Vote</p>
+            )}
           </button>
         </div>
       </div>
