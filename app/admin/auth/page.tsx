@@ -5,10 +5,12 @@ import { IoIosArrowDown } from 'react-icons/io'
 import { useAuth } from './auth'
 import { useRouter } from 'next/navigation'
 import authAdmin from '@/lib/auth/authAdmin'
+import Spinner from '@/components/spinner'
 
 export default function Auth() {
   const { setAdmin } = useAuth()
   const router = useRouter()
+  const [loading, setLoading] = useState(false)
   const [form, setForm] = useState<{ rank: null | string; passcode: string }>({
     rank: null,
     passcode: '',
@@ -20,6 +22,7 @@ export default function Auth() {
 
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setLoading(true)
 
     // Submit the form
     const adminSession = authAdmin(form.rank, form.passcode)
@@ -27,6 +30,7 @@ export default function Auth() {
       setAdmin?.(adminSession)
       router.push('/admin/dashboard')
 
+      setLoading(false)
       return
     }
     console.log('Error loging in admin: ', adminSession)
@@ -71,7 +75,14 @@ export default function Auth() {
             type='submit'
             className='px-7 py-3 text-white bg-primary rounded-md shadow-sm'
           >
-            Sign in
+            {loading ? (
+              <div className='flex justify-center gap-3 items-center'>
+                <Spinner />
+                <p className='text-base font-semibold'>Loading..</p>
+              </div>
+            ) : (
+              <p className='text-base font-semibold'>Sign In</p>
+            )}
           </button>
         </div>
       </div>
