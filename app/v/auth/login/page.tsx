@@ -5,11 +5,12 @@ import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Spinner, { WithSpinner } from '@/components/spinner'
+import Message from '@/components/message'
 
 export default function Login() {
   const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({ email: '', password: '' })
-  const [err, setErr] = useState<string>('')
+  const [err, setErr] = useState<string | undefined>('')
   const router = useRouter()
 
   const setEmail = (email: string) => setForm((prev) => ({ ...prev, email }))
@@ -35,6 +36,7 @@ export default function Login() {
 
   return (
     <form onSubmit={submit}>
+      <Message text={err} setText={setErr} error />
       <div className='flex flex-col justify-center items-center py-20 gap-5 min-h-screen'>
         <h1 className='text-4xl font-bold'>LogIn</h1>
         <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
