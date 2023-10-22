@@ -294,8 +294,8 @@ function TimelinePositionCard({
                     key={candidate.id}
                     className={`border-2 ${
                       isVotersCandidate
-                        ? 'border-primary'
-                        : 'border-transparent'
+                        ? 'border-primary text-primary'
+                        : 'border-transparent text-black'
                     } flex justify-between gap-10 items-start p-1 rounded-md`}
                   >
                     <p className='text-xl font-semibold uppercase'>
