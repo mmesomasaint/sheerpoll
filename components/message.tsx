@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { BsStar } from 'react-icons/bs'
+import { MdClose } from 'react-icons/md'
 
 export default function Message({
   text,
@@ -31,7 +31,7 @@ export default function Message({
             className='shrink-0 w-8 h-8 rounded-full border border-black flex justify-center items-center'
             onClick={() => setText?.(undefined)}
           >
-            <BsStar className='text-base text-black' />
+            <MdClose className='text-base text-black' />
           </div>
         </div>
       </div>

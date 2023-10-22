@@ -8,7 +8,7 @@ import { getByStatus } from '@/lib/position/get'
 import Link from 'next/link'
 import { CandidateType } from './create/page'
 import endPosition from '@/lib/position/end'
-import { BsStar } from 'react-icons/bs'
+import { BsThreeDotsVertical } from 'react-icons/bs'
 
 export default function Dashboard() {
   const { admin } = useAuth()
@@ -151,7 +151,7 @@ function PositionCard({
             className='w-10 h-10 rounded-full border border-gray-900/60 flex justify-center items-center'
             onClick={() => setDisplayOptions(true)}
           >
-            <BsStar className='text-lg text-gray-900/60' />
+            <BsThreeDotsVertical className='text-lg text-gray-900/60' />
           </div>
           <div className='relative'>
             <div

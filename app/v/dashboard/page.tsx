@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '../auth/auth'
-import { BsStar } from 'react-icons/bs'
+import { BiSolidHot } from 'react-icons/bi'
+import { BsFillClockFill } from 'react-icons/bs'
 import { DocumentData } from 'firebase/firestore'
 import { getByStatus, getByVoter } from '@/lib/position/get'
 import { WithSpinner } from '@/components/spinner'
@@ -48,7 +49,7 @@ export default function Timeline() {
         <div className='flex justify-start items-center gap-10 pb-1 border-b border-b-primary/60'>
           <div className='relative' onClick={() => setTab('hot')}>
             <div className='px-7 flex justify-center items-center gap-3 w-fit'>
-              <BsStar
+              <BiSolidHot
                 className={`${
                   tab === 'hot' ? 'text-primary' : 'text-black/60'
                 } text-base`}
@@ -63,7 +64,7 @@ export default function Timeline() {
           </div>
           <div className='relative' onClick={() => setTab('timeline')}>
             <div className='px-7 flex justify-center items-center gap-3 w-fit'>
-              <BsStar
+              <BsFillClockFill
                 className={`${
                   tab === 'timeline' ? 'text-primary' : 'text-black/60'
                 } text-base`}

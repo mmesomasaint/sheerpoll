@@ -3,7 +3,11 @@
 import createPosition from '@/lib/position/create'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import { BsStar } from 'react-icons/bs'
+import {
+  BsFillPeopleFill,
+  BsCheckLg,
+  BsFillLightbulbFill,
+} from 'react-icons/bs'
 import { useAuth } from '../../auth/auth'
 import { WithSpinner } from '@/components/spinner'
 
@@ -68,7 +72,7 @@ export default function CreatePosition() {
         <h1 className='text-4xl font-bold'>Create Position</h1>
         <div className='flex justify-center items-center'>
           <div className='w-8 h-8 rounded-full border border-primary bg-transparent flex justify-center items-center'>
-            <BsStar className='text-xl text-primary' />
+            <BsFillLightbulbFill className='text-xl text-primary' />
           </div>
           <div
             className={`w-12 border-b bg-transparent ${
@@ -80,7 +84,7 @@ export default function CreatePosition() {
               SECONDPAGEPRIMARY && 'border-primary'
             } bg-transparent flex justify-center items-center`}
           >
-            <BsStar
+            <BsFillPeopleFill
               className={`text-xl ${SECONDPAGEPRIMARY && 'text-primary'}`}
             />
           </div>
@@ -94,7 +98,7 @@ export default function CreatePosition() {
               THIRDPAGE && 'border-primary'
             } bg-transparent flex justify-center items-center`}
           >
-            <BsStar className={`text-xl ${THIRDPAGE && 'text-primary'}`} />
+            <BsCheckLg className={`text-xl ${THIRDPAGE && 'text-primary'}`} />
           </div>
         </div>
         {FIRSTPAGE && <Title title={form.title} setTitle={setTitle} />}

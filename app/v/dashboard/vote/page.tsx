@@ -3,6 +3,7 @@
 import { useEffect, useState, useMemo } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useAuth } from '../../auth/auth'
+import { BsFillPeopleFill, BsCheckLg } from 'react-icons/bs'
 import { BsStar } from 'react-icons/bs'
 import { DocumentData } from 'firebase/firestore'
 import { getById } from '@/lib/position/get'
@@ -79,7 +80,7 @@ export default function Timeline() {
         <div className='flex justify-center items-center gap-10 pb-1 border-b border-b-primary/60'>
           <div className='relative'>
             <div className='px-7 flex justify-center items-center gap-3 w-fit'>
-              <BsStar className='text-primary text-base' />
+              <BsFillPeopleFill className='text-primary text-base' />
               <p className='text-base font-semibold'>Candidates</p>
             </div>
             <div className='absolute -bottom-[0.415rem] w-full border-2 border-primary' />
@@ -143,7 +144,7 @@ function CandidateCard({
             } flex justify-center items-center shadow-sm`}
             onClick={onVoteClick}
           >
-            {active && <BsStar className='text-primary text-base' />}
+            {active && <BsCheckLg className='text-primary text-base' />}
           </div>
         </div>
       </div>
