@@ -7,6 +7,7 @@ import Link from 'next/link'
 
 export default function Register() {
   const router = useRouter()
+  const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -25,6 +26,7 @@ export default function Register() {
 
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setLoading(true)
 
     // Submit the form
     const { voter, error } = await register(
@@ -38,6 +40,7 @@ export default function Register() {
       return
     }
     console.log(error)
+    setLoading(false)
   }
 
   return (
@@ -103,7 +106,8 @@ export default function Register() {
         <div className='flex flex-col justify-start items-center gap-5'>
           <button
             type='submit'
-            className='px-7 py-3 text-white bg-primary rounded-md shadow-sm'
+            disabled={loading}
+            className='px-7 py-3 text-white bg-primary rounded-md shadow-sm disabled:bg-black/60'
           >
             Register
           </button>

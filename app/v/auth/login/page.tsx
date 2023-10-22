@@ -4,8 +4,10 @@ import logIn from '@/lib/auth/login'
 import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Spinner from '@/components/spinner'
 
 export default function Login() {
+  const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({ email: '', password: '' })
   const [err, setErr] = useState<string>('')
   const router = useRouter()
@@ -17,6 +19,7 @@ export default function Login() {
 
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setLoading(true)
 
     // Submit the form
     const { voter, error } = await logIn(form.email, form.password)
@@ -27,6 +30,7 @@ export default function Login() {
     }
 
     setErr(error.message ?? 'An Error Occured while logging in')
+    setLoading(false)
   }
 
   return (
@@ -64,9 +68,17 @@ export default function Login() {
         <div className='flex flex-col justify-start items-center gap-5'>
           <button
             type='submit'
-            className='px-7 py-3 text-white bg-primary rounded-md shadow-sm'
+            disabled={loading}
+            className='px-7 py-3 text-white bg-primary rounded-md shadow-sm disabled:bg-black/60'
           >
-            Login
+          {loading ? (
+            <div className='flex justify-center gap-2 items-center'>
+              <Spinner />
+              <p className='text-base font-semibold'>Loading...</p>
+            </div>
+          ) : (
+            <p className='text-base font-semibold'>Sign In</p>
+          )}
           </button>
           <Link
             href='/v/auth/register/'

@@ -5,3 +5,12 @@ export default function Spinner() {
     </div>
   )
 }
+
+export function WithSpinner({ children }: { children: string }) {
+  return (
+    <div className='flex justify-center gap-2 items-center'>
+      <Spinner />
+      <p className='text-base font-semibold'>{children}</p>
+    </div>
+  )
+}
