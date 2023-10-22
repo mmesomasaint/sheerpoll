@@ -102,7 +102,11 @@ export default function Timeline() {
             className='px-7 py-3 my-5 text-white bg-primary disabled:bg-black/60 rounded-md shadow-sm'
             onClick={vote}
           >
-            {loading ? <WithSpinner>Loading...</WithSpinner> : (<p className='text-base font-semibold tracking-wider'>Submit</p>)}
+            {loading ? (
+              <WithSpinner>Loading...</WithSpinner>
+            ) : (
+              <p className='text-base font-semibold tracking-wider'>Submit</p>
+            )}
           </button>
         </div>
       </div>
