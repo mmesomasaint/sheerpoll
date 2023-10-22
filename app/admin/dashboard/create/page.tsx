@@ -41,7 +41,7 @@ export default function CreatePosition() {
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const { position, error } = await createPosition(
+    const { error } = await createPosition(
       form.title,
       form.candidates,
       admin?.auth
