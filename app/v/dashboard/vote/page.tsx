@@ -8,6 +8,7 @@ import { BsStar } from 'react-icons/bs'
 import { DocumentData } from 'firebase/firestore'
 import { getById } from '@/lib/position/get'
 import createVote from '@/lib/vote/create'
+import { WithSpinner } from '@/components/spinner'
 
 export default function Timeline() {
   const { voter } = useAuth()
@@ -39,6 +40,8 @@ export default function Timeline() {
 
       console.log('Error submitting vote.\n', error)
     }
+
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -55,7 +58,7 @@ export default function Timeline() {
       setLoading(false)
     }
 
-    fetchPosition()
+    fetchPosition().then(() => setLoading(false))
   }, [])
 
   return (
@@ -95,11 +98,11 @@ export default function Timeline() {
           ))}
           <button
             type='submit'
-            disabled={!choice}
+            disabled={!choice || loading}
             className='px-7 py-3 my-5 text-white bg-primary disabled:bg-black/60 rounded-md shadow-sm'
             onClick={vote}
           >
-            Submit
+            {loading ? <WithSpinner>Loading...</WithSpinner> : (<p className='text-base font-semibold tracking-wider'>Submit</p>)}
           </button>
         </div>
       </div>
