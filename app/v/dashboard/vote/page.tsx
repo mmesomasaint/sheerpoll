@@ -61,9 +61,9 @@ export default function Timeline() {
   }, [])
 
   return (
-    <div className='flex flex-col min-h-screen gap-0 px-24'>
+    <div className='flex flex-col min-h-screen gap-0 px-5 xl:px-24'>
       <h1 className='text-sm font-medium pt-5'>Vote A Candidate</h1>
-      <div className='flex justify-between items-center py-5 gap-5'>
+      <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center py-5 gap-5'>
         <div className='flex flex-col items-start gap-0'>
           <p className='text-sm font-semibold text-black/60'>TITLE</p>
           <p className='text-4xl font-bold uppercase'>{position?.title}</p>
@@ -77,15 +77,15 @@ export default function Timeline() {
       </div>
       <div className='grow flex flex-col w-full'>
         <div className='flex justify-center items-center gap-10 pb-1 border-b border-b-primary/60'>
-          <div className='relative'>
-            <div className='px-7 flex justify-center items-center gap-3 w-fit'>
+          <div className='relative grow sm:grow-0'>
+            <div className='px-7 flex justify-center items-center gap-3 w-full sm:w-fit'>
               <BsFillPeopleFill className='text-primary text-base' />
               <p className='text-base font-semibold'>Candidates</p>
             </div>
             <div className='absolute -bottom-[0.415rem] w-full border-2 border-primary' />
           </div>
         </div>
-        <div className='grow flex px-20 flex-col justify-start w-full'>
+        <div className='grow flex px-0 px-20 flex-col justify-start w-full'>
           {position?.candidates.map((candidate: DocumentData) => (
             <CandidateCard
               key={candidate.id}
@@ -125,17 +125,17 @@ function CandidateCard({
   onVoteClick: () => void
 }) {
   return (
-    <div className='border-b border-b-primary/60 px-20 py-10 shadow-sm w-full'>
-      <div className='grid grid-cols-3 gap-10 place-items-center'>
-        <div className='flex flex-col items-center gap-0'>
+    <div className='border-b border-b-primary/60 px-7 lg:px-20 py-10 shadow-sm w-full'>
+      <div className='grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10 sm:place-items-center'>
+        <div className='flex flex-col items-start sm:items-center gap-0'>
           <p className='text-sm font-semibold text-black/60'>NAME</p>
           <p className='text-xl font-semibold uppercase'>{name} </p>
         </div>
-        <div className='flex flex-col items-center gap-0'>
+        <div className='flex flex-col items-start sm:items-center gap-0'>
           <p className='text-sm font-semibold text-black/60'>VOTES</p>
           <p className='text-xl font-semibold uppercase'>{votes}</p>
         </div>
-        <div className='flex flex-col items-center gap-0'>
+        <div className='flex flex-col items-start sm:items-center gap-0'>
           <p className='text-sm font-semibold text-black/60'>VOTE</p>
           <div
             className={`w-10 h-10 rounded-sm border-4 ${
