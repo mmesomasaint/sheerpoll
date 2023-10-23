@@ -47,7 +47,10 @@ export default function Timeline() {
       </div>
       <div className='grow flex flex-col w-full'>
         <div className='flex justify-start items-center gap-0 sm:gap-10 pb-1 border-b border-b-primary/60'>
-          <div className='relative grow sm:grow-0' onClick={() => setTab('hot')}>
+          <div
+            className='relative grow sm:grow-0'
+            onClick={() => setTab('hot')}
+          >
             <div className='px-7 flex justify-center items-center gap-3 w-fit'>
               <BiSolidHot
                 className={`${
@@ -62,7 +65,10 @@ export default function Timeline() {
               } absolute -bottom-[0.415rem] w-full border-2 border-primary`}
             />
           </div>
-          <div className='relative grow sm:grow-0' onClick={() => setTab('timeline')}>
+          <div
+            className='relative grow sm:grow-0'
+            onClick={() => setTab('timeline')}
+          >
             <div className='px-7 flex justify-center items-center gap-3 w-fit'>
               <BsFillClockFill
                 className={`${
