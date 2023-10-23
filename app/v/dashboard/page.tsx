@@ -40,14 +40,14 @@ export default function Timeline() {
   }, [tab])
 
   return (
-    <div className='flex flex-col min-h-screen gap-0 px-24'>
+    <div className='flex flex-col min-h-screen gap-0 px-5 xl:px-24'>
       <div className='flex flex-col items-start py-5 gap-5'>
         <h1 className='text-sm font-medium'>Welcome, {voter?.displayName}</h1>
         <h1 className='text-4xl font-bold'>Dashboard</h1>
       </div>
       <div className='grow flex flex-col w-full'>
-        <div className='flex justify-start items-center gap-10 pb-1 border-b border-b-primary/60'>
-          <div className='relative' onClick={() => setTab('hot')}>
+        <div className='flex justify-start items-center gap-0 sm:gap-10 pb-1 border-b border-b-primary/60'>
+          <div className='relative grow sm:grow-0' onClick={() => setTab('hot')}>
             <div className='px-7 flex justify-center items-center gap-3 w-fit'>
               <BiSolidHot
                 className={`${
@@ -62,7 +62,7 @@ export default function Timeline() {
               } absolute -bottom-[0.415rem] w-full border-2 border-primary`}
             />
           </div>
-          <div className='relative' onClick={() => setTab('timeline')}>
+          <div className='relative grow sm:grow-0' onClick={() => setTab('timeline')}>
             <div className='px-7 flex justify-center items-center gap-3 w-fit'>
               <BsFillClockFill
                 className={`${
@@ -117,7 +117,7 @@ function Positions({
     )
 
   return (
-    <div className='grow flex px-20 flex-col w-full'>
+    <div className='grow flex px-0 xl:px-20 flex-col w-full'>
       {positionList.map((position) => {
         const totalVotes = position.candidates.reduce(
           (acc: number, cur: DocumentData) => acc + cur.votes.length,
@@ -180,8 +180,8 @@ function HotPositionCard({
   const router = useRouter()
 
   return (
-    <div className='relative border-b border-b-primary/60 px-20 py-10 shadow-sm w-full'>
-      <div className='grid grid-cols-2 gap-20'>
+    <div className='relative border-b border-b-primary/60 px-7 lg:px-20 py-10 shadow-sm w-full'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-20'>
         <div className='flex flex-col items-stretch justify-between gap-6'>
           <div className='flex flex-col items-start gap-0'>
             <p className='text-sm font-semibold text-black/60'>NAME</p>
@@ -260,8 +260,8 @@ function TimelinePositionCard({
   })
 
   return (
-    <div className='relative border-b border-b-primary/60 px-20 py-10 shadow-sm w-full'>
-      <div className='grid grid-cols-2 gap-20'>
+    <div className='relative border-b border-b-primary/60 px-7 lg:px-20 py-10 shadow-sm w-full'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-20'>
         <div className='flex flex-col items-stretch justify-between gap-6'>
           <div className='flex flex-col items-start gap-0'>
             <p className='text-sm font-semibold text-black/60'>NAME</p>
@@ -299,7 +299,7 @@ function TimelinePositionCard({
                         : 'border-transparent text-black'
                     } flex justify-between gap-10 items-start p-1 rounded-md`}
                   >
-                    <p className='text-xl font-semibold uppercase'>
+                    <p className='text-xl font-semibold uppercase break-words'>
                       {candidate.name}
                     </p>
                     <p className='text-xl font-semibold uppercase'>
