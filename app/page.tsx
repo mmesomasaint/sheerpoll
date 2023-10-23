@@ -11,7 +11,7 @@ export default function Home() {
           <Link href='/v/auth/login' className='text-lg font-bold'>
             Login
           </Link>
-          <Link href='/v/auth/signup' className='text-lg font-bold'>
+          <Link href='/v/auth/register' className='text-lg font-bold'>
             Signup
           </Link>
         </div>
