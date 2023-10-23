@@ -33,7 +33,7 @@ export default function Dashboard() {
   return (
     <div className='flex flex-col items-start min-h-screen px-5 xl:px-24 w-full'>
       <h6 className='text-sm font-medium pt-5'>Welcome, {admin?.auth}</h6>
-      <div className='flex justify-between items-center gap-10 py-5 w-full'>
+      <div className='flex justify-between items-center gap-3 sm:gap-10 py-5 w-full'>
         <h1 className='text-4xl font-bold'>Positions</h1>
         <button
           type='button'
@@ -47,17 +47,17 @@ export default function Dashboard() {
         </button>
       </div>
       <div className='grow flex flex-col w-full'>
-        <div className='flex justify-center sm:justify-start items-center gap-8 sm:gap-10 pb-1 border-b border-b-primary/60'>
-          <div className='relative' onClick={() => setStatus('ongoing')}>
-            <p className='px-7 text-base font-semibold'>Ongoing</p>
+        <div className='flex justify-center sm:justify-start items-center gap-0 sm:gap-10 pb-1 border-b border-b-primary/60'>
+          <div className='relative grow sm:grow-0 ' onClick={() => setStatus('ongoing')}>
+            <p className='text-center px-0 sm:px-7 text-base font-semibold'>Ongoing</p>
             <div
               className={`${
                 status === 'ongoing' ? 'block' : 'hidden'
               } absolute -bottom-[0.415rem] w-full border-2 border-primary`}
             />
           </div>
-          <div className='relative' onClick={() => setStatus('concluded')}>
-            <p className='px-7 text-base font-semibold'>Concluded</p>
+          <div className='relative grow sm:grow-0 ' onClick={() => setStatus('concluded')}>
+            <p className='text-center px-0 sm:px-7 text-base font-semibold'>Concluded</p>
             <div
               className={`${
                 status === 'concluded' ? 'block' : 'hidden'
