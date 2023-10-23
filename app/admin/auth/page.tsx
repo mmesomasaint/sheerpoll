@@ -40,7 +40,7 @@ export default function Auth() {
     <form onSubmit={submit}>
       <div className='flex flex-col justify-center items-center gap-5 min-h-screen'>
         <h1 className='text-4xl font-bold'>Admin</h1>
-        <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
+        <div className='flex flex-col justify-start items-start gap-2 w-[90%] md:w-[50%] lg:w-[30%] xl:w-[25%]'>
           <label htmlFor='dropdown' className='text-base font-semibold'>
             Authority
           </label>
@@ -56,7 +56,7 @@ export default function Auth() {
             full
           />
         </div>
-        <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
+        <div className='flex flex-col justify-start items-start gap-2 w-[90%] md:w-[50%] lg:w-[30%] xl:w-[25%]'>
           <label htmlFor='passcode' className='text-base font-semibold'>
             Passcode
           </label>
@@ -104,7 +104,7 @@ function DropDown({
   return (
     <div
       className={`cursor-pointer inline-block relative ${
-        full ? 'w-full' : 'w-[25%]'
+        full ? 'w-full' : 'w-[90%] md:w-[50%] lg:w-[30%] xl:w-[25%]'
       }`}
     >
       <div
