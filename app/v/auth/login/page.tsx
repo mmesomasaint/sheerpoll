@@ -54,7 +54,7 @@ export default function Login() {
             id='email'
             name='email'
             value={form.email}
-            placeholder='Email'
+            placeholder='e.g: example@email.com'
             autoFocus={err?.from.includes('email')}
             className={`border ${
               err?.from.includes('email')

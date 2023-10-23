@@ -64,7 +64,7 @@ export default function Register() {
             id='name'
             name='name'
             value={form.name}
-            placeholder='Full Name'
+            placeholder='e.g: Franklin Saint'
             className='border border-gray-400 rounded-md px-3 py-2 text-sm font-medium w-full focus:outline-primary'
             onChange={(e) => setName(e.target.value)}
           />
@@ -78,7 +78,7 @@ export default function Register() {
             id='email'
             name='email'
             value={form.email}
-            placeholder='Email'
+            placeholder='e.g: example@email.com'
             autoFocus={err?.from.includes('email')}
             className={`border ${
               err?.from.includes('email')

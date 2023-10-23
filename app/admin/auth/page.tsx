@@ -65,7 +65,7 @@ export default function Auth() {
             id='passcode'
             name='passcode'
             value={form.passcode}
-            placeholder='passcode'
+            placeholder='e.g: 234323'
             className='border border-gray-400 rounded-md px-3 py-2 w-full'
             onChange={(e) => setPasscode(e.target.value)}
           />
