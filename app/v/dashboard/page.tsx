@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useAuth } from '../auth/auth'
 import { BiSolidHot } from 'react-icons/bi'
 import { BsFillClockFill } from 'react-icons/bs'
+import { FaHistory } from 'react-icons/fa'
 import { DocumentData } from 'firebase/firestore'
 import { getByStatus, getByVoter } from '@/lib/position/get'
 import { WithSpinner } from '@/components/spinner'
@@ -70,7 +71,7 @@ export default function Timeline() {
             onClick={() => setTab('timeline')}
           >
             <div className='px-7 flex justify-center items-center gap-3 w-full sm:w-fit'>
-              <BsFillClockFill
+              <FaHistory
                 className={`${
                   tab === 'timeline' ? 'text-primary' : 'text-black/60'
                 } text-base`}
