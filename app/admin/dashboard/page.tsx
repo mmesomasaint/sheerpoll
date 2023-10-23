@@ -47,7 +47,7 @@ export default function Dashboard() {
         </button>
       </div>
       <div className='grow flex flex-col w-full'>
-        <div className='flex justify-start items-center gap-10 pb-1 border-b border-b-primary/60'>
+        <div className='flex justify-center sm:justify-start items-center gap-8 sm:gap-10 pb-1 border-b border-b-primary/60'>
           <div className='relative' onClick={() => setStatus('ongoing')}>
             <p className='px-7 text-base font-semibold'>Ongoing</p>
             <div
