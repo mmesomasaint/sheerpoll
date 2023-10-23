@@ -37,7 +37,7 @@ export default function Dashboard() {
         <h1 className='text-4xl font-bold'>Positions</h1>
         <button
           type='button'
-          className='px-7 py-3 text-white font-semibold bg-primary rounded-md shadow-sm'
+          className='px-7 py-3 text-white font-semibold tracking-wider bg-primary rounded-md shadow-sm'
           onClick={() => router.push('/admin/dashboard/create')}
         >
           Create Position
