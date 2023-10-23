@@ -52,7 +52,7 @@ export default function Dashboard() {
       <div className='grow flex flex-col w-full'>
         <div className='flex justify-center sm:justify-start items-center gap-0 sm:gap-10 pb-1 border-b border-b-primary/60'>
           <div
-            className='relative grow sm:grow-0 '
+            className='relative grow sm:grow-0'
             onClick={() => setStatus('ongoing')}
           >
             <p className='text-center px-0 sm:px-7 text-base font-semibold'>
@@ -65,7 +65,7 @@ export default function Dashboard() {
             />
           </div>
           <div
-            className='relative grow sm:grow-0 '
+            className='relative grow sm:grow-0'
             onClick={() => setStatus('concluded')}
           >
             <p className='text-center px-0 sm:px-7 text-base font-semibold'>
