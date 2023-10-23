@@ -51,7 +51,7 @@ export default function Timeline() {
             className='relative grow sm:grow-0'
             onClick={() => setTab('hot')}
           >
-            <div className='px-7 flex justify-center items-center gap-3 w-fit'>
+            <div className='px-7 flex justify-center items-center gap-3 w-full sm:w-fit'>
               <BiSolidHot
                 className={`${
                   tab === 'hot' ? 'text-primary' : 'text-black/60'
@@ -69,7 +69,7 @@ export default function Timeline() {
             className='relative grow sm:grow-0'
             onClick={() => setTab('timeline')}
           >
-            <div className='px-7 flex justify-center items-center gap-3 w-fit'>
+            <div className='px-7 flex justify-center items-center gap-3 w-full sm:w-fit'>
               <BsFillClockFill
                 className={`${
                   tab === 'timeline' ? 'text-primary' : 'text-black/60'
