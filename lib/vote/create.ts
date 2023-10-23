@@ -6,6 +6,7 @@ import {
   setDoc,
   collection,
   arrayUnion,
+  serverTimestamp,
 } from 'firebase/firestore'
 
 const db = getFirestore(FirebaseApp)
@@ -23,6 +24,7 @@ export default async function createVote(
       position_id: positionId,
       candidate_id: candidateId,
       voter_id: voterId,
+      createdAt: serverTimestamp(),
     }
     const voteDoc = await addDoc(votesRef, voteData)
 
