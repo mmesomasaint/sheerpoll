@@ -42,22 +42,34 @@ export default function Dashboard() {
         >
           <div className='flex justify-between items-center gap-3'>
             <BsStar className='text-base text-white' />
-            <p className='hidden sm:block text-white text-base font-semibold tracking-wider'>Create Position</p>
+            <p className='hidden sm:block text-white text-base font-semibold tracking-wider'>
+              Create Position
+            </p>
           </div>
         </button>
       </div>
       <div className='grow flex flex-col w-full'>
         <div className='flex justify-center sm:justify-start items-center gap-0 sm:gap-10 pb-1 border-b border-b-primary/60'>
-          <div className='relative grow sm:grow-0 ' onClick={() => setStatus('ongoing')}>
-            <p className='text-center px-0 sm:px-7 text-base font-semibold'>Ongoing</p>
+          <div
+            className='relative grow sm:grow-0 '
+            onClick={() => setStatus('ongoing')}
+          >
+            <p className='text-center px-0 sm:px-7 text-base font-semibold'>
+              Ongoing
+            </p>
             <div
               className={`${
                 status === 'ongoing' ? 'block' : 'hidden'
               } absolute -bottom-[0.415rem] w-full border-2 border-primary`}
             />
           </div>
-          <div className='relative grow sm:grow-0 ' onClick={() => setStatus('concluded')}>
-            <p className='text-center px-0 sm:px-7 text-base font-semibold'>Concluded</p>
+          <div
+            className='relative grow sm:grow-0 '
+            onClick={() => setStatus('concluded')}
+          >
+            <p className='text-center px-0 sm:px-7 text-base font-semibold'>
+              Concluded
+            </p>
             <div
               className={`${
                 status === 'concluded' ? 'block' : 'hidden'
