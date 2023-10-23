@@ -5,7 +5,7 @@ import { IoIosArrowDown } from 'react-icons/io'
 import { useAuth } from './auth'
 import { useRouter } from 'next/navigation'
 import authAdmin from '@/lib/auth/authAdmin'
-import Spinner, { WithSpinner } from '@/components/spinner'
+import { WithSpinner } from '@/components/spinner'
 
 export default function Auth() {
   const { setAdmin } = useAuth()
