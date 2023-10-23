@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import {IoIosArrowForward} from 'react-icons/io'
+import { IoIosArrowForward } from 'react-icons/io'
 
 export default function Home() {
   const router = useRouter()
@@ -10,12 +10,18 @@ export default function Home() {
   return (
     <main className='flex min-h-screen flex-col items-center justify-between'>
       <div className='flex justify-between items-center gap-6 sm:gap-10 px-5 sm:px-10 py-5 w-full'>
-          <h1 className='text-4xl font-bold'>Sheerpoll</h1>
+        <h1 className='text-4xl font-bold'>Sheerpoll</h1>
         <div className='flex justify-end items-center gap-6'>
-          <Link href='/v/auth/login' className='text-base font-semibold px-7 py-3 border border-primary text-primary rounded-md'>
+          <Link
+            href='/v/auth/login'
+            className='text-base font-semibold px-7 py-3 border border-primary text-primary rounded-md'
+          >
             Login
           </Link>
-          <Link href='/v/auth/register' className='hidden sm:block text-base font-semibold px-7 py-3 border border-primary bg-primary text-white rounded-md'>
+          <Link
+            href='/v/auth/register'
+            className='hidden sm:block text-base font-semibold px-7 py-3 border border-primary bg-primary text-white rounded-md'
+          >
             Signup
           </Link>
         </div>
@@ -33,8 +39,9 @@ export default function Home() {
           >
             <div className='flex justify-between items-center gap-5'>
               <p className='text-white text-base font-semibold tracking-wider'>
-            Get Started</p>
-            <IoIosArrowForward className='text-2xl text-white' />
+                Get Started
+              </p>
+              <IoIosArrowForward className='text-2xl text-white' />
             </div>
           </button>
         </div>
