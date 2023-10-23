@@ -8,7 +8,8 @@ import { getByStatus } from '@/lib/position/get'
 import Link from 'next/link'
 import { CandidateType } from './create/page'
 import endPosition from '@/lib/position/end'
-import { BsStar, BsThreeDotsVertical } from 'react-icons/bs'
+import { BsThreeDotsVertical } from 'react-icons/bs'
+import { VscAdd } from 'react-icons/vsc'
 
 export default function Dashboard() {
   const { admin } = useAuth()
@@ -41,7 +42,7 @@ export default function Dashboard() {
           onClick={() => router.push('/admin/dashboard/create')}
         >
           <div className='flex justify-between items-center gap-3'>
-            <BsStar className='text-base text-white' />
+            <VscAdd className='text-base text-white' />
             <p className='hidden sm:block text-white text-base font-semibold tracking-wider'>
               Create Position
             </p>
