@@ -170,7 +170,7 @@ function PositionCard({
             >
               <button
                 type='button'
-                className='px-7 py-3 text-primary text-base font-semibold border border-primary rounded-md shadow-sm'
+                className='px-7 py-3 text-primary text-base font-semibold border border-primary bg-white rounded-md shadow-sm'
                 onClick={endPos}
               >
                 Conclude
