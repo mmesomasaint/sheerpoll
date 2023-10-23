@@ -76,29 +76,29 @@ export default function CreatePosition() {
           </div>
           <div
             className={`w-12 border-b bg-transparent ${
-              SECONDPAGEPRIMARY && 'border-primary'
+              SECONDPAGEPRIMARY ? 'border-primary' : 'border-black/60'
             } border-dashed`}
           />
           <div
             className={`w-8 h-8 rounded-full border ${
-              SECONDPAGEPRIMARY && 'border-primary'
+              SECONDPAGEPRIMARY ? 'border-primary' : 'border-black/60'
             } bg-transparent flex justify-center items-center`}
           >
             <BsFillPeopleFill
-              className={`text-xl ${SECONDPAGEPRIMARY && 'text-primary'}`}
+              className={`text-xl ${SECONDPAGEPRIMARY ? 'text-primary' : 'text-black/60'}`}
             />
           </div>
           <div
             className={`w-12 border-b bg-transparent ${
-              THIRDPAGE && 'border-primary'
+              THIRDPAGE ? 'border-primary' : 'border-black/60'
             } border-dashed`}
           />
           <div
             className={`w-8 h-8 rounded-full border ${
-              THIRDPAGE && 'border-primary'
+              THIRDPAGE ? 'border-primary' : 'border-black/60'
             } bg-transparent flex justify-center items-center`}
           >
-            <BsCheckLg className={`text-xl ${THIRDPAGE && 'text-primary'}`} />
+            <BsCheckLg className={`text-xl ${THIRDPAGE ? 'text-primary' : 'text-black/60'}`} />
           </div>
         </div>
         {FIRSTPAGE && <Title title={form.title} setTitle={setTitle} />}
