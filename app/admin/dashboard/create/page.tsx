@@ -150,7 +150,7 @@ function Title({
           name='title'
           value={title}
           placeholder='title'
-          className='border border-gray-400 rounded-md px-3 py-2 w-full'
+          className='border border-gray-400 rounded-md px-3 py-2 w-full focus:outline-primary'
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
@@ -226,7 +226,7 @@ function Candidates({
               name='name'
               value={candidate.name}
               placeholder='name'
-              className='border border-gray-400 rounded-md px-3 py-2 w-full'
+              className='border border-gray-400 rounded-md px-3 py-2 w-full focus:outline-primary'
               onChange={(e) =>
                 setCandidate((pre) => ({ ...pre, ['name']: e.target.value }))
               }
