@@ -45,7 +45,7 @@ export default function Login() {
       <Message text={errMsg} setText={setErrMsg} error />
       <div className='flex flex-col justify-center items-center py-20 gap-5 min-h-screen'>
         <h1 className='text-4xl font-bold'>LogIn</h1>
-        <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
+        <div className='flex flex-col justify-start items-start gap-2 w-[90%] md:w-[50%] lg:w-[30%] xl:w-[25%]'>
           <label htmlFor='email' className='text-base font-semibold'>
             Email
           </label>
@@ -64,7 +64,7 @@ export default function Login() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
+        <div className='flex flex-col justify-start items-start gap-2 w-[90%] md:w-[50%] lg:w-[30%] xl:w-[25%]'>
           <label htmlFor='password' className='text-base font-semibold'>
             Password
           </label>

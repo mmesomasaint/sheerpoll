@@ -55,7 +55,7 @@ export default function Register() {
       <Message text={errMsg} setText={setErrMsg} error />
       <div className='flex flex-col justify-center items-center gap-5 min-h-screen'>
         <h1 className='text-4xl font-bold'>Register</h1>
-        <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
+        <div className='flex flex-col justify-start items-start gap-2 w-[90%] md:w-[50%] lg:w-[30%] xl:w-[25%]'>
           <label htmlFor='name' className='text-base font-semibold'>
             Full Name
           </label>
@@ -69,7 +69,7 @@ export default function Register() {
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
+        <div className='flex flex-col justify-start items-start gap-2 w-[90%] md:w-[50%] lg:w-[30%] xl:w-[25%]'>
           <label htmlFor='email' className='text-base font-semibold'>
             Email
           </label>
@@ -88,7 +88,7 @@ export default function Register() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
+        <div className='flex flex-col justify-start items-start gap-2 w-[90%] md:w-[50%] lg:w-[30%] xl:w-[25%]'>
           <label htmlFor='password' className='text-base font-semibold'>
             Password
           </label>
@@ -107,7 +107,7 @@ export default function Register() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <div className='flex flex-col justify-start items-start gap-2 w-[25%]'>
+        <div className='flex flex-col justify-start items-start gap-2 w-[90%] md:w-[50%] lg:w-[30%] xl:w-[25%]'>
           <label htmlFor='v_password' className='text-base font-semibold'>
             Verify Password
           </label>

@@ -24,7 +24,7 @@ export default function Message({
             error ? 'bg-red-500/20' : 'bg-primary/20'
           } duration-700 absolute left-[50%] -translate-x-[50%] top-0 ${
             !text && '-translate-y-24'
-          } w-[25%]`}
+          } w-[90%] md:w-[50%] lg:w-[30%] xl:w-[25%]`}
         >
           <p className='text-base font-semibold tracking-wider'>{message}</p>
           <div
