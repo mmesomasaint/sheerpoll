@@ -8,7 +8,7 @@ import { getByStatus } from '@/lib/position/get'
 import Link from 'next/link'
 import { CandidateType } from './create/page'
 import endPosition from '@/lib/position/end'
-import { BsThreeDotsVertical } from 'react-icons/bs'
+import { BsStar, BsThreeDotsVertical } from 'react-icons/bs'
 
 export default function Dashboard() {
   const { admin } = useAuth()
@@ -31,16 +31,19 @@ export default function Dashboard() {
   }, [status])
 
   return (
-    <div className='flex flex-col items-start min-h-screen px-24 w-full'>
+    <div className='flex flex-col items-start min-h-screen px-5 xl:px-24 w-full'>
       <h6 className='text-sm font-medium pt-5'>Welcome, {admin?.auth}</h6>
       <div className='flex justify-between items-center gap-10 py-5 w-full'>
         <h1 className='text-4xl font-bold'>Positions</h1>
         <button
           type='button'
-          className='px-7 py-3 text-white font-semibold tracking-wider bg-primary rounded-md shadow-sm'
+          className='px-7 py-3 bg-primary rounded-md shadow-sm'
           onClick={() => router.push('/admin/dashboard/create')}
         >
-          Create Position
+          <div className='flex justify-between items-center gap-3'>
+            <BsStar className='text-base text-white' />
+            <p className='hidden sm:block text-white text-base font-semibold tracking-wider'>Create Position</p>
+          </div>
         </button>
       </div>
       <div className='grow flex flex-col w-full'>
@@ -89,7 +92,7 @@ function Positions({ positionList }: { positionList: DocumentData[] }) {
     )
 
   return (
-    <div className='grow flex px-20 flex-col w-full'>
+    <div className='grow flex px-0 xl:px-20 flex-col w-full'>
       {positionList.map((position) => (
         <PositionCard
           key={position.id}
@@ -140,15 +143,15 @@ function PositionCard({
   }
 
   return (
-    <div className='relative border-b border-b-primary/60 px-20 py-10 shadow-sm w-full'>
+    <div className='relative border-b border-b-primary/60 px-7 lg:px-20 py-10 shadow-sm w-full'>
       <div className='flex flex-col items-stretch justify-between gap-6'>
         <div
           className={`${
             status === 'ongoing' ? 'block' : 'hidden'
-          } absolute top-5 right-5 `}
+          } absolute top-2 sm:top-5 right-2 sm:right-5 `}
         >
           <div
-            className='w-10 h-10 rounded-full border border-gray-900/60 flex justify-center items-center'
+            className='w-8 h-8 rounded-full border border-gray-900/60 flex justify-center items-center'
             onClick={() => setDisplayOptions(true)}
           >
             <BsThreeDotsVertical className='text-lg text-gray-900/60' />
@@ -163,7 +166,7 @@ function PositionCard({
             <div
               className={`${
                 displayOptions ? 'block' : 'hidden'
-              } absolute z-20 w-fit rounded-md border border-gray-900/60 shadow-sm`}
+              } absolute right-0 z-20 w-fit rounded-md border border-gray-900/60 shadow-sm`}
             >
               <button
                 type='button'
@@ -175,10 +178,10 @@ function PositionCard({
             </div>
           </div>
         </div>
-        <div className='grid grid-cols-3 gap-10'>
+        <div className='grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10'>
           <div className='flex flex-col items-start gap-0'>
             <p className='text-sm font-semibold text-black/60'>ID</p>
-            <p className='text-xl font-semibold uppercase'>{id}</p>
+            <p className='text-xl font-semibold uppercase break-all'>{id}</p>
           </div>
           <div className='flex flex-col items-start gap-0'>
             <p className='text-sm font-semibold text-black/60'>STATUS</p>
@@ -189,7 +192,7 @@ function PositionCard({
             <p className='text-xl font-semibold'>{totalVotes}</p>
           </div>
         </div>
-        <div className='grid grid-cols-3 gap-10'>
+        <div className='grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10'>
           <div className='flex flex-col items-start gap-0'>
             <p className='text-sm font-semibold text-black/60'>NAME</p>
             <p className='text-xl font-semibold uppercase'>{name}</p>
