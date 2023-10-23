@@ -140,7 +140,7 @@ function Title({
 
   return (
     <div className='flex flex-col gap-5 w-full'>
-      <div className='flex flex-col justify-start items-start gap-2 w-[25%] mx-auto'>
+      <div className='flex flex-col justify-start items-start gap-2 w-[90%] md:w-[50%] lg:w-[30%] xl:w-[25%] mx-auto'>
         <label htmlFor='title' className='text-base font-semibold'>
           Title
         </label>
@@ -185,7 +185,7 @@ function Candidates({
 
   return (
     <div className='flex flex-col gap-5 w-full'>
-      <div className='flex flex-col justify-start items-start gap-2 w-[25%] mx-auto'>
+      <div className='flex flex-col justify-start items-start gap-2 w-[90%] md:w-[50%] lg:w-[30%] xl:w-[25%] mx-auto'>
         <label htmlFor='title' className='text-base font-semibold'>
           Candidates
         </label>
@@ -269,7 +269,7 @@ function DisplayPosition({
   candidates: CandidateType[]
 }) {
   return (
-    <div className='flex flex-col gap-8 w-[25%]'>
+    <div className='flex flex-col gap-8 w-[90%] md:w-[50%] lg:w-[30%] xl:w-[25%] '>
       <div className='flex flex-col items-start gap-1'>
         <p className='text-sm font-semibold'>TITLE</p>
         <p className='text-xl font-semibold'>{title}</p>
