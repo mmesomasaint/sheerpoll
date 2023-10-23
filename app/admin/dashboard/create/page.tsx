@@ -85,7 +85,9 @@ export default function CreatePosition() {
             } bg-transparent flex justify-center items-center`}
           >
             <BsFillPeopleFill
-              className={`text-xl ${SECONDPAGEPRIMARY ? 'text-primary' : 'text-black/60'}`}
+              className={`text-xl ${
+                SECONDPAGEPRIMARY ? 'text-primary' : 'text-black/60'
+              }`}
             />
           </div>
           <div
@@ -98,7 +100,11 @@ export default function CreatePosition() {
               THIRDPAGE ? 'border-primary' : 'border-black/60'
             } bg-transparent flex justify-center items-center`}
           >
-            <BsCheckLg className={`text-xl ${THIRDPAGE ? 'text-primary' : 'text-black/60'}`} />
+            <BsCheckLg
+              className={`text-xl ${
+                THIRDPAGE ? 'text-primary' : 'text-black/60'
+              }`}
+            />
           </div>
         </div>
         {FIRSTPAGE && <Title title={form.title} setTitle={setTitle} />}
