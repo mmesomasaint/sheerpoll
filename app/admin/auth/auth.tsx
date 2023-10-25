@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { WithSpinner } from '@/components/spinner'
 
 type SessionType = {
   auth: string | undefined
@@ -33,7 +34,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     <Auth.Provider value={{ admin, setAdmin }}>
       {loading ? (
         <div className='flex justify-center items-center min-h-screen bg-black/30'>
-          Loading...
+          <WithSpinner dark>Loading...</WithSpinner>
         </div>
       ) : (
         children

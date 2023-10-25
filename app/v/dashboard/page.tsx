@@ -85,7 +85,7 @@ export default function Timeline() {
         </div>
         {loading ? (
           <div className='grow flex justify-center items-center h-full'>
-            <p className='text-base font-semibold'>Loading...</p>
+            <WithSpinner dark>Loading...</WithSpinner>
           </div>
         ) : (
           <Positions

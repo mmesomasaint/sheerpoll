@@ -6,6 +6,7 @@ import firebase_app from '@/lib/firebase'
 import type { Voter } from '@/lib/auth/types'
 import { useRouter } from 'next/navigation'
 import getVoter from '@/lib/auth/getVoter'
+import { WithSpinner } from '@/components/spinner'
 
 const auth = getAuth(firebase_app)
 
@@ -42,7 +43,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     <Auth.Provider value={{ voter: useMemo(() => voter, [voter]) }}>
       {loading ? (
         <div className='flex justify-center items-center min-h-screen bg-black/30'>
-          Loading...
+          <WithSpinner dark>Loading...</WithSpinner>
         </div>
       ) : (
         children

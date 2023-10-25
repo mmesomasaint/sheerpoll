@@ -10,6 +10,7 @@ import { CandidateType } from './create/page'
 import endPosition from '@/lib/position/end'
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import { VscAdd } from 'react-icons/vsc'
+import { WithSpinner } from '@/components/spinner'
 
 export default function Dashboard() {
   const { admin } = useAuth()
@@ -80,7 +81,7 @@ export default function Dashboard() {
         </div>
         {loading ? (
           <div className='grow flex justify-center items-center h-full'>
-            <p className='text-base font-semibold'>Loading...</p>
+            <WithSpinner dark>Loading...</WithSpinner>
           </div>
         ) : (
           <Positions positionList={positions} />
