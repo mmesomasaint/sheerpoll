@@ -48,17 +48,16 @@ export default function Timeline() {
 
     const fetchPosition = async () => {
       const position_id = searchParams.get('position_id')
-
       if (position_id) {
         const data = await getById(position_id)
         setPosition(data)
-      }
+      } else if (!position_id) router.push('/v/dashboard/')
 
       setLoading(false)
     }
 
     fetchPosition().then(() => setLoading(false))
-  }, [])
+  }, [searchParams.get('position_id')])
 
   return (
     <div className='flex flex-col min-h-screen gap-0 px-5 xl:px-24'>
