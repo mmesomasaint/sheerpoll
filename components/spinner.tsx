@@ -3,7 +3,7 @@ export default function Spinner({ dark }: { dark?: boolean }) {
     <div className='relative flex justify-center items-center'>
       <div
         className={`w-5 h-5 border-4 ${
-          dark ? 'border-black/60' : 'border-white'
+          dark ? 'border-black' : 'border-white'
         } border-dotted rounded-full animate-spin`}
       />
     </div>
