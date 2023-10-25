@@ -30,10 +30,12 @@ export default function Timeline() {
     setLoading(true)
 
     if (voter && choice && position) {
-      const { error } = await createVote(position.id, choice, voter.uid)
+      const { vote, error } = await createVote(position.id, choice, voter.uid)
 
-      if (!error) {
+      if (!error && vote) {
+        voter.votes = [...voter.votes, vote]
         router.push('/v/dashboard/')
+
         return
       }
 
@@ -65,7 +67,9 @@ export default function Timeline() {
       <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center py-5 gap-5'>
         <div className='flex flex-col items-start gap-0'>
           <p className='text-sm font-semibold text-black/60'>TITLE</p>
-          <p className='text-4xl font-bold uppercase'>{position?.title || 'No_Title'}</p>
+          <p className='text-4xl font-bold uppercase'>
+            {position?.title || 'No_Title'}
+          </p>
         </div>
         <div className='flex flex-col items-end gap-0'>
           <p className='text-sm font-semibold text-black/60'>TOTAL VOTES</p>
