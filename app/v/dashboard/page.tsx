@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '../auth/auth'
 import { BiSolidHot } from 'react-icons/bi'
@@ -9,7 +8,6 @@ import { FaHistory } from 'react-icons/fa'
 import { DocumentData } from 'firebase/firestore'
 import { getByStatus, getByVoter } from '@/lib/position/get'
 import { WithSpinner } from '@/components/spinner'
-import { BsMenuButton } from 'react-icons/bs'
 
 export default function Timeline() {
   const { voter } = useAuth()
