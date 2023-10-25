@@ -146,7 +146,7 @@ function CandidateCard({
             } flex justify-center items-center shadow-sm`}
             onClick={onVoteClick}
           >
-            {active && <BsCheckLg className='text-primary text-base' />}
+            {active && <BsCheckLg className='text-primary text-4xl' />}
           </div>
         </div>
       </div>
