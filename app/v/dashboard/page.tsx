@@ -9,6 +9,7 @@ import { FaHistory } from 'react-icons/fa'
 import { DocumentData } from 'firebase/firestore'
 import { getByStatus, getByVoter } from '@/lib/position/get'
 import { WithSpinner } from '@/components/spinner'
+import { BsMenuButton } from 'react-icons/bs'
 
 export default function Timeline() {
   const { voter } = useAuth()
@@ -92,6 +93,7 @@ export default function Timeline() {
           <Positions
             positionList={positionList}
             tab={tab}
+            setTab={setTab}
             votes={voter?.votes ?? []}
           />
         )}
@@ -103,22 +105,29 @@ export default function Timeline() {
 function Positions({
   positionList,
   tab,
+  setTab,
   votes,
 }: {
   positionList: DocumentData[]
   tab: string
+  setTab: (value: string) => void
   votes: string[]
 }) {
+  const router = useRouter()
+
   if (positionList.length === 0)
     return (
       <div className='grow flex flex-col justify-center items-center w-full'>
         <p className='text-base font-semibold'>No positions found.</p>
-        <Link
-          href='/v/dashboard/'
-          className='text-primary text-base font-semibold hover:underline hover:underline-offset-4'
+        <button
+          onClick={() => {
+            if (tab === 'hot') router.refresh()
+            else setTab('hot')
+          }}
+          className='text-primary text-base font-semibold border-none hover:underline hover:underline-offset-4'
         >
           {tab === 'hot' ? 'Reload the page' : 'Vote now'}
-        </Link>
+        </button>
       </div>
     )
 
