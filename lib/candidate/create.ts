@@ -1,6 +1,6 @@
 import FirebaseApp from '../firebase'
 import { getFirestore, addDoc, collection } from 'firebase/firestore'
-import type { CandidateType } from '@/app/admin/dashboard/create/page'
+import type { CandidateType } from './types'
 
 const db = getFirestore(FirebaseApp)
 const positionsRef = collection(db, 'candidates')
