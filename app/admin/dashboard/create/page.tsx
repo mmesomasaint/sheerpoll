@@ -10,12 +10,7 @@ import {
 } from 'react-icons/bs'
 import { useAuth } from '../../auth/auth'
 import { WithSpinner } from '@/components/spinner'
-
-export type CandidateType = {
-  name: string
-  votes: string[]
-  position_id: string
-}
+import {CandidateType} from '@/lib/candidate/types'
 
 type FormType = { title: string; candidates: CandidateType[] }
 

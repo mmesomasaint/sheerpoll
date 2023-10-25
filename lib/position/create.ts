@@ -7,7 +7,7 @@ import {
   collection,
   serverTimestamp,
 } from 'firebase/firestore'
-import type { CandidateType } from '@/app/admin/dashboard/create/page'
+import type { CandidateType } from '../candidate/types'
 import createCandidate from '../candidate/create'
 
 const db = getFirestore(FirebaseApp)
