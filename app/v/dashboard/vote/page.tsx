@@ -85,7 +85,7 @@ export default function Timeline() {
             <div className='absolute -bottom-[0.415rem] w-full border-2 border-primary' />
           </div>
         </div>
-        <div className='grow flex px-0 px-20 flex-col justify-start w-full'>
+        <div className='grow flex px-0 sm:px-20 flex-col justify-start w-full'>
           {position?.candidates.map((candidate: DocumentData) => (
             <CandidateCard
               key={candidate.id}
