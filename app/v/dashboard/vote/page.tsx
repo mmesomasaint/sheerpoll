@@ -65,12 +65,12 @@ export default function Timeline() {
       <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center py-5 gap-5'>
         <div className='flex flex-col items-start gap-0'>
           <p className='text-sm font-semibold text-black/60'>TITLE</p>
-          <p className='text-4xl font-bold uppercase'>{position?.title}</p>
+          <p className='text-4xl font-bold uppercase'>{position?.title || 'No_Title'}</p>
         </div>
         <div className='flex flex-col items-end gap-0'>
           <p className='text-sm font-semibold text-black/60'>TOTAL VOTES</p>
           <p className='text-xl text-center font-semibold uppercase w-full py-1 border border-primary text-primary rounded-md'>
-            {totalVotes}
+            {totalVotes || '0'}
           </p>
         </div>
       </div>
