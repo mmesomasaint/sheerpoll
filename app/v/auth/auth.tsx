@@ -24,10 +24,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter()
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        const currentVoter = await getVoter(user.uid)
-        setVoter(currentVoter)
+        getVoter(user.uid).then((currentVoter) => setVoter(currentVoter))
       } else {
         // If user is not a voter redirect to login pg.
         router.replace('/v/auth/login')
