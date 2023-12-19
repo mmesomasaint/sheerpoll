@@ -1,6 +1,6 @@
 # Sheerpoll - A Free & Fair Polling Platform
 
-This is a mimicry project by PANs [UNN]('https://www.unn.edu.ng').
+This is a mimicry project by PANs [UNN]('https://www.unn.edu.ng'). Originally intended for use by the organization
 
 Sheerpoll is a polling platform where a selected admins have access to create polls(refered to as positions) for authenticated users(known as voters) to vote on. This ensures a safe, free and fair polling process overall. 
 
